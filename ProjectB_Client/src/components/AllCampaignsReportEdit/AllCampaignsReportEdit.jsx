@@ -29,7 +29,7 @@ export const AllCampaignsReportEdit = () => {
         Email: Email,
         Link_URL: Link_URL,
         Hashtag: Hashtag,
-        Is_Active: parseBool(Is_Active),
+        Is_Active: Is_Active,
         Image: Image,
       };
       await UpdateCampaign(updatedCampaign);
@@ -87,12 +87,6 @@ export const AllCampaignsReportEdit = () => {
           </label>
           <input type="text" className="form-control" id="Image" value={Image} onChange={(event) => setImage(event.target.value)} />
         </div>
-        {/* <div className="form-group">
-          <input type="checkbox" name="Is_Active" id="Is_Active" checked={Is_Active} onChange={(event) => setIs_Active(event.target.value)} />
-          <label htmlFor="Is_Active" className="frm-lbl">
-            Is Active
-          </label>
-        </div> */}
         <div className="form-group">
           <input id="Is_Active" type="checkbox" name="Is_Active" onChange={(event) => setIs_Active(event.target.checked)} checked={Is_Active} />
           <label htmlFor="Is_Active" className="frm-lbl">
