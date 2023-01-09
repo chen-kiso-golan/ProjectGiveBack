@@ -51,7 +51,10 @@ namespace ProjectB.MicroServer
                 case "getAllCampaignsFromDB":
                     string responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignsFromDB());
                     return new OkObjectResult(responseMessage);
-
+                    
+                case "getAllProductsFromDB":
+                    string responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
+                    return new OkObjectResult(responseMessage);
 
 
                 //POST FUNCTIONS

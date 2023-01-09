@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { deleteProduct, getAllProductsFromDB } from "../../services/services";
+import { getAllProductsFromDB } from "../../services/services";
 
 export const ProductsReportRow = (props) => {
   const [AllProducts, setAllProducts] = useState([]);

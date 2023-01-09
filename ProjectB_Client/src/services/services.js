@@ -14,6 +14,11 @@ export const getAllCampaignsFromDB = async () => {
   return endpoint;
 };
 
+export const getAllProductsFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllProductsFromDB`);
+  return endpoint;
+};
+
 //POST FUNCTIONS
 export const addFormToContactUs = async (frm) => {
   await axios.post(`${ServerAddress}/ContactUsPost`, frm);

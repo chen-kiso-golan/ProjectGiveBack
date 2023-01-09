@@ -18,9 +18,17 @@ namespace ProjectB.Entities
             return CampaignsTable = ds_Reports.ReadAllCampaignsFromDB();
         }
 
+        public DataTable ProductsTable = new DataTable();
+        public DataTable ShowAllProductsFromDB()
+        {
+            ProductsTable.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return ProductsTable = ds_Reports.ReadAllProductsFromDB();
+        }
 
 
-      
+
+
 
     }
 }

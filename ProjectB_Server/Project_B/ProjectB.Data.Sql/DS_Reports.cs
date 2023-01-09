@@ -16,5 +16,11 @@ namespace ProjectB.Data.Sql
             string SQLquery = "select * from Campaigns";
             return SqlDB.ReadFormDB(SQLquery);
         }
+
+        public DataTable ReadAllProductsFromDB()
+        {
+            string SQLquery = "select * from Products";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
     }
 }
