@@ -5,8 +5,8 @@ export const NpoReportRow = (props) => {
   const [AllNpo, setAllNpo] = useState([]);
 
   const getDB = async () => {
-    let result = await getNpoFromDB();
-    setNpo(result.data);
+    let result = await getAllNpoFromDB();
+    setAllNpo(result.data);
   };
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const NpoReportRow = (props) => {
     <>
       {AllNpo.length > 0 ? (
         AllNpo.map((Npo) => {
-          let { Name, Email, Image } = Npo;
+          let { Name, Email, Website_URL, Image } = Npo;
           return (
             <>
               <tr>

@@ -5,7 +5,7 @@ export const CompaniesReportRow = (props) => {
   const [AllCompanies, setAllCompanies] = useState([]);
 
   const getDB = async () => {
-    let result = await getCompaniestsFromDB();
+    let result = await getAllCompaniesFromDB();
     setAllCompanies(result.data);
   };
 
