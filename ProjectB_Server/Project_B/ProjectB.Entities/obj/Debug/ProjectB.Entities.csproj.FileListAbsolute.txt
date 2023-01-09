@@ -11,3 +11,7 @@ C:\Users\behap\Desktop\tsionet\orel_ASP\Project_B\ProjectB.Entities\obj\Debug\Pr
 C:\Users\behap\Desktop\tsionet\orel_ASP\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.csproj.CopyComplete
 C:\Users\behap\Desktop\tsionet\orel_ASP\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.dll
 C:\Users\behap\Desktop\tsionet\orel_ASP\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.csproj.AssemblyReference.cache
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.csproj.CoreCompileInputs.cache
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.pdb
