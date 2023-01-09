@@ -57,6 +57,18 @@ namespace ProjectB.MicroServer
                     responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
                     return new OkObjectResult(responseMessage);
 
+                case "getAllActivistsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllActivistsFromDB());
+                    return new OkObjectResult(responseMessage);
+
+                case "getAllCompaniesFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCompaniesFromDB());
+                    return new OkObjectResult(responseMessage);
+
+                case "getAllNpoFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoFromDB());
+                    return new OkObjectResult(responseMessage);
+
 
                 //POST FUNCTIONS
                 case "ContactUsPost":

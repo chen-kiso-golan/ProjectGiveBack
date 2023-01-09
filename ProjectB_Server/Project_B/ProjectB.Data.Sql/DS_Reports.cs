@@ -22,5 +22,23 @@ namespace ProjectB.Data.Sql
             string SQLquery = "select * from Products";
             return SqlDB.ReadFormDB(SQLquery);
         }
+
+        public DataTable ReadAllActivistsFromDB()
+        {
+            string SQLquery = "select * from Social_Activist";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
+
+        public DataTable ReadAllCompaniesFromDB()
+        {
+            string SQLquery = "select * from Buisness_Companies";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
+
+        public DataTable ReadAllNpoFromDB()
+        {
+            string SQLquery = "select * from Non_Profit_Organizations";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
     }
 }

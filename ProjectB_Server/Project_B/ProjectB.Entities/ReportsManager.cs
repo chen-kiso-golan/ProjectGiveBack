@@ -26,6 +26,30 @@ namespace ProjectB.Entities
             return ProductsTable = ds_Reports.ReadAllProductsFromDB();
         }
 
+        public DataTable ActivistsTable = new DataTable();
+        public DataTable ShowAllActivistsFromDB()
+        {
+            ActivistsTable.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return ActivistsTable = ds_Reports.ReadAllActivistsFromDB();
+        }
+
+        public DataTable CompaniesTable = new DataTable();
+        public DataTable ShowAllCompaniesFromDB()
+        {
+            CompaniesTable.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return CompaniesTable = ds_Reports.ReadAllCompaniesFromDB();
+        }
+
+        public DataTable NpoTable = new DataTable();
+        public DataTable ShowAllNpoFromDB()
+        {
+            NpoTable.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return NpoTable = ds_Reports.ReadAllNpoFromDB();
+        }
+
 
 
 
