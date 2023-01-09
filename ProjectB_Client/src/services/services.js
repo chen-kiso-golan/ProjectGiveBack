@@ -47,9 +47,9 @@ export const addProductToDB = async (frm) => {
 };
 
 //UPDATE FUNCTIONS
-// export const UpdateProduct = async (ProductToUpdate) => {
-//   await axios.post(`${ServerAddress}/update`, ProductToUpdate);
-// };
+export const UpdateCampaign = async (CampaignToUpdate) => {
+  await axios.post(`${ServerAddress}/UpdateCampaign`, CampaignToUpdate);
+};
 
 //DELETE FUNCTIONS
 export const deleteCampaign = async (Code) => {

@@ -93,7 +93,7 @@ namespace ProjectB.MicroServer
 
 
                 //UPDATE FUNCTIONS
-                case "update":
+                case "UpdateCampaign":
                     //requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                     //M_Products product = System.Text.Json.JsonSerializer.Deserialize<M_Products>(requestBody);
                     //MainManager.Instance.ProductManager1.Update_Product(product);
