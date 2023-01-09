@@ -10,10 +10,12 @@ namespace ProjectB.Entities
     {
         public FormsManager FormsManager;
         public ReportsManager ReportsManager;
+        public ChangesManager ChangesManager;
         private MainManager()
         {
             FormsManager=new FormsManager();
             ReportsManager=new ReportsManager();
+            ChangesManager=new ChangesManager();    
         }
 
         private static readonly MainManager instance = new MainManager();

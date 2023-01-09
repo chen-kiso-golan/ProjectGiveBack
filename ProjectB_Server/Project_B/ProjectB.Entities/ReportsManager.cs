@@ -18,6 +18,8 @@ namespace ProjectB.Entities
             return CampaignsTable = ds_Reports.ReadAllCampaignsFromDB();
         }
 
+
+
       
 
     }

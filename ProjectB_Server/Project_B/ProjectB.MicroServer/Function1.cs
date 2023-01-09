@@ -102,8 +102,8 @@ namespace ProjectB.MicroServer
                 
                 
                 //DELETE FUNCTIONS
-                case "delete":
-                    //MainManager.Instance.ProductManager1.Delete_Product(IdNumber);
+                case "deleteCampaign":
+                    MainManager.Instance.ChangesManager.DeleteCampaign(Code);
                     break;
 
                 default:

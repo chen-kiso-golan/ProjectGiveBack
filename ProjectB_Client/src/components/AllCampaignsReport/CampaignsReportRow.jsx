@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//import { deleteCampaign, getAllCampaignsFromDB } from "../../services/services";
+import { deleteCampaign, getAllCampaignsFromDB } from "../../services/services";
 import { useNavigate } from "react-router-dom";
 
 export const CampaignsReportRow = (props) => {
