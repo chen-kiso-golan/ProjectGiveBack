@@ -49,9 +49,8 @@ namespace ProjectB.MicroServer
 
 
                 case "getAllCampaignsFromDB":
-                    //MainManager.Instance.ProductManager1.ShowAllProducstFromDB();
-                    //string responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ProductManager1.ProducTable);
-                    //return new OkObjectResult(responseMessage);
+                    string responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignsFromDB());
+                    return new OkObjectResult(responseMessage);
 
 
 

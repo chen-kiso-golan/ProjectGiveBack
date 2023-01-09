@@ -1,7 +1,7 @@
 ﻿using ProjectB.Data.Sql;
-using ProjectB.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +10,15 @@ namespace ProjectB.Entities
 {
     public class ReportsManager
     {
-        public void ShowAllCampaignsFromDB(CampaignsModel report)
+        public DataTable CampaignsTable = new DataTable();
+        public DataTable ShowAllCampaignsFromDB()
         {
-            DS_Forms dS_ContactUS = new DS_Forms();
-            dS_ContactUS.EnterContactUsToDB(form);
+            CampaignsTable.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return CampaignsTable = ds_Reports.ReadAllCampaignsFromDB();
         }
+
+      
+
     }
 }
