@@ -53,5 +53,6 @@ export const addProductToDB = async (frm) => {
 
 //DELETE FUNCTIONS
 export const deleteCampaign = async (Code) => {
-  await axios.delete(`${ServerAddress}/delete/${Code}`);
+  await axios.delete(`${ServerAddress}/deleteCampaign/${Code}`);
+  console.log("the campaign was deleted from DB :)");
 };

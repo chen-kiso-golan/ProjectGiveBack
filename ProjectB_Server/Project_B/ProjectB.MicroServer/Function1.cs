@@ -20,8 +20,8 @@ namespace ProjectB.MicroServer
     {
         [FunctionName("Function1")]
         public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "delete", Route = "Users/{action}/{IdNumber?}")] HttpRequest req,
-        string action, string IdNumber, ILogger log)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "delete", Route = "Users/{action}/{Value?}")] HttpRequest req,
+        string action, string Value, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -103,7 +103,7 @@ namespace ProjectB.MicroServer
                 
                 //DELETE FUNCTIONS
                 case "deleteCampaign":
-                    MainManager.Instance.ChangesManager.DeleteCampaign(Code);
+                    MainManager.Instance.ChangesManager.DeleteCampaign(Value);
                     break;
 
                 default:

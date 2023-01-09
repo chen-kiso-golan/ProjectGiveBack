@@ -32,6 +32,7 @@ export const CampaignsReportRow = (props) => {
   };
 
   const handleDelete = async (Code) => {
+    console.log(Code);
     await deleteCampaign(Code);
     setExpand(!expand);
     getDB();

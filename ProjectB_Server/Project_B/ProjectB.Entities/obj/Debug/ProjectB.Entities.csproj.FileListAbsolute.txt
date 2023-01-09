@@ -15,3 +15,12 @@ C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\P
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.csproj.CoreCompileInputs.cache
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.dll
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Entities.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Entities.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Dal.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Data.Sql.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Model.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Dal.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Data.Sql.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\ProjectB.Model.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.csproj.CopyComplete
