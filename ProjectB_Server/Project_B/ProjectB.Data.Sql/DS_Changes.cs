@@ -22,13 +22,6 @@ namespace ProjectB.Data.Sql
             SqlDB.WriteToDB(SqlQuery);
         }
 
-        Code: ,
-        NPO_code: ,
-        Name: ,
-        Email: ,
-        Link_URL: ,
-        Hashtag: ,
-        Is_Active: ,
-        Image: ,
+      
     }
 }

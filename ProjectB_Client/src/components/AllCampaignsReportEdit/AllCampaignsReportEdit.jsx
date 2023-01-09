@@ -10,7 +10,7 @@ export const AllCampaignsReportEdit = () => {
   const [Code, setCode] = useState(Campaign.Code);
   const [NPO_code, setNPO_code] = useState(Campaign.NPO_code);
   const [Name, setName] = useState(Campaign.Name);
-  const [Email, setCampaignEmail] = useState(Campaign.Email);
+  const [Email, setEmail] = useState(Campaign.Email);
   const [Link_URL, setLink_URL] = useState(Campaign.Link_URL);
   const [Hashtag, setHashtag] = useState(Campaign.Hashtag);
   const [Is_Active, setIs_Active] = useState(Campaign.Is_Active);
@@ -29,7 +29,7 @@ export const AllCampaignsReportEdit = () => {
         Email: Email,
         Link_URL: Link_URL,
         Hashtag: Hashtag,
-        Is_Active: Is_Active,
+        Is_Active: parseBool(Is_Active),
         Image: Image,
       };
       await UpdateCampaign(updatedCampaign);
@@ -64,16 +64,16 @@ export const AllCampaignsReportEdit = () => {
           <input type="text" className="form-control" id="Name" value={Name} onChange={(event) => setName(event.target.value)} />
         </div>
         <div className="form-group">
-          <label htmlFor="CampaignEmail" className="frm-lbl">
+          <label htmlFor="Email" className="frm-lbl">
             Campaign Email:
           </label>
-          <input type="email" className="form-control" id="CampaignEmail" value={CampaignEmail} onChange={(event) => setCampaignEmail(event.target.value)} />
+          <input type="email" className="form-control" id="Email" value={Email} onChange={(event) => setEmail(event.target.value)} />
         </div>
         <div className="form-group">
-          <label htmlFor="Link" className="frm-lbl">
+          <label htmlFor="Link_URL" className="frm-lbl">
             Link:
           </label>
-          <input type="text" className="form-control" id="Link" value={Link} onChange={(event) => setLink(event.target.value)} />
+          <input type="text" className="form-control" id="Link_URL" value={Link_URL} onChange={(event) => setLink_URL(event.target.value)} />
         </div>
         <div className="form-group">
           <label htmlFor="Hashtag" className="frm-lbl">
@@ -87,9 +87,15 @@ export const AllCampaignsReportEdit = () => {
           </label>
           <input type="text" className="form-control" id="Image" value={Image} onChange={(event) => setImage(event.target.value)} />
         </div>
+        {/* <div className="form-group">
+          <input type="checkbox" name="Is_Active" id="Is_Active" checked={Is_Active} onChange={(event) => setIs_Active(event.target.value)} />
+          <label htmlFor="Is_Active" className="frm-lbl">
+            Is Active
+          </label>
+        </div> */}
         <div className="form-group">
-          <input type="checkbox" className="form-control" id="IsActive" checked={IsActive} onChange={(event) => setIsActive(event.target.value)} />
-          <label htmlFor="IsActive" className="frm-lbl">
+          <input id="Is_Active" type="checkbox" name="Is_Active" onChange={(event) => setIs_Active(event.target.checked)} checked={Is_Active} />
+          <label htmlFor="Is_Active" className="frm-lbl">
             Is Active
           </label>
         </div>
