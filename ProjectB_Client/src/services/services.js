@@ -19,6 +19,21 @@ export const getAllProductsFromDB = async () => {
   return endpoint;
 };
 
+export const getAllActivistsFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllActivistsFromDB`);
+  return endpoint;
+};
+
+export const getAllCompaniesFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllCompaniesFromDB`);
+  return endpoint;
+};
+
+export const getAllNpoFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllNpoFromDB`);
+  return endpoint;
+};
+
 //POST FUNCTIONS
 export const addFormToContactUs = async (frm) => {
   await axios.post(`${ServerAddress}/ContactUsPost`, frm);
