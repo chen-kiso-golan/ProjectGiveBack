@@ -1,0 +1,57 @@
+import axios from "axios";
+
+const ServerAddress = "http://localhost:7205/api/Users";
+
+// GET FUNCTIONS
+export const getRolesData = async (userId) => {
+  let endpoint = await axios.get(`${ServerAddress}/get-role/${userId}`);
+  console.log(endpoint.data);
+  return endpoint.data;
+};
+
+export const getAllCampaignsFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllCampaignsFromDB`);
+  return endpoint;
+};
+
+//POST FUNCTIONS
+export const addFormToContactUs = async (frm) => {
+  await axios.post(`${ServerAddress}/ContactUsPost`, frm);
+  console.log("contactUs form was sent to DB :)");
+};
+
+export const addActivistToDB = async (frm) => {
+  await axios.post(`${ServerAddress}/ActivistPost`, frm);
+  console.log("Activist form was sent to DB :)");
+};
+
+export const addCompanyToDB = async (frm) => {
+  await axios.post(`${ServerAddress}/CompanyPost`, frm);
+  console.log("Company form was sent to DB :)");
+};
+
+export const addNpoToDB = async (frm) => {
+  await axios.post(`${ServerAddress}/NpoPost`, frm);
+  console.log("NPO form was sent to DB :)");
+};
+
+export const addCampaignToDB = async (frm) => {
+  await axios.post(`${ServerAddress}/CampaignPost`, frm);
+  console.log("Campaign form was sent to DB :)");
+};
+
+export const addProductToDB = async (frm) => {
+  console.log(frm);
+  await axios.post(`${ServerAddress}/ProductPost`, frm);
+  console.log("Product form was sent to DB :)");
+};
+
+//UPDATE FUNCTIONS
+// export const UpdateProduct = async (ProductToUpdate) => {
+//   await axios.post(`${ServerAddress}/update`, ProductToUpdate);
+// };
+
+//DELETE FUNCTIONS
+// export const deleteProduct = async (ProductId) => {
+//   await axios.delete(`${ServerAddress}/delete/${ProductId}`);
+// };
