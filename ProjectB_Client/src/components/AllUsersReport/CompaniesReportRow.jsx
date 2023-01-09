@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllCompaniesFromDB } from "../../services/services";
 
-export const ActivistsReportRow = (props) => {
+export const CompaniesReportRow = (props) => {
   const [AllCompanies, setAllCompanies] = useState([]);
 
   const getDB = async () => {

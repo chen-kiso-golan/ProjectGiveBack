@@ -1,8 +1,10 @@
 import React from "react";
 import "./AllUsersReportStyle.css";
-import { ActivistsReportRow, NpoReportRow, CompaniesReportRow } from "./ProductsReportRow";
+import { ActivistsReportRow } from "./ActivistsReportRow";
+import { NpoReportRow } from "./NpoReportRow";
+import { CompaniesReportRow } from "./CompaniesReportRow";
 
-export function AllProductsReport(props) {
+export function AllUsersReport(props) {
   return (
     <>
       <h3>Activists:</h3>
