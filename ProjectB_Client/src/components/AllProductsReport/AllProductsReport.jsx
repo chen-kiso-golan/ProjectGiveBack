@@ -1,28 +1,23 @@
 import React from "react";
 import "./AllProductsReportStyle.css";
+import { ProductsReportRow } from "./ProductsReportRow";
 
 export function AllProductsReport(props) {
   return (
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col">Code</th>
           <th scope="col">Name</th>
-          <th scope="col">Units In Stoke</th>
-          <th scope="col">Company</th>
-          <th scope="col">Campaign</th>
           <th scope="col">Price</th>
+          <th scope="col">Units_In_Stock</th>
+          <th scope="col">BC_code</th>
+          <th scope="col">Campaign_code</th>
+          <th scope="col">Image</th>
         </tr>
       </thead>
       <tbody className="table-group-divider">
-        <tr>
-          <th scope="row">?</th>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-        </tr>
+        <ProductsReportRow />
       </tbody>
     </table>
   );

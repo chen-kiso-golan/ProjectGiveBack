@@ -1,29 +1,21 @@
-import React from "react";
-import "./AllOrdersReportStyle.css";
+// import React from "react";
+// import "./AllOrdersReportStyle.css";
 
-export function AllOrdersReport(props) {
-  return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Company</th>
-          <th scope="col">Campaign</th>
-          <th scope="col">Activist</th>
-          <th scope="col">Sent</th>
-          <th scope="col">Date Of Order</th>
-        </tr>
-      </thead>
-      <tbody className="table-group-divider">
-        <tr>
-          <th scope="row">?</th>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-        </tr>
-      </tbody>
-    </table>
-  );
-}
+// export function AllOrdersReport(props) {
+//   return (
+//     <table className="table">
+//       <thead>
+//         <tr>
+//           <th scope="col">Code</th>
+//           <th scope="col">SA_code</th>
+//           <th scope="col">BC_code</th>
+//           <th scope="col">Campaign_code</th>
+//           <th scope="col">Product_code</th>
+//           <th scope="col">Order_Time</th>
+//           <th scope="col">Is_Sent</th>
+//         </tr>
+//       </thead>
+//       <tbody className="table-group-divider">[Code] ,[SA_code] ,[BC_code] ,[Campaign_code] ,[Product_code] ,[Order_Time] ,[Is_Sent]</tbody>
+//     </table>
+//   );
+// }
