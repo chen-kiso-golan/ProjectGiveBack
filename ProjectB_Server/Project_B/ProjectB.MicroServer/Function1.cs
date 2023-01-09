@@ -27,6 +27,7 @@ namespace ProjectB.MicroServer
 
 
             string requestBody;
+            string responseMessage;
             switch (action)
             {
                 //GET FUNCTIONS
@@ -49,11 +50,11 @@ namespace ProjectB.MicroServer
 
 
                 case "getAllCampaignsFromDB":
-                    string responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignsFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignsFromDB());
                     return new OkObjectResult(responseMessage);
                     
                 case "getAllProductsFromDB":
-                    string responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
                     return new OkObjectResult(responseMessage);
 
 

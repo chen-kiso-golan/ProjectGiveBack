@@ -1,29 +1,55 @@
 import React from "react";
 import "./AllUsersReportStyle.css";
+import { ActivistsReportRow, NpoReportRow, CompaniesReportRow } from "./ProductsReportRow";
 
-export function AllUsersReport(props) {
+export function AllProductsReport(props) {
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">?</th>
-          <th scope="col">?</th>
-          <th scope="col">?</th>
-          <th scope="col">?</th>
-          <th scope="col">?</th>
-        </tr>
-      </thead>
-      <tbody className="table-group-divider">
-        <tr>
-          <th scope="row">?</th>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-          <td>?</td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <h3>Activists:</h3>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">PhoneNumber</th>
+            <th scope="col">Money</th>
+            <th scope="col">Campaign_code</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody className="table-group-divider">
+          <ActivistsReportRow />
+        </tbody>
+      </table>
+      <h3>Non Profit Organizations:</h3>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Website_URL</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody className="table-group-divider">
+          <NpoReportRow />
+        </tbody>
+      </table>
+
+      <h3>Companies:</h3>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody className="table-group-divider">
+          <CompaniesReportRow />
+        </tbody>
+      </table>
+    </>
   );
 }
