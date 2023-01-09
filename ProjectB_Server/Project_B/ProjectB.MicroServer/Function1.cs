@@ -94,9 +94,9 @@ namespace ProjectB.MicroServer
 
                 //UPDATE FUNCTIONS
                 case "UpdateCampaign":
-                    //requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                    //M_Products product = System.Text.Json.JsonSerializer.Deserialize<M_Products>(requestBody);
-                    //MainManager.Instance.ProductManager1.Update_Product(product);
+                    requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                    CampaignsModel Campaign = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>(requestBody);
+                    MainManager.Instance.ChangesManager.UpdateCampaign(Campaign);
                     break;
 
                 

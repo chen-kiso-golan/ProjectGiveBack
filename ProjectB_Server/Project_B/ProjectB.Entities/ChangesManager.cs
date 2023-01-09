@@ -1,4 +1,5 @@
 ﻿using ProjectB.Data.Sql;
+using ProjectB.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace ProjectB.Entities
         {
             DS_Changes dS_Changes = new DS_Changes();
             dS_Changes.DeleteCampaign(Code);
+        }
+
+        public void UpdateCampaign(CampaignsModel Campaign)
+        {
+            DS_Changes dS_Changes = new DS_Changes();
+            dS_Changes.UpdateCampaignInDB(Campaign);
         }
     }
 }

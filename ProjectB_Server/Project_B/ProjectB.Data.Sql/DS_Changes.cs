@@ -1,4 +1,5 @@
 ﻿using ProjectB.Dal;
+using ProjectB.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,20 @@ namespace ProjectB.Data.Sql
             string SqlQuery = "delete from Campaigns where Code = " + Code;
             SqlDB.WriteToDB(SqlQuery);
         }
+
+        public void UpdateCampaignInDB(CampaignsModel Campaign)
+        {
+            string SqlQuery = "update Campaigns set Hashtag = '" + Campaign.Hashtag + "', Is_Active = '" + Campaign.Is_Active + "', Image = '" + Campaign.Image + "', Link_URL = '" + Campaign.Link_URL + "', NPO_code = '" + Campaign.NPO_code.ToString() + "', Name = " + Campaign.Name + ", Email = " + Campaign.Email + " where Code = " + Campaign.Code.ToString();
+            SqlDB.WriteToDB(SqlQuery);
+        }
+
+        Code: ,
+        NPO_code: ,
+        Name: ,
+        Email: ,
+        Link_URL: ,
+        Hashtag: ,
+        Is_Active: ,
+        Image: ,
     }
 }

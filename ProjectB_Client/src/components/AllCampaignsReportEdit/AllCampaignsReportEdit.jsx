@@ -23,8 +23,8 @@ export const AllCampaignsReportEdit = () => {
     } else {
       const updatedCampaign = {
         ...Campaign,
-        Code: Code,
-        NPO_code: NPO_code,
+        Code: parseInt(Code),
+        NPO_code: parseInt(NPO_code),
         Name: Name,
         Email: Email,
         Link_URL: Link_URL,

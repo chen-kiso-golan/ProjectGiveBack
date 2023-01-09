@@ -54,5 +54,5 @@ export const UpdateCampaign = async (CampaignToUpdate) => {
 //DELETE FUNCTIONS
 export const deleteCampaign = async (Code) => {
   await axios.delete(`${ServerAddress}/deleteCampaign/${Code}`);
-  console.log("the campaign was deleted from DB :)");
+  console.log("the campaign was updated in DB :)");
 };
