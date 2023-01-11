@@ -49,6 +49,14 @@ namespace ProjectB.Entities
             DS_Reports ds_Reports = new DS_Reports();
             return NpoTable = ds_Reports.ReadAllNpoFromDB();
         }
+        
+        public DataTable NpoEmails = new DataTable();
+        public DataTable ShowAllNpoEmailsFromDB()
+        {
+            NpoEmails.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return NpoEmails = ds_Reports.ReadAllNpoEmailsFromDB();
+        }
 
 
 

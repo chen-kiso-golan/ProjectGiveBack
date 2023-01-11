@@ -68,6 +68,10 @@ namespace ProjectB.MicroServer
                 case "getAllNpoFromDB":
                     responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoFromDB());
                     return new OkObjectResult(responseMessage);
+                    
+                case "getAllNpoEmailsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoEmailsFromDB());
+                    return new OkObjectResult(responseMessage);
 
 
                 //POST FUNCTIONS

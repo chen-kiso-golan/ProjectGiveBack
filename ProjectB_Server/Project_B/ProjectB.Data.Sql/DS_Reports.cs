@@ -40,5 +40,11 @@ namespace ProjectB.Data.Sql
             string SQLquery = "select * from Non_Profit_Organizations";
             return SqlDB.ReadFormDB(SQLquery);
         }
+        
+        public DataTable ReadAllNpoEmailsFromDB()
+        {
+            string SQLquery = "select Email from Non_Profit_Organizations";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
     }
 }

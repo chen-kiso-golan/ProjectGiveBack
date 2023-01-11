@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getAllNpoEmailsFromDB } from "../../services/services";
 
 export function ChooseEmailRow(props) {
   const [AllEmails, setAllEmails] = useState([]);
@@ -6,6 +7,7 @@ export function ChooseEmailRow(props) {
   const getDB = async () => {
     let result = await getAllNpoEmailsFromDB();
     setAllEmails(result.data);
+    //console.log(result.data);
   };
 
   useEffect(() => {
@@ -17,20 +19,18 @@ export function ChooseEmailRow(props) {
       <label htmlFor="Email" className="frm-lbl">
         Email
       </label>
-      <select name="Email" class="form-select" aria-label="Default select example">
-        <option selected>Choose The Email Of Your NPO</option>
+      <select name="Email" className="form-select" aria-label="Default select example">
+        <option defaultValue={"Choose The Email Of Your NPO"}>Choose The Email Of Your NPO</option>
         {AllEmails.length > 0 ? (
           AllEmails.map((Email) => {
-            //let { Name, Email, Address, PhoneNumber, Money, Image } = Email;
-            //let num = 1;
             return (
               <>
-                <option value="1">{Email}</option>
+                <option value="1">{Email.Email}</option>
               </>
             );
           })
         ) : (
-          <h6>There are no Emails.</h6>
+          <option value="1">There are no Emails.</option>
         )}
       </select>
     </>

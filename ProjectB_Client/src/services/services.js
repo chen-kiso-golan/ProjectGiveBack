@@ -34,6 +34,11 @@ export const getAllNpoFromDB = async () => {
   return endpoint;
 };
 
+export const getAllNpoEmailsFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllNpoEmailsFromDB`);
+  return endpoint;
+};
+
 //POST FUNCTIONS
 export const addFormToContactUs = async (frm) => {
   await axios.post(`${ServerAddress}/ContactUsPost`, frm);
