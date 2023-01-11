@@ -44,5 +44,11 @@ namespace ProjectB.Data.Sql
             string SQLquery = "insert into Products values ('" + form.Name + "','" + form.Price + "','" + form.Units_In_Stock + "' ,'" + form.BC_code + "','" + form.Campaign_code + "','" + form.Image + "')";
             SqlDB.WriteToDB(SQLquery);
         }
+        
+        public void EnterNpoCodeByEmailToDB(string data)
+        {
+            string SQLquery = "insert into Campaigns (NPO_code) value (select Code from Non_Profit_Organizations where Email='" + data + "')"; ;
+            SqlDB.WriteToDB(SQLquery);
+        }
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllNpoEmailsFromDB } from "../../services/services";
 
-export function ChooseEmailRow(props) {
+export function ChooseEmailRow({ chooseEmail }) {
   const [AllEmails, setAllEmails] = useState([]);
 
   const getDB = async () => {
@@ -25,7 +25,9 @@ export function ChooseEmailRow(props) {
           AllEmails.map((Email) => {
             return (
               <>
-                <option value="1">{Email.Email}</option>
+                <option onClick={() => chooseEmail(value)} value={Email.Email}>
+                  {Email.Email}
+                </option>
               </>
             );
           })

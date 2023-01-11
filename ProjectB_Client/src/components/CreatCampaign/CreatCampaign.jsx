@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatCampaignStyle.css";
 import { addCampaignToDB } from "../../services/services";
+import { addNpoCodeByEmailFromDB } from "../../services/services";
 import { ChooseEmailRow } from "./ChooseEmailRow";
 
 export const CreatCampaign = () => {
@@ -11,10 +12,16 @@ export const CreatCampaign = () => {
     Email: "",
     Link_URL: "",
     Hashtag: "",
-    NPO_code: 1,
+    //NPO_code: 1,
     Image: "",
     Is_Active: true,
   });
+
+  // const [Email, setEmail] = useState("");
+  const chooseEmail = (Email) => {
+    handleChange(Email);
+    addNpoCodeByEmailFromDB(Email);
+  };
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -56,7 +63,7 @@ export const CreatCampaign = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (formData.Name === "" || formData.Email === "" || formData.Link_URL === "" || formData.Hashtag === "" || formData.Image === "") {
+    if (formData.Name === "" || formData.Email === "Choose The Email Of Your NPO" || formData.Email === "" || formData.Link_URL === "" || formData.Hashtag === "" || formData.Image === "") {
       console.log("some filed is missing");
       notify_error();
       return;
@@ -120,7 +127,7 @@ export const CreatCampaign = () => {
         </div>
         <div className="form-group">
           <button className="form--submit btn btn-danger">Create Your Campaign</button>
-          <ToastContainer />
+          <ToastContainer chooseEmail={chooseEmail} />
         </div>
       </form>
     </div>
