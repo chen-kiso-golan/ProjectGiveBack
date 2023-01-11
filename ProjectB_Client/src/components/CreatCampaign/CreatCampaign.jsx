@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatCampaignStyle.css";
 import { addCampaignToDB } from "../../services/services";
+import { ChooseEmailRow } from "./ChooseEmailRow";
 
 export const CreatCampaign = () => {
   const [formData, setFormData] = useState({
@@ -85,10 +86,7 @@ export const CreatCampaign = () => {
           <input type="text" placeholder="Enter your Name" className="form-control" name="Name" onChange={handleChange} value={formData.Name} />
         </div>
         <div className="form-group">
-          <label htmlFor="Email" className="frm-lbl">
-            Email
-          </label>
-          <input type="email" placeholder="Email address" className="form-control" name="Email" onChange={handleChange} value={formData.Email} />
+          <ChooseEmailRow />
         </div>
         <div className="form-group">
           <label htmlFor="Link_URL" className="frm-lbl">
