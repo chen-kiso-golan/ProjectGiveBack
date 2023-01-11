@@ -77,7 +77,7 @@ export const CreatCampaign = () => {
       Email: "",
       Link_URL: "",
       Hashtag: "",
-      NPO_code: 1,
+      //NPO_code: 1,
       Image: "",
       Is_Active: true,
     });
