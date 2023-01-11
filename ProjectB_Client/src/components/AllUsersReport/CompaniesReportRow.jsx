@@ -23,7 +23,9 @@ export const CompaniesReportRow = (props) => {
               <tr>
                 <td>{Name}</td>
                 <td>{Email}</td>
-                <td>{Image}</td>
+                <td>
+                  <img style={{ width: "70px", borderRadius: "50%" }} src={Image} alt="" />
+                </td>
               </tr>
             </>
           );

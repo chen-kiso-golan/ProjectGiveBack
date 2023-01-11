@@ -24,7 +24,9 @@ export const NpoReportRow = (props) => {
                 <td>{Name}</td>
                 <td>{Email}</td>
                 <td>{Website_URL}</td>
-                <td>{Image}</td>
+                <td>
+                  <img style={{ width: "70px", borderRadius: "50%" }} src={Image} alt="" />
+                </td>
               </tr>
             </>
           );

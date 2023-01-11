@@ -16,7 +16,6 @@ export function AllUsersReport(props) {
             <th scope="col">Address</th>
             <th scope="col">PhoneNumber</th>
             <th scope="col">Money</th>
-            <th scope="col">Campaign_code</th>
             <th scope="col">Image</th>
           </tr>
         </thead>

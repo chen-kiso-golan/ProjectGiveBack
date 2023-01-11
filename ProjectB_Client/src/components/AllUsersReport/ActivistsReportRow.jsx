@@ -26,7 +26,9 @@ export const ActivistsReportRow = (props) => {
                 <td>{Address}</td>
                 <td>{PhoneNumber}</td>
                 <td>{Money}</td>
-                <td>{Image}</td>
+                <td>
+                  <img style={{ width: "50px", borderRadius: "50%" }} src={Image} alt="" />
+                </td>
               </tr>
             </>
           );
