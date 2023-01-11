@@ -7,6 +7,8 @@ import SideNavbar from "./components/SideNavbar/SideNavbar";
 import ButtomNavbar from "./components/ButtomNavbar/ButtomNavbar";
 
 function App() {
+  //const [role, setRole] = useState("");
+
   return (
     <div className="App">
       <div>
