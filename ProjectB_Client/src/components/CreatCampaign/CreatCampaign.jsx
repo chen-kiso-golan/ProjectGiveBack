@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatCampaignStyle.css";
 import { addCampaignToDB } from "../../services/services";
@@ -12,15 +11,20 @@ export const CreatCampaign = () => {
     Email: "",
     Link_URL: "",
     Hashtag: "",
-    //NPO_code: 1,
+    //NPO_code: "",
     Image: "",
     Is_Active: true,
   });
 
-  // const [Email, setEmail] = useState("");
-  const chooseEmail = (Email) => {
-    handleChange(Email);
-    addNpoCodeByEmailFromDB(Email);
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  const chooseEmail = (data) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      Email: data,
+    }));
   };
 
   function handleChange(event) {
@@ -56,9 +60,10 @@ export const CreatCampaign = () => {
     });
 
   const handleAddData = async () => {
-    formData.NPO_code = parseInt(formData.NPO_code);
+    //formData.NPO_code = parseInt(formData.NPO_code);
     let json = formData;
     await addCampaignToDB(json);
+    await addNpoCodeByEmailFromDB(formData.Email);
   };
 
   function handleSubmit(event) {
@@ -69,6 +74,7 @@ export const CreatCampaign = () => {
       return;
     } else {
       handleAddData();
+      console.log(formData);
       console.log("Successfully signed up");
       notify_success();
     }
@@ -93,7 +99,7 @@ export const CreatCampaign = () => {
           <input type="text" placeholder="Enter your Name" className="form-control" name="Name" onChange={handleChange} value={formData.Name} />
         </div>
         <div className="form-group">
-          <ChooseEmailRow />
+          <ChooseEmailRow chooseEmail={chooseEmail} />
         </div>
         <div className="form-group">
           <label htmlFor="Link_URL" className="frm-lbl">
@@ -127,7 +133,7 @@ export const CreatCampaign = () => {
         </div>
         <div className="form-group">
           <button className="form--submit btn btn-danger">Create Your Campaign</button>
-          <ToastContainer chooseEmail={chooseEmail} />
+          <ToastContainer />
         </div>
       </form>
     </div>

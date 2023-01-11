@@ -72,7 +72,7 @@ export const addProductToDB = async (frm) => {
 };
 
 export const addNpoCodeByEmailFromDB = async (frm) => {
-  console.log(frm);
+  console.log("hi");
   await axios.post(`${ServerAddress}/NpoCodeByEmailPost`, frm);
   console.log("NpoCode By Email form was sent to DB :)");
 };

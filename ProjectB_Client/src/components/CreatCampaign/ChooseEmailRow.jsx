@@ -7,7 +7,6 @@ export function ChooseEmailRow({ chooseEmail }) {
   const getDB = async () => {
     let result = await getAllNpoEmailsFromDB();
     setAllEmails(result.data);
-    //console.log(result.data);
   };
 
   useEffect(() => {
@@ -19,15 +18,13 @@ export function ChooseEmailRow({ chooseEmail }) {
       <label htmlFor="Email" className="frm-lbl">
         Email
       </label>
-      <select name="Email" className="form-select" aria-label="Default select example">
+      <select name="Email" className="form-select" aria-label="Default select example" onChange={(event) => chooseEmail(event.target.value)}>
         <option defaultValue={"Choose The Email Of Your NPO"}>Choose The Email Of Your NPO</option>
         {AllEmails.length > 0 ? (
           AllEmails.map((Email) => {
             return (
               <>
-                <option onClick={() => chooseEmail(value)} value={Email.Email}>
-                  {Email.Email}
-                </option>
+                <option value={Email.Email}>{Email.Email}</option>
               </>
             );
           })

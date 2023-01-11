@@ -45,5 +45,11 @@ namespace ProjectB.Entities
             DS_Forms dS_Product = new DS_Forms();
             dS_Product.EnterProductToDB(form);
         }
+        
+        public void SendNpoCodeByEmailToDB(string data)
+        {
+            DS_Forms dS_Product = new DS_Forms();
+            dS_Product.EnterNpoCodeByEmailToDB(data);
+        }
     }
 }
