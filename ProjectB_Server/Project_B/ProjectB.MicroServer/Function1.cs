@@ -116,8 +116,8 @@ namespace ProjectB.MicroServer
                     break;
 
                 case "NpoCodeByEmailPost":
-                    string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
-                    MainManager.Instance.FormsManager.SendNpoCodeByEmailToDB(NpoCodeByEmailData);
+                    //string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
+                    MainManager.Instance.FormsManager.SendNpoCodeByEmailToDB(Value);
                     break;
 
 

@@ -63,7 +63,6 @@ export const CreatCampaign = () => {
     //formData.NPO_code = parseInt(formData.NPO_code);
     let json = formData;
     await addCampaignToDB(json);
-    console.log("hihi");
     await addNpoCodeByEmailFromDB(formData.Email);
   };
 
