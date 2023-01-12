@@ -63,6 +63,7 @@ export const CreatCampaign = () => {
     //formData.NPO_code = parseInt(formData.NPO_code);
     let json = formData;
     await addCampaignToDB(json);
+    console.log("hihi");
     await addNpoCodeByEmailFromDB(formData.Email);
   };
 
@@ -74,7 +75,6 @@ export const CreatCampaign = () => {
       return;
     } else {
       handleAddData();
-      console.log(formData);
       console.log("Successfully signed up");
       notify_success();
     }

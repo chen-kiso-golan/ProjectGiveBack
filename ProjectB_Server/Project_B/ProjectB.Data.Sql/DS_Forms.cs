@@ -36,7 +36,7 @@ namespace ProjectB.Data.Sql
         
          public void EnterCampaignToDB(CampaignsModel form)
         {
-            string SQLquery = "insert into Campaigns values ('" + form.Name + "','" + form.Email + "','" + form.Link_URL + "' ,'" + form.Hashtag + "','" + form.NPO_code + "','" + form.Image + "','" + form.Is_Active + "')";
+            string SQLquery = "insert into Campaigns values ('" + form.Name + "','" + form.Email + "','" + form.Link_URL + "' ,'" + form.Hashtag + "','','" + form.Image + "','" + form.Is_Active + "')";
             SqlDB.WriteToDB(SQLquery);
         }
         public void EnterProductToDB(ProductsModel form)
@@ -47,7 +47,7 @@ namespace ProjectB.Data.Sql
         
         public void EnterNpoCodeByEmailToDB(string data)
         {
-            string SQLquery = "insert into Campaigns (NPO_code) value (select Code from Non_Profit_Organizations where Email='" + data + "')"; ;
+            string SQLquery = "INSERT INTO Campaigns (NPO_code) SELECT Code FROM Non_Profit_Organizations WHERE Email = '"+ data + "'"; 
             SqlDB.WriteToDB(SQLquery);
         }
     }
