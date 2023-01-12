@@ -35,5 +35,3 @@ export function ChooseEmailRow({ chooseEmail }) {
     </>
   );
 }
-
-// onChange={handleChange} value={formData.Email}

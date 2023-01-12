@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatProductStyle.css";
 import { addProductToDB } from "../../services/services";
+import { addBcCodeByEmailFromDB } from "../../services/services";
+//import { addCampaignCodeByEmailFromDB } from "../../services/services";
+import { ChooseCompanyRow } from "./ChooseCompanyRow";
+//import { ChooseCampaignRow } from "./ChooseCampaignRow";
 
 export const CreatProduct = () => {
   const [formData, setFormData] = useState({
     Name: "",
     Price: "",
     Units_In_Stoke: "",
-    BC_code: 3,
-    Campaign_code: 6,
+    BC_code: null,
+    Campaign_code: null,
     Image: "",
   });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  const chooseCompany = (data) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      BC_code: data,
+    }));
+  };
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -68,8 +83,8 @@ export const CreatProduct = () => {
       Name: "",
       Price: "",
       Units_In_Stoke: "",
-      BC_code: 3,
-      Campaign_code: 6,
+      //BC_code: 3,
+      //Campaign_code: 6,
       Image: "",
     });
   }
@@ -89,18 +104,15 @@ export const CreatProduct = () => {
           </label>
           <input type="number" placeholder="Units In Stoke" className="form-control" name="Units_In_Stoke" onChange={handleChange} value={formData.Units_In_Stoke} />
         </div>
-        {/* <div className="form-group">
-          <label htmlFor="Company" className="frm-lbl">
-            Company
-          </label>
-          <input type="text" placeholder="Company" className="form-control" name="Company" onChange={handleChange} value={formData.Company} />
+        <div className="form-group">
+          <ChooseCompanyRow chooseCompany={chooseCompany} />
         </div>
         <div className="form-group">
           <label htmlFor="Campaign" className="frm-lbl">
             Campaign
           </label>
-          <input type="text" placeholder="Campaign" className="form-control" name="Campaign" onChange={handleChange} value={formData.Campaign} />
-        </div> */}
+          {/* <ChooseEmailRow chooseEmail={chooseEmail} /> */}
+        </div>
         <div className="form-group">
           <label htmlFor="Price" className="frm-lbl">
             Price

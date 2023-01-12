@@ -60,7 +60,7 @@ export const CreatCampaign = () => {
     });
 
   const handleAddData = async () => {
-    //formData.NPO_code = parseInt(formData.NPO_code);
+    formData.Is_Active = Boolean(formData.Is_Active);
     let json = formData;
     await addCampaignToDB(json);
     await addNpoCodeByEmailFromDB(formData.Email);
