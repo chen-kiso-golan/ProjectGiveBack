@@ -12,10 +12,10 @@ export function AllCampaignsReport(props) {
           <th scope="col">Email</th>
           <th scope="col">Link</th>
           <th scope="col">Hashtag</th>
-          <th scope="col">Is Active</th>
+          <th scope="col">NPO Code</th>
           <th scope="col">Organization Name</th>
           <th scope="col">Image URL</th>
-          <th scope="col"></th>
+          <th scope="col">is Active</th>
         </tr>
       </thead>
       <tbody className="table-group-divider">

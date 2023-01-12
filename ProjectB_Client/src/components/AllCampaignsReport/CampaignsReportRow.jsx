@@ -50,10 +50,13 @@ export const CampaignsReportRow = (props) => {
                 <td>{Name}</td>
                 <td>{Email}</td>
                 <td>{Link_URL}</td>
-                <td>#{Hashtag}</td>
+                <td>{Hashtag}</td>
                 <td>{NPO_code}</td>
-                <td>{Image}</td>
-                <td>{Is_Active}</td>
+                <td></td>
+                <td>
+                  <img style={{ width: "50px", height: "50px", borderRadius: "30%" }} src={Image} alt="" />
+                </td>
+                <td>{Is_Active ? "true" : "false"}</td>
               </tr>
               {expand && Campaign.Code === key ? (
                 <tr>
