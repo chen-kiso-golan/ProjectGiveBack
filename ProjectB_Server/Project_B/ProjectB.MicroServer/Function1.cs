@@ -72,6 +72,10 @@ namespace ProjectB.MicroServer
                 case "getAllNpoEmailsFromDB":
                     responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoEmailsFromDB());
                     return new OkObjectResult(responseMessage);
+                    
+                case "getAllCompaniesNamesFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCompaniesNamesFromDB());
+                    return new OkObjectResult(responseMessage);
 
 
 
@@ -119,6 +123,7 @@ namespace ProjectB.MicroServer
                     //string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
                     MainManager.Instance.FormsManager.SendNpoCodeByEmailToDB(Value);
                     break;
+           
 
 
 

@@ -65,6 +65,12 @@ namespace ProjectB.Entities
             DS_Reports ds_Reports = new DS_Reports();
             return CompaniesNames = ds_Reports.ReadAllCompaniesNamesFromDB();
         }
+        
+        public int ShowBcCodeByNameFromDB(string Name)
+        {
+            DS_Reports ds_Reports = new DS_Reports();
+            return ds_Reports.ReadBcCodeByNameFromDB(Name);
+        }
 
 
 

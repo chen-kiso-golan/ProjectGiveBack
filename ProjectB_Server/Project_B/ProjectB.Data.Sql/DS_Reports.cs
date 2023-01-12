@@ -53,6 +53,13 @@ namespace ProjectB.Data.Sql
             return SqlDB.ReadFormDB(SQLquery);
         }
 
+        public int ReadBcCodeByNameFromDB(string Name)
+        {
+            string SQLquery = "select Code from Buisness_Companies where Name='"+ Name + "'";
+            int code = (int)SqlDB.GetScalarFromDB(SQLquery);
+            return code;
+        }
+
 
     }
 }

@@ -36,5 +36,21 @@ namespace ProjectB.Dal
                 }
             }
         }
+
+        public static object GetScalarFromDB(string Sql_Query)
+        {
+            object result;
+            //הפעלת הצינור לפי ההגדרות שמופיעות בקונקטשן סטרינג
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(Sql_Query, connection))
+                {
+                    connection.Open();
+
+                    result = command.ExecuteScalar();
+                }
+            }
+            return result;
+        }
     }
 }

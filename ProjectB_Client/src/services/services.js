@@ -40,8 +40,14 @@ export const getAllNpoEmailsFromDB = async () => {
 };
 
 export const getAllCompaniesNamesFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllNpoEmailsFromDB`);
+  let endpoint = await axios.get(`${ServerAddress}/getAllCompaniesNamesFromDB`);
   return endpoint;
+};
+
+export const getBcCodeByNameFromDB = async (Name) => {
+  let endpoint = await axios.get(`${ServerAddress}/getBcCodeByNameFromDB/${Name}`);
+  console.log(endpoint.data);
+  return endpoint.data;
 };
 
 //POST FUNCTIONS

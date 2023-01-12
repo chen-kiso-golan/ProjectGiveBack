@@ -48,8 +48,9 @@ namespace ProjectB.Entities
         
         public void SendNpoCodeByEmailToDB(string data)
         {
-            DS_Forms dS_Campaign = new DS_Forms();
-            dS_Campaign.EnterNpoCodeByEmailToDB(data);
+            DS_Forms dS_NpoCode = new DS_Forms();
+            dS_NpoCode.EnterNpoCodeByEmailToDB(data);
         }
+      
     }
 }

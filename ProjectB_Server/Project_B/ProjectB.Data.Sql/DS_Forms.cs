@@ -50,5 +50,7 @@ namespace ProjectB.Data.Sql
             string SQLquery = "update Campaigns set NPO_code = (SELECT Code FROM Non_Profit_Organizations WHERE Email = '"+ data + "') WHERE Email = '" + data + "'"; 
             SqlDB.WriteToDB(SQLquery);
         }
+        
+    
     }
 }

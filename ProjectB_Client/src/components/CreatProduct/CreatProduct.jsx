@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatProductStyle.css";
 import { addProductToDB } from "../../services/services";
-import { addBcCodeByEmailFromDB } from "../../services/services";
+import { getBcCodeByNameFromDB } from "../../services/services";
 //import { addCampaignCodeByEmailFromDB } from "../../services/services";
 import { ChooseCompanyRow } from "./ChooseCompanyRow";
 //import { ChooseCampaignRow } from "./ChooseCampaignRow";
@@ -14,7 +14,7 @@ export const CreatProduct = () => {
     Price: "",
     Units_In_Stoke: "",
     BC_code: null,
-    Campaign_code: null,
+    //Campaign_code: null,
     Image: "",
   });
 
@@ -22,10 +22,11 @@ export const CreatProduct = () => {
     console.log(formData);
   }, [formData]);
 
-  const chooseCompany = (data) => {
+  const chooseCompany = (name) => {
+    let code = getBcCodeByNameFromDB(name);
     setFormData((prevFormData) => ({
       ...prevFormData,
-      BC_code: data,
+      BC_code: code,
     }));
   };
 
@@ -83,7 +84,7 @@ export const CreatProduct = () => {
       Name: "",
       Price: "",
       Units_In_Stoke: "",
-      //BC_code: 3,
+      BC_code: null,
       //Campaign_code: 6,
       Image: "",
     });
