@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllProductsFromDB } from "../../services/services";
+import { addOrderToDB } from "../../services/services";
 
 export const ProductsReportRow = (props) => {
   const [AllProducts, setAllProducts] = useState([]);
@@ -12,6 +13,10 @@ export const ProductsReportRow = (props) => {
   useEffect(() => {
     getDB();
   }, []);
+
+  const handelDonationData = async (Product) => {
+    await addOrderToDB(Product);
+  };
 
   return (
     <>
@@ -29,6 +34,11 @@ export const ProductsReportRow = (props) => {
                 <td>{Campaign_code}</td>
                 <td>
                   <img style={{ width: "50px", height: "50px", borderRadius: "30%" }} src={Image} alt="" />
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" onClick={() => handelDonationData(Product)}>
+                    Buy & Donate
+                  </button>
                 </td>
               </tr>
             </>

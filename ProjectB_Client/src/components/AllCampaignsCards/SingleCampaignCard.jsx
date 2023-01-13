@@ -31,7 +31,7 @@ export const SingleCampaignCard = (props) => {
                     <p className="card-text">{Link_URL}</p>
                   </div>
                   <div className="card-footer">
-                    <small className="text-muted">#{Hashtag}</small>
+                    <small className="text-muted">{Hashtag}</small>
                   </div>
                 </div>
               </div>

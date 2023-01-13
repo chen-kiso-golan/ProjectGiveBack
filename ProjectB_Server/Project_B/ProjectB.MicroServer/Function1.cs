@@ -134,7 +134,13 @@ namespace ProjectB.MicroServer
                     //string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
                     MainManager.Instance.FormsManager.SendNpoCodeByEmailToDB(Value);
                     break;
-           
+                    
+                case "OrderPost":
+                    ProductsModel OrderData = new ProductsModel();
+                    OrderData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
+                    MainManager.Instance.FormsManager.SendOrderToDB(OrderData);
+                    break;
+
 
 
 

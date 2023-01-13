@@ -51,6 +51,12 @@ namespace ProjectB.Entities
             DS_Forms dS_NpoCode = new DS_Forms();
             dS_NpoCode.EnterNpoCodeByEmailToDB(data);
         }
-      
+        
+        public void SendOrderToDB(ProductsModel data)
+        {
+            DS_Forms dS_Order = new DS_Forms();
+            dS_Order.EnterOrderToDB(data);
+        }
+
     }
 }

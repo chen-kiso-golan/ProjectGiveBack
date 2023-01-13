@@ -51,6 +51,12 @@ namespace ProjectB.Data.Sql
             SqlDB.WriteToDB(SQLquery);
         }
         
-    
+        public void EnterOrderToDB(ProductsModel data)
+        {
+            string SQLquery = "insert into Orders values (null ,'" + data.BC_code + "','" + data.Campaign_code + "' ,'" + data.Code + "',getdate(),0)";
+            SqlDB.WriteToDB(SQLquery);
+        }
+
+
     }
 }

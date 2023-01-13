@@ -14,6 +14,7 @@ export function AllProductsReport(props) {
           <th scope="col">BC_code</th>
           <th scope="col">Campaign_code</th>
           <th scope="col">Image</th>
+          <td></td>
         </tr>
       </thead>
       <tbody className="table-group-divider">
