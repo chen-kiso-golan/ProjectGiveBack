@@ -27,7 +27,9 @@ export const ProductsReportRow = (props) => {
                 <td>{Units_In_Stock}</td>
                 <td>{BC_code}</td>
                 <td>{Campaign_code}</td>
-                <td>{Image}</td>
+                <td>
+                  <img style={{ width: "50px", height: "50px", borderRadius: "30%" }} src={Image} alt="" />
+                </td>
               </tr>
             </>
           );

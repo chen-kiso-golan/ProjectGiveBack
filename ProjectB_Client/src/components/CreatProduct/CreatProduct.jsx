@@ -12,7 +12,7 @@ export const CreatProduct = () => {
   const [formData, setFormData] = useState({
     Name: "",
     Price: "",
-    Units_In_Stoke: "",
+    Units_In_Stock: "",
     BC_code: null,
     Campaign_code: null,
     Image: "",
@@ -72,15 +72,14 @@ export const CreatProduct = () => {
 
   const handleAddData = async () => {
     formData.Price = parseFloat(formData.Price);
-    formData.Units_In_Stoke = parseInt(formData.Units_In_Stoke);
+    formData.Units_In_Stock = parseInt(formData.Units_In_Stock);
     let json = formData;
-    console.log(json);
     await addProductToDB(json);
   };
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (formData.Name === "" || formData.Units_In_Stoke === "" || formData.Image === "" || formData.Price === "") {
+    if (formData.Name === "" || formData.Units_In_Stock === "" || formData.Image === "" || formData.Price === "") {
       console.log("some filed is missing");
       notify_error();
       return;
@@ -92,7 +91,7 @@ export const CreatProduct = () => {
     setFormData({
       Name: "",
       Price: "",
-      Units_In_Stoke: "",
+      Units_In_Stock: "",
       BC_code: null,
       Campaign_code: null,
       Image: "",
@@ -109,10 +108,10 @@ export const CreatProduct = () => {
           <input type="text" placeholder="Enter your Name" className="form-control" name="Name" onChange={handleChange} value={formData.Name} />
         </div>
         <div className="form-group">
-          <label htmlFor="UnitsInStoke" className="frm-lbl">
-            Units In Stoke
+          <label htmlFor="Units_In_Stock" className="frm-lbl">
+            Units In Stock
           </label>
-          <input type="number" placeholder="Units In Stoke" className="form-control" name="Units_In_Stoke" onChange={handleChange} value={formData.Units_In_Stoke} />
+          <input type="number" placeholder="Units In Stock" className="form-control" name="Units_In_Stock" onChange={handleChange} value={formData.Units_In_Stock} />
         </div>
         <div className="form-group">
           <ChooseCompanyRow chooseCompany={chooseCompany} />

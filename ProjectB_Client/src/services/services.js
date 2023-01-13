@@ -88,7 +88,10 @@ export const addCampaignToDB = async (frm) => {
 };
 
 export const addProductToDB = async (frm) => {
+  console.log(frm);
+  console.log("hi");
   await axios.post(`${ServerAddress}/ProductPost`, frm);
+
   console.log("Product form was sent to DB :)");
 };
 

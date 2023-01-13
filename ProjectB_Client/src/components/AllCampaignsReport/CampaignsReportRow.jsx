@@ -54,7 +54,7 @@ export const CampaignsReportRow = (props) => {
                 <td>{NPO_code}</td>
                 <td></td>
                 <td>
-                  <img style={{ width: "50px", height: "50px", borderRadius: "30%" }} src={Image} alt="" />
+                  <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={Image} alt="" />
                 </td>
                 <td>{Is_Active ? "true" : "false"}</td>
               </tr>
