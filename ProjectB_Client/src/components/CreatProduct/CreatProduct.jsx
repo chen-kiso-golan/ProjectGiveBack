@@ -22,16 +22,16 @@ export const CreatProduct = () => {
     console.log(formData);
   }, [formData]);
 
-  const chooseCompany = (name) => {
-    let code = getBcCodeByNameFromDB(name);
+  const chooseCompany = async (name) => {
+    let code = await getBcCodeByNameFromDB(name);
     setFormData((prevFormData) => ({
       ...prevFormData,
       BC_code: code,
     }));
   };
 
-  const chooseCampaign = (name) => {
-    let code = getCampaignCodeByNameFromDB(name);
+  const chooseCampaign = async (name) => {
+    let code = await getCampaignCodeByNameFromDB(name);
     setFormData((prevFormData) => ({
       ...prevFormData,
       Campaign_code: code,
@@ -74,6 +74,7 @@ export const CreatProduct = () => {
     formData.Price = parseFloat(formData.Price);
     formData.Units_In_Stoke = parseInt(formData.Units_In_Stoke);
     let json = formData;
+    console.log(json);
     await addProductToDB(json);
   };
 

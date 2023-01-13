@@ -79,11 +79,11 @@ namespace ProjectB.Entities
             DS_Reports ds_Reports = new DS_Reports();
             return CompaniesNames = ds_Reports.ReadCampaignNamesFromDB();
         }
-        ShowCampaignCodeByNameFromDB
-        public int ShowBcCodeByNameFromDB(string Name)
+        
+        public int ShowCampaignCodeByNameFromDB(string Name)
         {
             DS_Reports ds_Reports = new DS_Reports();
-            return ds_Reports.ReadBcCodeByNameFromDB(Name);
+            return ds_Reports.ReadCampaignCodeByNameFromDB(Name);
         }
 
 
