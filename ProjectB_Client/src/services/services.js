@@ -61,6 +61,11 @@ export const getCampaignCodeByNameFromDB = async (Name) => {
   return endpoint.data;
 };
 
+export const getAllOrdersFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllOrdersFromDB`);
+  return endpoint;
+};
+
 //POST FUNCTIONS
 export const addFormToContactUs = async (frm) => {
   await axios.post(`${ServerAddress}/ContactUsPost`, frm);
@@ -108,6 +113,10 @@ export const addOrderToDB = async (frm) => {
 //UPDATE FUNCTIONS
 export const UpdateCampaign = async (CampaignToUpdate) => {
   await axios.post(`${ServerAddress}/UpdateCampaign`, CampaignToUpdate);
+};
+
+export const UpdateOrderIsSentInDB = async (Order) => {
+  await axios.post(`${ServerAddress}/UpdateOrderIsSent`, Order);
 };
 
 //DELETE FUNCTIONS

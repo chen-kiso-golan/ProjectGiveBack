@@ -1,5 +1,6 @@
 import React from "react";
 import "./AllOrdersReportStyle.css";
+import { OrdersReportRow } from "./OrdersReportRow";
 
 export function AllOrdersReport(props) {
   return (
@@ -15,7 +16,9 @@ export function AllOrdersReport(props) {
           <th scope="col">Is_Sent</th>
         </tr>
       </thead>
-      <tbody className="table-group-divider">[Code] ,[SA_code] ,[BC_code] ,[Campaign_code] ,[Product_code] ,[Order_Time] ,[Is_Sent]</tbody>
+      <tbody className="table-group-divider">
+        <OrdersReportRow />
+      </tbody>
     </table>
   );
 }

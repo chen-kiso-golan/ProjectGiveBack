@@ -21,7 +21,14 @@ namespace ProjectB.Data.Sql
             string SqlQuery = "update Campaigns set Hashtag = '" + Campaign.Hashtag + "', Is_Active = '" + Campaign.Is_Active + "', Image = '" + Campaign.Image + "', Link_URL = '" + Campaign.Link_URL + "', NPO_code = '" + Campaign.NPO_code.ToString() + "', Name = '" + Campaign.Name + "', Email = '" + Campaign.Email + "' where Code = " + Campaign.Code.ToString();
             SqlDB.WriteToDB(SqlQuery);
         }
+        
+        public void UpdateOrderIsSentInDB(OrdersModel Order)
+        {
+            string SqlQuery = "update Orders set Is_Sent = 1 where Code = " + Order.Code.ToString();
+            SqlDB.WriteToDB(SqlQuery);
+        }
 
-      
+
+
     }
 }

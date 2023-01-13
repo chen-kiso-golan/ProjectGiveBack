@@ -88,6 +88,10 @@ namespace ProjectB.MicroServer
                 case "getCampaignCodeByNameFromDB":
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.ReportsManager.ShowCampaignCodeByNameFromDB(Value));
                     return new OkObjectResult(responseMessage);
+                    
+                case "getAllOrdersFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllOrdersFromDB());
+                    return new OkObjectResult(responseMessage);
 
 
 
@@ -150,9 +154,15 @@ namespace ProjectB.MicroServer
                     CampaignsModel Campaign = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>(requestBody);
                     MainManager.Instance.ChangesManager.UpdateCampaign(Campaign);
                     break;
+                    
+                 case "UpdateOrderIsSent":
+                    requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                    OrdersModel Order = System.Text.Json.JsonSerializer.Deserialize<OrdersModel>(requestBody);
+                    MainManager.Instance.ChangesManager.UpdateOrderIsSent(Order);
+                    break;
 
-                
-                
+
+
                 //DELETE FUNCTIONS
                 case "deleteCampaign":
                     MainManager.Instance.ChangesManager.DeleteCampaign(Value);

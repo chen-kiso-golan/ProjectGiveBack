@@ -21,5 +21,11 @@ namespace ProjectB.Entities
             DS_Changes dS_Changes = new DS_Changes();
             dS_Changes.UpdateCampaignInDB(Campaign);
         }
+        
+        public void UpdateOrderIsSent(OrdersModel Order)
+        {
+            DS_Changes dS_Changes = new DS_Changes();
+            dS_Changes.UpdateOrderIsSentInDB(Order);
+        }
     }
 }

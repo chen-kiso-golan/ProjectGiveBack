@@ -72,6 +72,12 @@ namespace ProjectB.Data.Sql
             int code = (int)SqlDB.GetScalarFromDB(SQLquery);
             return code;
         }
+        
+        public DataTable ReadAllOrdersFromDB()
+        {
+            string SQLquery = "select * from Orders";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
 
 
     }

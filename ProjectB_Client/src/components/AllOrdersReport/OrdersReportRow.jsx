@@ -1,94 +1,56 @@
-// import React, { useState, useEffect } from "react";
-// import { deleteCampaign, getAllCampaignsFromDB } from "../../services/services";
-// import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { getAllOrdersFromDB } from "../../services/services";
+import { UpdateOrderIsSentInDB } from "../../services/services";
 
-// export const CampaignsReportRow = (props) => {
-//   const [AllCampaigns, setAllCampaigns] = useState([]);
-//   const [expand, setExpand] = useState(false);
-//   const [key, setKey] = useState(null);
+export const OrdersReportRow = (props) => {
+  const [AllOrders, setAllOrders] = useState([]);
 
-//   const navigate = useNavigate();
+  const getDB = async () => {
+    let result = await getAllOrdersFromDB();
+    setAllOrders(result.data);
+  };
 
-//   const getDB = async () => {
-//     let result = await getAllCampaignsFromDB();
-//     setAllCampaigns(result.data);
-//   };
+  useEffect(() => {
+    getDB();
+  }, []);
 
-//   useEffect(() => {
-//     getDB();
-//   }, []);
+  const handelSendDonation = async (Order) => {
+    await UpdateOrderIsSentInDB(Order);
+    await getDB();
+  };
 
-//   const handleClick = (proKey) => {
-//     setExpand(!expand);
-//     setKey(proKey);
-//   };
+  return (
+    <>
+      {AllOrders.length > 0 ? (
+        AllOrders.map((Order) => {
+          let { Code, SA_code, BC_code, Campaign_code, Product_code, Order_Time, Is_Sent } = Order;
+          return (
+            <>
+              <tr>
+                <th scope="row">{Code}</th>
+                <td>{SA_code}</td>
+                <td>{BC_code}</td>
+                <td>{Campaign_code}</td>
+                <td>{Product_code}</td>
+                <td>{Order_Time}</td>
+                <td>{Is_Sent}</td>
 
-//   const handleEdit = (Campaign) => {
-//     navigate("/AllCampaignsReportPageEdit", {
-//       state: {
-//         Campaign,
-//       },
-//     });
-//   };
-
-//   const handleDelete = async (Code) => {
-//     console.log(Code);
-//     await deleteCampaign(Code);
-//     setExpand(!expand);
-//     getDB();
-//   };
-
-//   return (
-//     <>
-//       {AllCampaigns.length > 0 ? (
-//         AllCampaigns.map((Campaign) => {
-//           let { Code, Name, Email, Link_URL, Hashtag, NPO_code, Image, Is_Active } = Campaign;
-//           return (
-//             <>
-//               <tr onClick={() => handleClick(Campaign.Code)}>
-//                 <th scope="row">{Code}</th>
-//                 <td>{Name}</td>
-//                 <td>{Email}</td>
-//                 <td>{Link_URL}</td>
-//                 <td>#{Hashtag}</td>
-//                 <td>{NPO_code}</td>
-//                 <td>{Image}</td>
-//                 <td>{Is_Active}</td>
-//               </tr>
-//               {expand && Campaign.Code === key ? (
-//                 <tr>
-//                   <td>
-//                     <button
-//                       className="btn btn-warning"
-//                       onClick={() => {
-//                         handleEdit(Campaign);
-//                       }}
-//                     >
-//                       Edit Campaign
-//                     </button>
-//                   </td>
-//                   <td colSpan={2}>
-//                     <h5>{Campaign.Name} Description : </h5>
-//                     blablabla...
-//                   </td>
-//                   <td>
-//                     <button
-//                       className="btn btn-danger"
-//                       onClick={() => {
-//                         handleDelete(Campaign.Code);
-//                       }}
-//                     >
-//                       Remove Campaign
-//                     </button>
-//                   </td>
-//                 </tr>
-//               ) : null}
-//             </>
-//           );
-//         })
-//       ) : (
-//         <h1>There are no campaigns.</h1>
-//       )}
-//     </>
-//   );
-// };
+                {!Is_Sent ? (
+                  <td>
+                    <button type="button" class="btn btn-primary" onClick={() => handelSendDonation(Order)}>
+                      Send Donation
+                    </button>
+                  </td>
+                ) : (
+                  <td>Donation was Sent</td>
+                )}
+              </tr>
+            </>
+          );
+        })
+      ) : (
+        <h1>There are no Orders.</h1>
+      )}
+    </>
+  );
+};

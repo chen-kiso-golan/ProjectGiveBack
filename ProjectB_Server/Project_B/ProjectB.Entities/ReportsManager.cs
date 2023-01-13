@@ -85,6 +85,14 @@ namespace ProjectB.Entities
             DS_Reports ds_Reports = new DS_Reports();
             return ds_Reports.ReadCampaignCodeByNameFromDB(Name);
         }
+        
+        public DataTable Orders = new DataTable();
+        public DataTable ShowAllOrdersFromDB()
+        {
+            Orders.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return Orders = ds_Reports.ReadAllOrdersFromDB();
+        }
 
 
 
