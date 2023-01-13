@@ -50,6 +50,17 @@ export const getBcCodeByNameFromDB = async (Name) => {
   return endpoint.data;
 };
 
+export const getAllCampaignNamesFromDB = async () => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllCampaignNamesFromDB`);
+  return endpoint;
+};
+
+export const getCampaignCodeByNameFromDB = async (Name) => {
+  let endpoint = await axios.get(`${ServerAddress}/getCampaignCodeByNameFromDB/${Name}`);
+  console.log(endpoint.data);
+  return endpoint.data;
+};
+
 //POST FUNCTIONS
 export const addFormToContactUs = async (frm) => {
   await axios.post(`${ServerAddress}/ContactUsPost`, frm);

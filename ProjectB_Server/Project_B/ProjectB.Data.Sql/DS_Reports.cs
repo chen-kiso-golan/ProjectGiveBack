@@ -59,6 +59,19 @@ namespace ProjectB.Data.Sql
             int code = (int)SqlDB.GetScalarFromDB(SQLquery);
             return code;
         }
+        
+        public DataTable ReadCampaignNamesFromDB()
+        {
+            string SQLquery = "select Name from Campaigns";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
+        
+        public int ReadCampaignCodeByNameFromDB(string Name)
+        {
+            string SQLquery = "select Code from Campaigns where Name='" + Name + "'";
+            int code = (int)SqlDB.GetScalarFromDB(SQLquery);
+            return code;
+        }
 
 
     }

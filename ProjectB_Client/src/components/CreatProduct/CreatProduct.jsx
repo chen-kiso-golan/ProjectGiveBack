@@ -4,9 +4,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "./CreatProductStyle.css";
 import { addProductToDB } from "../../services/services";
 import { getBcCodeByNameFromDB } from "../../services/services";
-//import { addCampaignCodeByEmailFromDB } from "../../services/services";
+import { getCampaignCodeByNameFromDB } from "../../services/services";
 import { ChooseCompanyRow } from "./ChooseCompanyRow";
-//import { ChooseCampaignRow } from "./ChooseCampaignRow";
+import { ChooseCampaignRow } from "./ChooseCampaignRow";
 
 export const CreatProduct = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ export const CreatProduct = () => {
     Price: "",
     Units_In_Stoke: "",
     BC_code: null,
-    //Campaign_code: null,
+    Campaign_code: null,
     Image: "",
   });
 
@@ -27,6 +27,14 @@ export const CreatProduct = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       BC_code: code,
+    }));
+  };
+
+  const chooseCampaign = (name) => {
+    let code = getCampaignCodeByNameFromDB(name);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      Campaign_code: code,
     }));
   };
 
@@ -85,7 +93,7 @@ export const CreatProduct = () => {
       Price: "",
       Units_In_Stoke: "",
       BC_code: null,
-      //Campaign_code: 6,
+      Campaign_code: null,
       Image: "",
     });
   }
@@ -112,7 +120,7 @@ export const CreatProduct = () => {
           <label htmlFor="Campaign" className="frm-lbl">
             Campaign
           </label>
-          {/* <ChooseEmailRow chooseEmail={chooseEmail} /> */}
+          <ChooseCampaignRow chooseCampaign={chooseCampaign} />
         </div>
         <div className="form-group">
           <label htmlFor="Price" className="frm-lbl">
