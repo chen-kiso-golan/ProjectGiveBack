@@ -33,7 +33,7 @@ export const OrdersReportRow = (props) => {
                 <td>{Campaign_code}</td>
                 <td>{Product_code}</td>
                 <td>{Order_Time}</td>
-                <td>{Is_Sent}</td>
+                <td>{Is_Sent ? "Sent" : "Not Sent"}</td>
 
                 {!Is_Sent ? (
                   <td>
