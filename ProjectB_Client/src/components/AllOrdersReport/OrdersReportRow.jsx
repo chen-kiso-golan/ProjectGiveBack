@@ -24,6 +24,19 @@ export const OrdersReportRow = (props) => {
       {AllOrders.length > 0 ? (
         AllOrders.map((Order) => {
           let { Code, SA_code, BC_code, Campaign_code, Product_code, Order_Time, Is_Sent } = Order;
+          const date = new Date(Order_Time);
+          const options = {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            timeZone: "Asia/Jerusalem",
+            hour12: false,
+          };
+          const israeliFormat = new Intl.DateTimeFormat("he-IL", options).format(date);
+
           return (
             <>
               <tr>
@@ -32,9 +45,8 @@ export const OrdersReportRow = (props) => {
                 <td>{BC_code}</td>
                 <td>{Campaign_code}</td>
                 <td>{Product_code}</td>
-                <td>{Order_Time}</td>
+                <td>{israeliFormat}</td>
                 <td>{Is_Sent ? "Sent" : "Not Sent"}</td>
-
                 {!Is_Sent ? (
                   <td>
                     <button type="button" class="btn btn-primary" onClick={() => handelSendDonation(Order)}>
