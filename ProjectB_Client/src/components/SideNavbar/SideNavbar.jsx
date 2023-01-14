@@ -7,7 +7,7 @@ import Profile from "../../Auth0/Profile";
 
 function SideNavbar(props) {
   const { role, setRole } = useContext(RoleStatus);
-  //     if (role === "N.P.O" || role === "company" || role === "Activist")
+  //     if (role === "Owner" || role === "NPO" || role === "BC" || role === "SA")
 
   return (
     <div className="sidenavbar--container">
@@ -15,6 +15,11 @@ function SideNavbar(props) {
         <li>
           <Profile />
         </li>
+        {role === "" && ()}
+        {role === "Owner" && ()}
+        {role === "NPO" && ()}
+        {role === "BC" && ()}
+        {role === "SA" && ()}
         <li>
           <Link to="/ActivistRegisterFormPage">
             <KeyboardArrowRightIcon />
