@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { AllOrdersReportPage, HomePage, AboutPage, AllCampaignsPage, ContactUsPage, ActivistRegisterFormPage, AllCampaignsReportPageEdit, AllCampaignsReportPage, AllProductsReportPage, AllTwitsReportPage, AllUsersReportPage, CompanyRegisterFormPage, CreatCampaignPage, CreatProductPage, NonprofitRegisterFormPage, SpecificCampaignReportPage, SpecificOrdersReportPage, SpecificProductsReportPage, WaitingForAnswerPage } from "./pages/pagesIndex";
+import { AllOrdersReportPage, HomePage, AboutPage, AllCampaignsPage, ContactUsPage, ActivistRegisterFormPage, AllCampaignsReportPageEdit, AllCampaignsReportPage, AllProductsReportPage, AllTwitsReportPage, AllUsersReportPage, CompanyRegisterFormPage, CreatCampaignPage, CreatProductPage, NonprofitRegisterFormPage, WaitingForAnswerPage } from "./pages/pagesIndex";
 import TopNavbar from "./components/TopNavbar/TopNavbar";
 import SideNavbar from "./components/SideNavbar/SideNavbar";
 import ButtomNavbar from "./components/ButtomNavbar/ButtomNavbar";
 import { RoleStatus } from "./context/roleStatus";
+import { GetRoleFromAuth0 } from "./Auth0/getRoleFromAuth0";
 
 function App() {
   const [role, setRole] = useState("");
@@ -15,6 +16,7 @@ function App() {
       <div className="App">
         <div>
           <header>
+            <GetRoleFromAuth0 />
             <TopNavbar />
           </header>
           <div className="app--body">
@@ -38,9 +40,6 @@ function App() {
                 <Route path="/CreatCampaignPage" element={<CreatCampaignPage />}></Route>
                 <Route path="/CreatProductPage" element={<CreatProductPage />}></Route>
                 <Route path="/NonprofitRegisterFormPage" element={<NonprofitRegisterFormPage />}></Route>
-                <Route path="/SpecificCampaignReportPage" element={<SpecificCampaignReportPage />}></Route>
-                <Route path="/SpecificOrdersReportPage" element={<SpecificOrdersReportPage />}></Route>
-                <Route path="/SpecificProductsReportPage" element={<SpecificProductsReportPage />}></Route>
                 <Route path="/WaitingForAnswerPage" element={<WaitingForAnswerPage />}></Route>
               </Routes>
             </div>

@@ -1,10 +1,13 @@
-import React from "react";
-
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import "./SideNavbar.css";
+import { RoleStatus } from "../../context/roleStatus";
 
 function SideNavbar(props) {
+  const { role, setRole } = useContext(RoleStatus);
+  //     if (role === "N.P.O" || role === "company" || role === "Activist")
+
   return (
     <div className="sidenavbar--container">
       <ul className="sidenavbar--menu">
@@ -78,24 +81,6 @@ function SideNavbar(props) {
           <Link to="/NonprofitRegisterFormPage">
             <KeyboardArrowRightIcon />
             <label className="label--sidenavbar">Nonprofit Register Form</label>
-          </Link>
-        </li>
-        <li>
-          <Link to="/SpecificCampaignReportPage">
-            <KeyboardArrowRightIcon />
-            <label className="label--sidenavbar">Specific Campaign Report</label>
-          </Link>
-        </li>
-        <li>
-          <Link to="/SpecificOrdersReportPage">
-            <KeyboardArrowRightIcon />
-            <label className="label--sidenavbar">Specific Orders Report</label>
-          </Link>
-        </li>
-        <li>
-          <Link to="/SpecificProductsReportPage">
-            <KeyboardArrowRightIcon />
-            <label className="label--sidenavbar">Specific Products Report</label>
           </Link>
         </li>
         <li>

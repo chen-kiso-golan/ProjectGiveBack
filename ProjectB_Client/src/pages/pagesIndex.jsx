@@ -13,7 +13,4 @@ export * from "./companyRegisterFormPage";
 export * from "./creatCampaignPage";
 export * from "./creatProductPage";
 export * from "./nonprofitRegisterFormPage";
-export * from "./specificCampaignReportPage";
-export * from "./specificOrdersReportPage";
-export * from "./specificProductsReportPage";
 export * from "./waitingForAnswerPage";
