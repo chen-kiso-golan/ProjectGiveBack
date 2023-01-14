@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import "./SideNavbar.css";
 import { RoleStatus } from "../../context/roleStatus";
+import Profile from "../../Auth0/Profile";
 
 function SideNavbar(props) {
   const { role, setRole } = useContext(RoleStatus);
@@ -11,6 +12,9 @@ function SideNavbar(props) {
   return (
     <div className="sidenavbar--container">
       <ul className="sidenavbar--menu">
+        <li>
+          <Profile />
+        </li>
         <li>
           <Link to="/ActivistRegisterFormPage">
             <KeyboardArrowRightIcon />
