@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getAllOrdersFromDB } from "../../services/services";
 import { UpdateOrderIsSentInDB } from "../../services/services";
+import { RoleStatus } from "../../context/roleStatus";
 
 export const OrdersReportRow = (props) => {
   const [AllOrders, setAllOrders] = useState([]);
+  const { role, setRole } = useContext(RoleStatus);
 
   const getDB = async () => {
     let result = await getAllOrdersFromDB();
@@ -47,14 +49,18 @@ export const OrdersReportRow = (props) => {
                 <td>{Product_code}</td>
                 <td>{israeliFormat}</td>
                 <td>{Is_Sent ? "Sent" : "Not Sent"}</td>
-                {!Is_Sent ? (
-                  <td>
-                    <button type="button" class="btn btn-primary" onClick={() => handelSendDonation(Order)}>
-                      Send Donation
-                    </button>
-                  </td>
-                ) : (
-                  <td>Donation was Sent</td>
+                {role === "BC" && (
+                  <>
+                    {!Is_Sent ? (
+                      <td>
+                        <button type="button" class="btn btn-primary" onClick={() => handelSendDonation(Order)}>
+                          Send Donation
+                        </button>
+                      </td>
+                    ) : (
+                      <td>Donation was Sent</td>
+                    )}
+                  </>
                 )}
               </tr>
             </>

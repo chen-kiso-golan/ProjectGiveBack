@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getAllProductsFromDB } from "../../services/services";
 import { addOrderToDB } from "../../services/services";
+import { RoleStatus } from "../../context/roleStatus";
 
 export const ProductsReportRow = (props) => {
   const [AllProducts, setAllProducts] = useState([]);
+  const { role, setRole } = useContext(RoleStatus);
 
   const getDB = async () => {
     let result = await getAllProductsFromDB();
@@ -35,11 +37,13 @@ export const ProductsReportRow = (props) => {
                 <td>
                   <img style={{ width: "50px", height: "50px", borderRadius: "30%" }} src={Image} alt="" />
                 </td>
-                <td>
-                  <button type="button" class="btn btn-primary" onClick={() => handelDonationData(Product)}>
-                    Buy & Donate
-                  </button>
-                </td>
+                {role === "SA" && (
+                  <td>
+                    <button type="button" class="btn btn-primary" onClick={() => handelDonationData(Product)}>
+                      Buy & Donate
+                    </button>
+                  </td>
+                )}
               </tr>
             </>
           );

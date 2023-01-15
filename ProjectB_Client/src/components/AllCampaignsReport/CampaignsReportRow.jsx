@@ -54,7 +54,6 @@ export const CampaignsReportRow = (props) => {
                 <td>{Link_URL}</td>
                 <td>{Hashtag}</td>
                 <td>{NPO_code}</td>
-                <td></td>
                 <td>
                   <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={Image} alt="" />
                 </td>
