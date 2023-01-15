@@ -4,6 +4,7 @@ const ServerAddress = "http://localhost:7205/api/Users";
 
 // GET FUNCTIONS
 export const getRolesData = async (userId) => {
+  console.log(userId);
   let endpoint = await axios.get(`${ServerAddress}/get-role/${userId}`);
   console.log(endpoint.data);
   return endpoint.data;
