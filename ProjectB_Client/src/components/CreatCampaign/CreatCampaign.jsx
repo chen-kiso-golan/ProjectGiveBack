@@ -4,6 +4,7 @@ import "./CreatCampaignStyle.css";
 import { addCampaignToDB } from "../../services/services";
 import { addNpoCodeByEmailFromDB } from "../../services/services";
 import { ChooseEmailRow } from "./ChooseEmailRow";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const CreatCampaign = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export const CreatCampaign = () => {
     Image: "",
     Is_Active: true,
   });
+
+  const { user } = useAuth0();
 
   useEffect(() => {
     console.log(formData);
@@ -60,7 +63,7 @@ export const CreatCampaign = () => {
     });
 
   const handleAddData = async () => {
-    formData.Is_Active = Boolean(formData.Is_Active);
+    formData.Is_Active = Boolean(formData.NPO_code);
     let json = formData;
     await addCampaignToDB(json);
     await addNpoCodeByEmailFromDB(formData.Email);
