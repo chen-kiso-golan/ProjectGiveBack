@@ -8,6 +8,7 @@ export function AllUsersReport(props) {
   return (
     <>
       <h1>All Users Report:</h1>
+      <br />
       <h3>Activists</h3>
       <table className="table">
         <thead>

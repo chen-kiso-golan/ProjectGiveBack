@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { deleteCampaign, getAllCampaignsFromDB } from "../../services/services";
 import { useNavigate } from "react-router-dom";
+import { RoleStatus } from "../../context/roleStatus";
 
 export const CampaignsReportRow = (props) => {
   const [AllCampaigns, setAllCampaigns] = useState([]);
   const [expand, setExpand] = useState(false);
   const [key, setKey] = useState(null);
+  const { role, setRole } = useContext(RoleStatus);
 
   const navigate = useNavigate();
 
@@ -58,7 +60,8 @@ export const CampaignsReportRow = (props) => {
                 </td>
                 <td>{Is_Active ? "true" : "false"}</td>
               </tr>
-              {expand && Campaign.Code === key ? (
+
+              {role === "NPO" && expand && Campaign.Code === key ? (
                 <tr>
                   <td>
                     <button
