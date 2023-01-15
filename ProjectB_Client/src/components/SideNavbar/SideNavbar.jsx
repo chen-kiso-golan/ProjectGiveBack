@@ -15,9 +15,12 @@ function SideNavbar(props) {
   return (
     <div className="sidenavbar--container">
       <ul className="sidenavbar--menu">
+        <li>welcome, here is your {role} account menu:</li>
+        <br />
         <li>
           <Profile />
         </li>
+        <br />
         {!isAuthenticated && <li>login with the buttom above!</li>}
         {role === "" && isAuthenticated && (
           <>
@@ -51,12 +54,7 @@ function SideNavbar(props) {
                 <label className="label--sidenavbar">All Users Report</label>
               </Link>
             </li>
-            <li>
-              <Link to="/AllCampaignsReportPageEdit">
-                <KeyboardArrowRightIcon />
-                <label className="label--sidenavbar">All Campaigns Report - Edit</label>
-              </Link>
-            </li>
+
             <li>
               <Link to="/AllCampaignsReportPage">
                 <KeyboardArrowRightIcon />
@@ -101,12 +99,6 @@ function SideNavbar(props) {
               <Link to="/AllCampaignsReportPage">
                 <KeyboardArrowRightIcon />
                 <label className="label--sidenavbar">All Campaigns Report</label>
-              </Link>
-            </li>
-            <li>
-              <Link to="/AllCampaignsReportPageEdit">
-                <KeyboardArrowRightIcon />
-                <label className="label--sidenavbar">All Campaigns Report - Edit</label>
               </Link>
             </li>
           </>

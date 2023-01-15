@@ -1,5 +1,10 @@
 import React from "react";
+import { AllCampaignsCards } from "../components/AllCampaignsCards/AllCampaignsCards";
 
 export function HomePage(props) {
-  return <div>home page</div>;
+  return (
+    <div>
+      <AllCampaignsCards />
+    </div>
+  );
 }

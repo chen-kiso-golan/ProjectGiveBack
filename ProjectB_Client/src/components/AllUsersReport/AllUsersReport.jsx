@@ -7,7 +7,8 @@ import { CompaniesReportRow } from "./CompaniesReportRow";
 export function AllUsersReport(props) {
   return (
     <>
-      <h3>Activists:</h3>
+      <h1>All Users Report:</h1>
+      <h3>Activists</h3>
       <table className="table">
         <thead>
           <tr>
@@ -23,7 +24,7 @@ export function AllUsersReport(props) {
           <ActivistsReportRow />
         </tbody>
       </table>
-      <h3>Non Profit Organizations:</h3>
+      <h3>Non Profit Organizations</h3>
       <table className="table">
         <thead>
           <tr>
@@ -38,7 +39,7 @@ export function AllUsersReport(props) {
         </tbody>
       </table>
 
-      <h3>Companies:</h3>
+      <h3>Companies</h3>
       <table className="table">
         <thead>
           <tr>

@@ -21,12 +21,6 @@ function TopNavbar(props) {
             <label className="label--topnavbar">Logo - Home</label>
           </Link>
         </li>
-        <li>
-          <Link to="/AllCampaignsPage">
-            <InventoryTwoToneIcon />
-            <label className="label--topnavbar">All Campaigns Page</label>
-          </Link>
-        </li>
       </ul>
     </div>
   );
