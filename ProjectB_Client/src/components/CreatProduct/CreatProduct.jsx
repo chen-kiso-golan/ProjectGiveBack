@@ -117,9 +117,6 @@ export const CreatProduct = () => {
           <ChooseCompanyRow chooseCompany={chooseCompany} />
         </div>
         <div className="form-group">
-          <label htmlFor="Campaign" className="frm-lbl">
-            Campaign
-          </label>
           <ChooseCampaignRow chooseCampaign={chooseCampaign} />
         </div>
         <div className="form-group">

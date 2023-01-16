@@ -81,6 +81,11 @@ namespace ProjectB.MicroServer
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.ReportsManager.ShowBcCodeByNameFromDB(Value));
                     return new OkObjectResult(responseMessage);
                     
+                case "getBcCodeByEmailFromDB":
+                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.ReportsManager.ShowBcCodeByEmailFromDB(Value));
+                    return new OkObjectResult(responseMessage);
+
+
                 case "getAllCampaignNamesFromDB":
                     responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignNamesFromDB());
                     return new OkObjectResult(responseMessage);

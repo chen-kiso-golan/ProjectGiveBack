@@ -50,6 +50,11 @@ export const getBcCodeByNameFromDB = async (Name) => {
   console.log(endpoint.data);
   return endpoint.data;
 };
+export const getBcCodeByEmailFromDB = async (email) => {
+  let endpoint = await axios.get(`${ServerAddress}/getBcCodeByEmailFromDB/${enail}`);
+  console.log(endpoint.data);
+  return endpoint.data;
+};
 
 export const getAllCampaignNamesFromDB = async () => {
   let endpoint = await axios.get(`${ServerAddress}/getAllCampaignNamesFromDB`);

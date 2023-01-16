@@ -72,6 +72,12 @@ namespace ProjectB.Entities
             DS_Reports ds_Reports = new DS_Reports();
             return ds_Reports.ReadBcCodeByNameFromDB(Name);
         }
+        
+        public int ShowBcCodeByEmailFromDB(string email)
+        {
+            DS_Reports ds_Reports = new DS_Reports();
+            return ds_Reports.ReadBcCodeByEmailFromDB(email);
+        }
 
         public DataTable CampaignNames = new DataTable();
         public DataTable ShowAllCampaignNamesFromDB()

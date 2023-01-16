@@ -60,6 +60,14 @@ namespace ProjectB.Data.Sql
             return code;
         }
         
+        public int ReadBcCodeByEmailFromDB(string email)
+        {
+            string SQLquery = "select Code from Buisness_Companies where Email='" + email + "'";
+            int code = (int)SqlDB.GetScalarFromDB(SQLquery);
+            return code;
+        }
+
+
         public DataTable ReadCampaignNamesFromDB()
         {
             string SQLquery = "select Name from Campaigns";

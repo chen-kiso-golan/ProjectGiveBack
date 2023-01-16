@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAllProductsFromDB } from "../../services/services";
+import { getAllProductsFromDB, getBcCodeByEmailFromDB } from "../../services/services";
 import { addOrderToDB } from "../../services/services";
 import { RoleStatus } from "../../context/roleStatus";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const ProductsReportRow = (props) => {
   const [AllProducts, setAllProducts] = useState([]);
   const { role, setRole } = useContext(RoleStatus);
+  const { user } = useAuth0();
 
   const getDB = async () => {
     let result = await getAllProductsFromDB();
+    let userBCcode = await getBcCodeByEmailFromDB(user.email);
     setAllProducts(result.data);
   };
 
@@ -27,7 +30,7 @@ export const ProductsReportRow = (props) => {
           let { Code, Name, Price, Units_In_Stock, BC_code, Campaign_code, Image } = Product;
           return (
             <>
-              <tr>
+              <tr className={userBCcode === BC_code ? "table-danger" : ""}>
                 <th scope="row">{Code}</th>
                 <td>{Name}</td>
                 <td>{Price}$</td>
@@ -49,7 +52,7 @@ export const ProductsReportRow = (props) => {
           );
         })
       ) : (
-        <h1>There are no campaigns.</h1>
+        <h1>There are no products.</h1>
       )}
     </>
   );
