@@ -40,8 +40,8 @@ export const getAllNpoEmailsFromDB = async () => {
   return endpoint;
 };
 
-export const getAllCompaniesNamesFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllCompaniesNamesFromDB`);
+export const getAllCompaniesNamesFromDB = async (email) => {
+  let endpoint = await axios.get(`${ServerAddress}/getAllCompaniesNamesFromDB/${email}`);
   return endpoint;
 };
 

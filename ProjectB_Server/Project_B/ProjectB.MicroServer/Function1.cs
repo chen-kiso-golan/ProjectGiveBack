@@ -74,7 +74,7 @@ namespace ProjectB.MicroServer
                     return new OkObjectResult(responseMessage);
                     
                 case "getAllCompaniesNamesFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCompaniesNamesFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCompaniesNamesFromDB(Value));
                     return new OkObjectResult(responseMessage);
                     
                 case "getBcCodeByNameFromDB":

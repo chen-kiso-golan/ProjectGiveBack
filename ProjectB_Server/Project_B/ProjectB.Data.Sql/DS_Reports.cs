@@ -47,9 +47,9 @@ namespace ProjectB.Data.Sql
             return SqlDB.ReadFormDB(SQLquery);
         }
         
-        public DataTable ReadAllCompaniesNamesFromDB()
+        public DataTable ReadAllCompaniesNamesFromDB(string email)
         {
-            string SQLquery = "select Name from Buisness_Companies";
+            string SQLquery = "select Name from Buisness_Companies where Email = '"+ email + "'";
             return SqlDB.ReadFormDB(SQLquery);
         }
 

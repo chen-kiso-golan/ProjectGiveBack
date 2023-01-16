@@ -2,12 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { deleteCampaign, getAllCampaignsFromDB } from "../../services/services";
 import { useNavigate } from "react-router-dom";
 import { RoleStatus } from "../../context/roleStatus";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const CampaignsReportRow = (props) => {
   const [AllCampaigns, setAllCampaigns] = useState([]);
   const [expand, setExpand] = useState(false);
   const [key, setKey] = useState(null);
   const { role, setRole } = useContext(RoleStatus);
+  const { user } = useAuth0();
 
   const navigate = useNavigate();
 
@@ -47,7 +49,7 @@ export const CampaignsReportRow = (props) => {
           let { Code, Name, Email, Link_URL, Hashtag, NPO_code, Image, Is_Active } = Campaign;
           return (
             <>
-              <tr onClick={() => handleClick(Campaign.Code)}>
+              <tr className={Campaign.Email === user.email ? "table-danger" : ""} onClick={() => handleClick(Campaign.Code)}>
                 <th scope="row">{Code}</th>
                 <td>{Name}</td>
                 <td>{Email}</td>
@@ -60,7 +62,7 @@ export const CampaignsReportRow = (props) => {
                 <td>{Is_Active ? "true" : "false"}</td>
               </tr>
 
-              {role === "NPO" && expand && Campaign.Code === key ? (
+              {role === "NPO" && Campaign.Email === user.email && expand && Campaign.Code === key ? (
                 <tr>
                   <td>
                     <button

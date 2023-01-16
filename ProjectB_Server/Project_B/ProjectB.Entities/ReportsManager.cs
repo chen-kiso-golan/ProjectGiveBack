@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ProjectB.Entities
 {
@@ -59,11 +60,11 @@ namespace ProjectB.Entities
         }
         
         public DataTable CompaniesNames = new DataTable();
-        public DataTable ShowAllCompaniesNamesFromDB()
+        public DataTable ShowAllCompaniesNamesFromDB(string email)
         {
             CompaniesNames.Clear();
             DS_Reports ds_Reports = new DS_Reports();
-            return CompaniesNames = ds_Reports.ReadAllCompaniesNamesFromDB();
+            return CompaniesNames = ds_Reports.ReadAllCompaniesNamesFromDB(email);
         }
         
         public int ShowBcCodeByNameFromDB(string Name)

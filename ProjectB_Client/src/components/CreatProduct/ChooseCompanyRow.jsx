@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getAllCompaniesNamesFromDB } from "../../services/services";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export function ChooseCompanyRow({ chooseCompany }) {
   const [AllCompanies, setAllCompanies] = useState([]);
+  const { user } = useAuth0();
 
   const getDB = async () => {
-    let result = await getAllCompaniesNamesFromDB();
+    let result = await getAllCompaniesNamesFromDB(user.email);
     setAllCompanies(result.data);
   };
 
