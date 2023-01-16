@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAllOrdersFromDB } from "../../services/services";
+import { getAllOrdersFromDB, getBcCodeByEmailFromDB } from "../../services/services";
 import { UpdateOrderIsSentInDB } from "../../services/services";
 import { RoleStatus } from "../../context/roleStatus";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const OrdersReportRow = (props) => {
   const [AllOrders, setAllOrders] = useState([]);
+  const [userBCcode, setuserBCcode] = useState([]);
   const { role, setRole } = useContext(RoleStatus);
+  const { user } = useAuth0();
 
   const getDB = async () => {
     let result = await getAllOrdersFromDB();
+    let userBCcode = await getBcCodeByEmailFromDB(user.email);
     setAllOrders(result.data);
+    setuserBCcode(userBCcode);
   };
 
   useEffect(() => {
@@ -41,7 +46,7 @@ export const OrdersReportRow = (props) => {
 
           return (
             <>
-              <tr>
+              <tr className={userBCcode === BC_code ? "table-danger" : ""}>
                 <th scope="row">{Code}</th>
                 <td>{SA_code}</td>
                 <td>{BC_code}</td>

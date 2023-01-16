@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const ProductsReportRow = (props) => {
   const [AllProducts, setAllProducts] = useState([]);
+  const [userBCcode, setuserBCcode] = useState([]);
   const { role, setRole } = useContext(RoleStatus);
   const { user } = useAuth0();
 
@@ -13,6 +14,7 @@ export const ProductsReportRow = (props) => {
     let result = await getAllProductsFromDB();
     let userBCcode = await getBcCodeByEmailFromDB(user.email);
     setAllProducts(result.data);
+    setuserBCcode(userBCcode);
   };
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export const ProductsReportRow = (props) => {
           let { Code, Name, Price, Units_In_Stock, BC_code, Campaign_code, Image } = Product;
           return (
             <>
-              <tr className={userBCcode === BC_code ? "table-danger" : ""}>
+              <tr className={role !== "SA" && userBCcode === BC_code ? "table-danger" : ""}>
                 <th scope="row">{Code}</th>
                 <td>{Name}</td>
                 <td>{Price}$</td>
