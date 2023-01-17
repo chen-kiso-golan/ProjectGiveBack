@@ -10,6 +10,11 @@ export const getRolesData = async (userId) => {
   return endpoint.data;
 };
 
+export const getUserInfoData = async (email, role) => {
+  console.log(1, email, role);
+  let endpoint = await axios.get(`${ServerAddress}/get-UserInfoData/${email}/${role}`);
+  return endpoint.data;
+};
 export const getAllCampaignsFromDB = async () => {
   let endpoint = await axios.get(`${ServerAddress}/getAllCampaignsFromDB`);
   return endpoint;

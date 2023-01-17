@@ -101,8 +101,14 @@ namespace ProjectB.Entities
             return Orders = ds_Reports.ReadAllOrdersFromDB();
         }
 
-
-
+        public DataTable userinfo = new DataTable();
+        public DataTable ShowUserInfoFromDB(string email ,string role)
+        {
+            userinfo.Clear();
+            DS_Reports ds_Reports = new DS_Reports();
+            return userinfo = ds_Reports.ReadUserInfoFromDB(email, role);
+        }
+        
 
 
 

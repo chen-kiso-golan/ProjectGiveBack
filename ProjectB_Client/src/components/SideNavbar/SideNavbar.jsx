@@ -5,9 +5,11 @@ import "./SideNavbar.css";
 import { RoleStatus } from "../../context/roleStatus";
 import Profile from "../../Auth0/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import { UserDataContext } from "./../../context/UserData";
 
 function SideNavbar(props) {
   const { role, setRole } = useContext(RoleStatus);
+  const { UserInfo } = useContext(UserDataContext);
   const { isAuthenticated } = useAuth0();
   console.log(role);
   //     if (role === "Owner" || role === "NPO" || role === "BC" || role === "SA")
@@ -127,6 +129,10 @@ function SideNavbar(props) {
         )}
         {role === "SA" && (
           <>
+            <li>
+              <label className="label--sidenavbar">Your Money: {UserInfo.Money}$</label>
+            </li>
+            <br />
             <li>
               <Link to="/AllProductsReportPage">
                 <KeyboardArrowRightIcon />

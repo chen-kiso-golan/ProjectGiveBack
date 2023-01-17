@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AllCampaignsCardsStyle.css";
 import { useState, useEffect } from "react";
 import { getAllCampaignsFromDB } from "../../services/services";
+import { TwitterShareButton } from "react-twitter-embed";
+import { RoleStatus } from "./../../context/roleStatus";
 
 export const SingleCampaignCard = (props) => {
+  const { role } = useContext(RoleStatus);
   const [AllCampaigns, setAllCampaigns] = useState([]);
 
   const getDB = async () => {
@@ -13,7 +16,7 @@ export const SingleCampaignCard = (props) => {
 
   useEffect(() => {
     getDB();
-  }, []);
+  }, [role]);
 
   return (
     <>
@@ -29,6 +32,16 @@ export const SingleCampaignCard = (props) => {
                     <h5 className="card-title">{Name}</h5>
                     <p className="card-text">{Email}</p>
                     <p className="card-text">{Link_URL}</p>
+                    {/* {role === "SA" && (
+                      <div className="card--button">
+                        <TwitterShareButton
+                          url={Link_URL}
+                          options={{
+                            text: "#SocialPro " + Hashtag + " Campaign for " + Name,
+                          }}
+                        />
+                      </div>
+                    )} */}
                   </div>
                   <div className="card-footer">
                     <small className="text-muted">{Hashtag}</small>
