@@ -44,3 +44,10 @@ Order_Time datetime, Is_Sent bit)
 create table Contact_Us(Code int primary key identity, 
 Name nvarchar(max), Message nvarchar(max), Phone nvarchar(max), 
 Email nvarchar(max),  date datetime)
+
+----------------------------------------------------------------------------------------------------------
+ALTER TABLE Social_Activist
+ADD Twitter_Name NVARCHAR(MAX) NULL;
+
+ALTER TABLE Tweets
+ADD Tweet_id NVARCHAR(MAX) NULL;

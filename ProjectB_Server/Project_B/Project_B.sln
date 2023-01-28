@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectB.Entities", "Projec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectB.Model", "ProjectB.Model\ProjectB.Model.csproj", "{05A8C745-1D51-4E6D-ACBA-C7BAC8FF2FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectB.MicroServer", "ProjectB.MicroServer\ProjectB.MicroServer.csproj", "{9791CC26-47EB-4DEB-8BC9-3C2BADF6E60F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectB.MicroServer", "ProjectB.MicroServer\ProjectB.MicroServer.csproj", "{9791CC26-47EB-4DEB-8BC9-3C2BADF6E60F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

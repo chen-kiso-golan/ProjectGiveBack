@@ -15,6 +15,7 @@ namespace ProjectB.Model
         public DateTime Tweet_Time { get; set; }
         public int SA_code { get; set; }
         public int Campaign_code { get; set; }
+        public string Tweet_id { get; set; }
        
     }
 }

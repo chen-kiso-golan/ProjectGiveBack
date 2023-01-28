@@ -17,6 +17,7 @@ namespace ProjectB.Model
         public string PhoneNumber { get; set; }
         public decimal Money { get; set; }
         public string Image { get; set; }
+        public string Twitter_Name { get; set; }    
     }
 }
 
