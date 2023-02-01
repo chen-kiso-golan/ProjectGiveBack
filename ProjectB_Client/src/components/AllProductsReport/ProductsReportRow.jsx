@@ -3,12 +3,15 @@ import { getAllProductsFromDB, getBcCodeByEmailFromDB } from "../../services/ser
 import { addOrderToDB } from "../../services/services";
 import { RoleStatus } from "../../context/roleStatus";
 import { useAuth0 } from "@auth0/auth0-react";
+import { getCampaignNameAndHashtagByCodeFromDB, MakeA_TweetInTwitter } from "../../services/twitterServices";
+import { UserDataContext } from "./../../context/UserData";
 
 export const ProductsReportRow = (props) => {
   const [AllProducts, setAllProducts] = useState([]);
   const [userBCcode, setuserBCcode] = useState([]);
-  const { role, setRole } = useContext(RoleStatus);
+  const { role } = useContext(RoleStatus);
   const { user } = useAuth0();
+  const { UserInfo } = useContext(UserDataContext);
 
   const getDB = async () => {
     let result = await getAllProductsFromDB();
@@ -23,6 +26,14 @@ export const ProductsReportRow = (props) => {
 
   const handelDonationData = async (Product) => {
     await addOrderToDB(Product);
+    let NameAndHashtag = await getCampaignNameAndHashtagByCodeFromDB(Product.Campaign_code);
+    const InfoForTweet = {
+      Twitter_Name: UserInfo.Twitter_Name,
+      ProductName: Product.Name,
+      CampaignName: NameAndHashtag[0].Name,
+      CampaignHashtag: NameAndHashtag[0].Hashtag,
+    };
+    await MakeA_TweetInTwitter(InfoForTweet);
   };
 
   return (

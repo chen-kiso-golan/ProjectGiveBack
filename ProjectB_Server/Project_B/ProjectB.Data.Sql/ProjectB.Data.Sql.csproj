@@ -44,6 +44,7 @@
     <Compile Include="DS_Changes.cs" />
     <Compile Include="DS_Forms.cs" />
     <Compile Include="DS_Reports.cs" />
+    <Compile Include="DS_Twitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

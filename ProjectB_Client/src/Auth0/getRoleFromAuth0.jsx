@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { RoleStatus } from "./../context/roleStatus";
 import { getRolesData, getUserInfoData } from "../../src/services/services";
 import { UserDataContext } from "./../context/UserData";
+import { getAllTweetsToUpdateDB } from "./../services/twitterServices";
 
 export const GetRoleFromAuth0 = (props) => {
   const { role, setRole } = useContext(RoleStatus);
@@ -34,6 +35,7 @@ export const GetRoleFromAuth0 = (props) => {
 
   useEffect(() => {
     handleUserInfo();
+    getAllTweetsToUpdateDB();
   }, [role]);
 
   // return <div>{role}</div>;

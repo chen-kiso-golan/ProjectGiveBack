@@ -46,6 +46,7 @@
     <Compile Include="MainManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportsManager.cs" />
+    <Compile Include="TwitterManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectB.Dal\ProjectB.Dal.csproj">
