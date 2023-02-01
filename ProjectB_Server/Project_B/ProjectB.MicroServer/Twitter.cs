@@ -87,6 +87,8 @@ namespace ProjectB.MicroServer
                     dataD = JsonConvert.DeserializeObject(await new StreamReader(req.Body).ReadToEndAsync());
                     var tweet = await userClient.Tweets.PublishTweetAsync("@" + dataD.Twitter_Name + " just donated " + dataD.ProductName + " to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #ProjectGiveBack and " + dataD.CampaignHashtag + " for more info!");
                     Console.WriteLine("You published the tweet : " + tweet);
+                    //dataD = JsonConvert.SerializeObject(MainManager.Instance.TwitterManager.ShowAllTwitsFromDB());
+
 
                     break;
 

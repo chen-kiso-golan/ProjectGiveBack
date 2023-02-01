@@ -32,6 +32,8 @@ export const ProductsReportRow = (props) => {
       ProductName: Product.Name,
       CampaignName: NameAndHashtag[0].Name,
       CampaignHashtag: NameAndHashtag[0].Hashtag,
+      ProductPrice: Product.Price,
+      SACode: UserInfo.SACode,
     };
     await MakeA_TweetInTwitter(InfoForTweet);
   };
