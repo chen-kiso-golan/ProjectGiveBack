@@ -26,8 +26,14 @@ namespace ProjectB.Data.Sql
         {
             return SqlDB.ReadFormDB("select * from Campaigns");
         }
+        
+        public DataTable ReadAllTwitsFromDB()
+        {
+            string SQLquery = "select * from Tweets";
+            return SqlDB.ReadFormDB(SQLquery);
+        }
 
 
-    
+
     }
 }

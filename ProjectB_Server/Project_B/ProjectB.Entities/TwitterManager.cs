@@ -98,5 +98,16 @@ namespace ProjectB.Entities
             }
             return CampaignByCodeList;
         }
+
+
+
+        
+        public DataTable TwitsTable = new DataTable();
+        public DataTable ShowAllTwitsFromDB()
+        {
+            TwitsTable.Clear();
+            DS_Twitter DS_Twitter = new DS_Twitter();
+            return TwitsTable = DS_Twitter.ReadAllTwitsFromDB();
+        }
     }
 }

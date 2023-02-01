@@ -55,7 +55,7 @@ export const ProductsReportRow = (props) => {
                 </td>
                 {role === "SA" && (
                   <td>
-                    <button type="button" class="btn btn-primary" onClick={() => handelDonationData(Product)}>
+                    <button type="button" className="btn btn-primary" onClick={() => handelDonationData(Product)}>
                       Buy & Donate
                     </button>
                   </td>

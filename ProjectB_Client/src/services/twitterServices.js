@@ -21,3 +21,8 @@ export const getAllTweetsToUpdateDB = async () => {
     return null;
   }
 };
+
+export const getAllTwitsFromDB = async () => {
+  let endpoint = await axios.get(`${TwitterAddress}/getAllTwitsFromDB`);
+  return endpoint;
+};

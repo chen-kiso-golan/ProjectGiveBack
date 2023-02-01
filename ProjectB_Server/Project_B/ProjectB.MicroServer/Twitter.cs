@@ -85,7 +85,7 @@ namespace ProjectB.MicroServer
 
                 case "post-MakeATweet":
                     dataD = JsonConvert.DeserializeObject(await new StreamReader(req.Body).ReadToEndAsync());
-                    var tweet = await userClient.Tweets.PublishTweetAsync("#" + dataD.Twitter_Name + " just donated " + dataD.ProductName + " to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #ProjectGiveBack and " + dataD.CampaignHashtag + " for more info!");
+                    var tweet = await userClient.Tweets.PublishTweetAsync("@" + dataD.Twitter_Name + " just donated " + dataD.ProductName + " to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #ProjectGiveBack and " + dataD.CampaignHashtag + " for more info!");
                     Console.WriteLine("You published the tweet : " + tweet);
 
                     break;
@@ -94,6 +94,11 @@ namespace ProjectB.MicroServer
 
                     List<CampaignsModel> CampaignsList2 = MainManager.Instance.TwitterManager.ShowCampaignNameAndHashtagByCodeFromDB(value);
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(CampaignsList2);
+                    return new OkObjectResult(responseMessage);
+
+                    
+                case "getAllTwitsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.TwitterManager.ShowAllTwitsFromDB());
                     return new OkObjectResult(responseMessage);
 
                 default:
