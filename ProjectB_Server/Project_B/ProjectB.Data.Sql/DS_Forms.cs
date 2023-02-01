@@ -18,7 +18,7 @@ namespace ProjectB.Data.Sql
 
         public void EnterActivistToDB(SocialActivistModel form)
         {
-            string SQLquery = "insert into Social_Activist values ('" + form.Name + "','" + form.Email + "','" + form.Address + "','" + form.PhoneNumber + "',0,'" + form.Image + "')";
+            string SQLquery = "insert into Social_Activist values ('" + form.Name + "','" + form.Email + "','" + form.Address + "','" + form.PhoneNumber + "',0,'" + form.Image + "','" + form.Twitter_Name + "')";
             SqlDB.WriteToDB(SQLquery);
         }
 

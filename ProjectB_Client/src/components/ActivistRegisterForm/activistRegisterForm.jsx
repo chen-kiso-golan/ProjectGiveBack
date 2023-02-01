@@ -11,6 +11,7 @@ export const ActivistRegisterForm = () => {
     Address: "",
     PhoneNumber: "",
     Image: "",
+    Twitter_Name: "",
   });
 
   function handleChange(event) {
@@ -52,7 +53,7 @@ export const ActivistRegisterForm = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (formData.Name === "" || formData.Email === "" || formData.Address === "" || formData.PhoneNumber === "") {
+    if (formData.Name === "" || formData.Email === "" || formData.Address === "" || formData.PhoneNumber === "" || formData.Twitter_Name === "") {
       console.log("Passwords do not match or some filed is missing");
       notify_error();
       return;
@@ -67,6 +68,7 @@ export const ActivistRegisterForm = () => {
       Address: "",
       PhoneNumber: "",
       Image: "",
+      Twitter_Name: "",
     });
   }
 
@@ -78,6 +80,12 @@ export const ActivistRegisterForm = () => {
             Name
           </label>
           <input type="text" placeholder="Enter your Name" className="form-control" name="Name" onChange={handleChange} value={formData.Name} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Twitter_Name" className="frm-lbl">
+            Twitter Name (no spaces allowed)
+          </label>
+          <input type="text" placeholder="Enter your Twitter Name" className="form-control" name="Twitter_Name" onChange={handleChange} value={formData.Twitter_Name} />
         </div>
         <div className="form-group">
           <label htmlFor="Image" className="frm-lbl">
