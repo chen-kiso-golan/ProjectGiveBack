@@ -32,12 +32,17 @@ export const SingleCampaignCard = (props) => {
                     <h5 className="card-title">{Name}</h5>
                     <p className="card-text">{Email}</p>
                     <p className="card-text">{Link_URL}</p>
+
+                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet">
+                      Tweet about us!
+                    </a>
+
                     {/* {role === "SA" && (
                       <div className="card--button">
                         <TwitterShareButton
-                          url={Link_URL}
+                          url={Campaign.Link_URL}
                           options={{
-                            text: "#SocialPro " + Hashtag + " Campaign for " + Name,
+                            text: "#ProjectGiveBack " + Hashtag + " Campaign for " + Name,
                           }}
                         />
                       </div>

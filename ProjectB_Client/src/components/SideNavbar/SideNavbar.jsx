@@ -19,6 +19,7 @@ function SideNavbar(props) {
       <ul className="sidenavbar--menu">
         <li>welcome, here is your {role} account menu:</li>
         <br />
+
         <li>
           <Profile />
         </li>

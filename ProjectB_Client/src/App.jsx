@@ -9,6 +9,7 @@ import { RoleStatus } from "./context/roleStatus";
 import { GetRoleFromAuth0 } from "./Auth0/getRoleFromAuth0";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserDataContext } from "./context/UserData";
+import { TwitterShareButton } from "react-twitter-embed";
 
 function App() {
   const [role, setRole] = useState("");
