@@ -26,7 +26,6 @@ namespace Utilities
         public void LogException(string message, Exception ex)
         {
             Console.WriteLine("[EXCEPTION][" + DateTime.Now + "] " + ex.Message);
-            Console.WriteLine("Stack Trace: " + ex.StackTrace);
         }
 
         public void LogCheckHouseKeeping()

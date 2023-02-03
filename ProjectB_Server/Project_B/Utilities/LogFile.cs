@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Utilities
         }
 
         private static int count = 0;
-        private static int MaxFileSize = 5 * 1024 * 1024;
+        private static int MaxFileSize = 1024*1024*5;
 
         public void Init() 
         {
