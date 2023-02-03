@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjectB.Entities\ProjectB.Entities.csproj" />
     <ProjectReference Include="..\ProjectB.Model\ProjectB.Model.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
