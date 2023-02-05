@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace ProjectB.Entities
 {
-    public class MainManager: BasePromotionSystem
+    public class MainManager 
     {
+
         public FormsManager FormsManager;
         public ReportsManager ReportsManager;
         public ChangesManager ChangesManager;
@@ -23,6 +25,7 @@ namespace ProjectB.Entities
 
         private void AppDomainInitializer()
         {
+            //LogManager = new LogManager(providerType File);
             FormsManager = new FormsManager();
             ReportsManager = new ReportsManager();
             ChangesManager = new ChangesManager();

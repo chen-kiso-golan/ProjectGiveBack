@@ -62,9 +62,9 @@ namespace Utilities
                 string sqlQuery = $"insert into {LogTableName} values('Exception', getdate(),'{message}', '{ex.Message}')";
                 SqlQuery.WriteToDB(sqlQuery);
             }
-            catch (Exception ex)
+            catch (Exception exc)
             {
-                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+                LogException($@"An Exception occurred while initializing the {exc.StackTrace} : {exc.Message}", exc);
             }
 
         }
