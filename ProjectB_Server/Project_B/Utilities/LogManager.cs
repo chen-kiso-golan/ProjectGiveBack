@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Utilities
@@ -48,72 +49,110 @@ namespace Utilities
         //thread for dequeue
         private void DequeueMyLog()
         {
-            bool stop = false;
-
-            Task.Run(() =>
+            try
             {
-                while (!stop)
-                {
-                    if (LogManager.LogQueue.Count > 0)
-                    {
-                        SingleLogData item = LogManager.LogQueue.Dequeue();
-                        if (item.LogType == "Event")
-                        {
-                            MyLog.LogEvent(item.msg);
-                        }
-                        else if (item.LogType == "Error")
-                        {
-                            MyLog.LogError(item.msg);
-                        }
-                        else if (item.LogType == "Exception")
-                        {
-                            MyLog.LogException(item.msg, item.exce);
-                        }
-                    }
-                   Thread.Sleep(1000);
-                }
 
-            });
+                bool stop = false;
+
+                Task.Run(() =>
+                {
+                    while (!stop)
+                    {
+                        if (LogManager.LogQueue.Count > 0)
+                        {
+                            SingleLogData item = LogManager.LogQueue.Dequeue();
+                            if (item.LogType == "Event")
+                            {
+                                MyLog.LogEvent(item.msg);
+                            }
+                            else if (item.LogType == "Error")
+                            {
+                                MyLog.LogError(item.msg);
+                            }
+                            else if (item.LogType == "Exception")
+                            {
+                                MyLog.LogException(item.msg, item.exce);
+                            }
+                        }
+                        Thread.Sleep(1000);
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
         private void CheckHouseKeeping()
         {
-            bool stop = false;
-
-            Task.Run(() =>
+            try
             {
-                while (!stop)
-                {
-                    MyLog.LogCheckHouseKeeping();
-                    Thread.Sleep(1000*60*60); //MiliSecond * Second * minute
-                }
 
-            });
+                bool stop = false;
+
+                Task.Run(() =>
+                {
+                    while (!stop)
+                    {
+                        MyLog.LogCheckHouseKeeping();
+                        Thread.Sleep(1000 * 60 * 60); //MiliSecond * Second * minute
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
+
         public static void LogEvent(string msg)
         {
-            if (MyLog != null)
+            try
             {
-                SingleLogData item = new SingleLogData("Event", msg);
-                LogManager.LogQueue.Enqueue(item);
+                if (MyLog != null)
+                {
+                    SingleLogData item = new SingleLogData("Event", msg);
+                    LogManager.LogQueue.Enqueue(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
 
         public static void LogError(string msg)
         {
-            if (MyLog != null)
+            try
             {
-                SingleLogData item = new SingleLogData("Error", msg);
-                LogManager.LogQueue.Enqueue(item);
+                if (MyLog != null)
+                {
+                    SingleLogData item = new SingleLogData("Error", msg);
+                    LogManager.LogQueue.Enqueue(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
 
         public static void LogException(string msg, Exception exce)
         {
-            if (MyLog != null)
+            try
             {
-                SingleLogData item = new SingleLogData("Error", msg, exce);
-                LogManager.LogQueue.Enqueue(item);
+                if (MyLog != null)
+                {
+                    SingleLogData item = new SingleLogData("Error", msg, exce);
+                    LogManager.LogQueue.Enqueue(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
 

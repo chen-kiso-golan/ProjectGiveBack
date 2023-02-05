@@ -41,6 +41,7 @@ namespace Utilities
                 //Handle the exception here, such as logging it or displaying an error message
             }
 
+
             return retHash;
         }
         public static int WriteToDB(string SqlQuery)

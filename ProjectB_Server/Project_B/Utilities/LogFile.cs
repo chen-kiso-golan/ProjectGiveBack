@@ -35,10 +35,9 @@ namespace Utilities
                 }
                 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogException($"there was a problem with LogEvent function: {e.Message}", e);
-                throw;
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
         public void LogError(string msg)
@@ -51,10 +50,9 @@ namespace Utilities
                 }
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogException($"there was a problem with LogError function: {e.Message}", e);
-                throw;
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
         public void LogException(string msg, Exception exce)
@@ -68,10 +66,9 @@ namespace Utilities
                 }
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogError($"there was a problem with LogException function: {e.Message}");
-                throw;
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
         public void LogCheckHouseKeeping()
@@ -85,11 +82,9 @@ namespace Utilities
                     Init();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogException($"there was a problem with 'CheckFileSize' function: {e.Message}", e);
-                Console.WriteLine($"there was a problem with 'CheckFileSize' function: {e.Message}");
-                throw;
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
 
         }

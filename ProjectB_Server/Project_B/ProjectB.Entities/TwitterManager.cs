@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectB.Entities
 {
-    public class TwitterManager
+    public class TwitterManager: BaseEntity
     {
         private DataTable getSocialActivist = new DataTable();
 

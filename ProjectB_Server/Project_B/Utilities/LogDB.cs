@@ -37,7 +37,7 @@ namespace Utilities
             }
             catch (Exception ex)
             {
-                LogException($@"An Exception occurred while initializing the LogEvent function\LogDB class\Utilities namespace : {ex.Message}", ex);
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
             
         }
@@ -45,42 +45,42 @@ namespace Utilities
         {
             try
             {
-
+                string sqlQuery = $"insert into {LogTableName} values('Error', getdate(),'{message}',null)";
+                SqlQuery.WriteToDB(sqlQuery);
             }
             catch (Exception ex)
             {
-                LogException($"An Exception occurred while initializing the Init function in the LogDB class: {ex.Message}", ex);
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
-            string sqlQuery = $"insert into {LogTableName} values('Error', getdate(),'{message}',null)";
-            SqlQuery.WriteToDB(sqlQuery);
+
         }
 
         public void LogException(string message, Exception ex)
         {
             try
             {
-
+                string sqlQuery = $"insert into {LogTableName} values('Exception', getdate(),'{message}', '{ex.Message}')";
+                SqlQuery.WriteToDB(sqlQuery);
             }
             catch (Exception ex)
             {
-                LogException($"An Exception occurred while initializing the Init function in the LogDB class: {ex.Message}", ex);
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
-            string sqlQuery = $"insert into {LogTableName} values('Exception', getdate(),'{message}', '{ex.Message}')";
-            SqlQuery.WriteToDB(sqlQuery);
+
         }
 
         public void LogCheckHouseKeeping()
         {
             try
             {
-
+                string sqlQuery = $"DELETE FROM {LogTableName}\r\nWHERE Date < DATEADD(month, -3, GETDATE());";
+                SqlQuery.WriteToDB(sqlQuery);
             }
             catch (Exception ex)
             {
-                LogException($"An Exception occurred while initializing the Init function in the LogDB class: {ex.Message}", ex);
+                LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
-            string sqlQuery = $"DELETE FROM {LogTableName}\r\nWHERE Date < DATEADD(month, -3, GETDATE());";
-            SqlQuery.WriteToDB(sqlQuery);
+
         }
     }
 }
