@@ -50,7 +50,7 @@ namespace ProjectB.MicroServer
 
                 case "get-UserInfoData":
 
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowUserInfoFromDB(Value, Value2));
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.RegisterApplicationsManager.ShowUserInfoFromDB(Value, Value2));
                     return new OkObjectResult(responseMessage);
 
 
@@ -118,64 +118,64 @@ namespace ProjectB.MicroServer
 
                 //-----------------------------------------------NonProfitOrganization
                 case "getAllNpoFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.NonProfitOrganizationManager.ShowAllNpoFromDB());
                     return new OkObjectResult(responseMessage);
 
                 case "getAllNpoEmailsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoEmailsFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.NonProfitOrganizationManager.ShowAllNpoEmailsFromDB());
                     return new OkObjectResult(responseMessage);
 
                 case "NpoPost":
                     NonProfitOrganizationModel NpoData = new NonProfitOrganizationModel();
                     NpoData = System.Text.Json.JsonSerializer.Deserialize<NonProfitOrganizationModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendNpoToDB(NpoData);
+                    MainManager.Instance.NonProfitOrganizationManager.SendNpoToDB(NpoData);
                     break;
 
                 case "NpoCodeByEmailPost":
                     //string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
-                    MainManager.Instance.FormsManager.SendNpoCodeByEmailToDB(Value);
+                    MainManager.Instance.NonProfitOrganizationManager.SendNpoCodeByEmailToDB(Value);
                     break;
 
 
                 //-----------------------------------------------Orders
                 case "getAllOrdersFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllOrdersFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.OrdersManager.ShowAllOrdersFromDB());
                     return new OkObjectResult(responseMessage);
 
                 case "OrderPost":
                     ProductsModel OrderData = new ProductsModel();
                     OrderData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendOrderToDB(OrderData);
+                    MainManager.Instance.OrdersManager.SendOrderToDB(OrderData);
                     break;
 
                 case "UpdateOrderIsSent":
                     requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                     OrdersModel Order = System.Text.Json.JsonSerializer.Deserialize<OrdersModel>(requestBody);
-                    MainManager.Instance.ChangesManager.UpdateOrderIsSent(Order);
+                    MainManager.Instance.OrdersManager.UpdateOrderIsSent(Order);
                     break;
 
 
                 //-----------------------------------------------Products
                 case "getAllProductsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ProductsManager.ShowAllProductsFromDB());
                     return new OkObjectResult(responseMessage);
 
                 case "ProductPost":
                     ProductsModel ProductsData = new ProductsModel();
                     ProductsData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendProductToDB(ProductsData);
+                    MainManager.Instance.ProductsManager.SendProductToDB(ProductsData);
                     break;
 
 
                 //-----------------------------------------------SocialActivist
                 case "getAllActivistsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllActivistsFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.SocialActivistManager.ShowAllActivistsFromDB());
                     return new OkObjectResult(responseMessage);
 
                 case "ActivistPost":
                     SocialActivistModel ActivistData = new SocialActivistModel();
                     ActivistData = System.Text.Json.JsonSerializer.Deserialize<SocialActivistModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendActivistToDB(ActivistData);
+                    MainManager.Instance.SocialActivistManager.SendActivistToDB(ActivistData);
                     break;
 
 

@@ -20,16 +20,16 @@ namespace ProjectB.Entities
         //SocialActivist
         //Tweets
 
+        public TwitterManager TwitterManager;
         public BuisnessCompaniesManager BuisnessCompaniesManager;
         public CampaignsManager CampaignsManager;
         public ContactUsManager ContactUsManager;
         public NonProfitOrganizationManager NonProfitOrganizationManager;
+        public OrdersManager OrdersManager;
+        public ProductsManager ProductsManager;
+        public SocialActivistManager SocialActivistManager;
+        public RegisterApplicationsManager RegisterApplicationsManager;
 
-
-        public FormsManager FormsManager;
-        public ReportsManager ReportsManager;
-        public ChangesManager ChangesManager;
-        public TwitterManager TwitterManager;
         private MainManager()
         {
             AppDomainInitializer();
@@ -41,16 +41,16 @@ namespace ProjectB.Entities
         private void AppDomainInitializer()
         {
             //LogManager = new LogManager(providerType File);
-            FormsManager = new FormsManager();
-            ReportsManager = new ReportsManager();
-            ChangesManager = new ChangesManager();
-
-
+           
             TwitterManager = new TwitterManager();
             BuisnessCompaniesManager = new BuisnessCompaniesManager();
             CampaignsManager = new CampaignsManager();
             ContactUsManager = new ContactUsManager();
             NonProfitOrganizationManager = new NonProfitOrganizationManager();
+            OrdersManager = new OrdersManager();
+            ProductsManager = new ProductsManager();
+            SocialActivistManager = new SocialActivistManager();
+            RegisterApplicationsManager = new RegisterApplicationsManager();
         }
     }
 }
