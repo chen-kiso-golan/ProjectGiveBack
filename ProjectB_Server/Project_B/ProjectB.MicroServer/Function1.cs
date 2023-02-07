@@ -30,7 +30,7 @@ namespace ProjectB.MicroServer
             string responseMessage;
             switch (action)
             {
-                //GET FUNCTIONS
+                //---------------------------------------RegisterApplications
                 case "get-role":
 
                     var rolesURL = $"https://dev-bexlompeu36s5051.us.auth0.com/api/v2/users/{Value}/roles";
@@ -53,129 +53,134 @@ namespace ProjectB.MicroServer
                     responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowUserInfoFromDB(Value, Value2));
                     return new OkObjectResult(responseMessage);
 
-                case "getAllCampaignsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignsFromDB());
-                    return new OkObjectResult(responseMessage);
-                    
-                case "getAllProductsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
-                    return new OkObjectResult(responseMessage);
 
-                case "getAllActivistsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllActivistsFromDB());
-                    return new OkObjectResult(responseMessage);
-
+                //-----------------------------------------------BuisnessCompanies
                 case "getAllCompaniesFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCompaniesFromDB());
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.BuisnessCompaniesManager.ShowAllCompaniesFromDB());
                     return new OkObjectResult(responseMessage);
 
-                case "getAllNpoFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoFromDB());
-                    return new OkObjectResult(responseMessage);
-                    
-                case "getAllNpoEmailsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoEmailsFromDB());
-                    return new OkObjectResult(responseMessage);
-                    
                 case "getAllCompaniesNamesFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCompaniesNamesFromDB(Value));
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.BuisnessCompaniesManager.ShowAllCompaniesNamesFromDB(Value));
                     return new OkObjectResult(responseMessage);
-                    
+
                 case "getBcCodeByNameFromDB":
-                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.ReportsManager.ShowBcCodeByNameFromDB(Value));
+                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.BuisnessCompaniesManager.ShowBcCodeByNameFromDB(Value));
                     return new OkObjectResult(responseMessage);
-                    
+
                 case "getBcCodeByEmailFromDB":
-                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.ReportsManager.ShowBcCodeByEmailFromDB(Value));
+                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.BuisnessCompaniesManager.ShowBcCodeByEmailFromDB(Value));
                     return new OkObjectResult(responseMessage);
 
-
-                case "getAllCampaignNamesFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllCampaignNamesFromDB());
-                    return new OkObjectResult(responseMessage);
-                    
-                case "getCampaignCodeByNameFromDB":
-                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.ReportsManager.ShowCampaignCodeByNameFromDB(Value));
-                    return new OkObjectResult(responseMessage);
-                    
-                case "getAllOrdersFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllOrdersFromDB());
-                    return new OkObjectResult(responseMessage);
-
-
-               
-
-
-                //POST FUNCTIONS
-                case "ContactUsPost":
-                    ContactUsModel FormData = new ContactUsModel();
-                    FormData = System.Text.Json.JsonSerializer.Deserialize<ContactUsModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendContactUsToDB(FormData);
-                    break;
-
-                case "ActivistPost":
-                    SocialActivistModel ActivistData = new SocialActivistModel();
-                    ActivistData = System.Text.Json.JsonSerializer.Deserialize<SocialActivistModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendActivistToDB(ActivistData);
-                    break;
-                    
                 case "CompanyPost":
                     BuisnessCompaniesModel CompanyData = new BuisnessCompaniesModel();
                     CompanyData = System.Text.Json.JsonSerializer.Deserialize<BuisnessCompaniesModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendCompanyToDB(CompanyData);
+                    MainManager.Instance.BuisnessCompaniesManager.SendCompanyToDB(CompanyData);
                     break;
-                    
+
+
+                //-----------------------------------------------Campaigns
+                case "getAllCampaignsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.CampaignsManager.ShowAllCampaignsFromDB());
+                    return new OkObjectResult(responseMessage);
+
+                case "getAllCampaignNamesFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.CampaignsManager.ShowAllCampaignNamesFromDB());
+                    return new OkObjectResult(responseMessage);
+
+                case "getCampaignCodeByNameFromDB":
+                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.CampaignsManager.ShowCampaignCodeByNameFromDB(Value));
+                    return new OkObjectResult(responseMessage);
+
+                case "CampaignPost":
+                    CampaignsModel CampaignsData = new CampaignsModel();
+                    CampaignsData = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>(req.Body);
+                    MainManager.Instance.CampaignsManager.SendCampaignToDB(CampaignsData);
+                    break;
+
+                case "UpdateCampaign":
+                    requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                    CampaignsModel Campaign = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>(requestBody);
+                    MainManager.Instance.CampaignsManager.UpdateCampaign(Campaign);
+                    break;
+
+                case "deleteCampaign":
+                    MainManager.Instance.CampaignsManager.DeleteCampaign(Value);
+                    break;
+
+
+                //-----------------------------------------------ContactUs
+                case "ContactUsPost":
+                    ContactUsModel FormData = new ContactUsModel();
+                    FormData = System.Text.Json.JsonSerializer.Deserialize<ContactUsModel>(req.Body);
+                    MainManager.Instance.ContactUsManager.SendContactUsToDB(FormData);
+                    break;
+
+
+                //-----------------------------------------------NonProfitOrganization
+                case "getAllNpoFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoFromDB());
+                    return new OkObjectResult(responseMessage);
+
+                case "getAllNpoEmailsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllNpoEmailsFromDB());
+                    return new OkObjectResult(responseMessage);
+
                 case "NpoPost":
                     NonProfitOrganizationModel NpoData = new NonProfitOrganizationModel();
                     NpoData = System.Text.Json.JsonSerializer.Deserialize<NonProfitOrganizationModel>(req.Body);
                     MainManager.Instance.FormsManager.SendNpoToDB(NpoData);
-                    break;
-                    
-                case "CampaignPost":
-                    CampaignsModel CampaignsData = new CampaignsModel();
-                    CampaignsData = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendCampaignToDB(CampaignsData);
-                    break;
-                    
-                case "ProductPost":
-                    ProductsModel ProductsData = new ProductsModel();
-                    ProductsData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
-                    MainManager.Instance.FormsManager.SendProductToDB(ProductsData);
                     break;
 
                 case "NpoCodeByEmailPost":
                     //string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
                     MainManager.Instance.FormsManager.SendNpoCodeByEmailToDB(Value);
                     break;
-                    
+
+
+                //-----------------------------------------------Orders
+                case "getAllOrdersFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllOrdersFromDB());
+                    return new OkObjectResult(responseMessage);
+
                 case "OrderPost":
                     ProductsModel OrderData = new ProductsModel();
                     OrderData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
                     MainManager.Instance.FormsManager.SendOrderToDB(OrderData);
                     break;
 
-
-
-
-                //UPDATE FUNCTIONS
-                case "UpdateCampaign":
-                    requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                    CampaignsModel Campaign = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>(requestBody);
-                    MainManager.Instance.ChangesManager.UpdateCampaign(Campaign);
-                    break;
-                    
-                 case "UpdateOrderIsSent":
+                case "UpdateOrderIsSent":
                     requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                     OrdersModel Order = System.Text.Json.JsonSerializer.Deserialize<OrdersModel>(requestBody);
                     MainManager.Instance.ChangesManager.UpdateOrderIsSent(Order);
                     break;
 
 
+                //-----------------------------------------------Products
+                case "getAllProductsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllProductsFromDB());
+                    return new OkObjectResult(responseMessage);
 
-                //DELETE FUNCTIONS
-                case "deleteCampaign":
-                    MainManager.Instance.ChangesManager.DeleteCampaign(Value);
+                case "ProductPost":
+                    ProductsModel ProductsData = new ProductsModel();
+                    ProductsData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
+                    MainManager.Instance.FormsManager.SendProductToDB(ProductsData);
                     break;
+
+
+                //-----------------------------------------------SocialActivist
+                case "getAllActivistsFromDB":
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ReportsManager.ShowAllActivistsFromDB());
+                    return new OkObjectResult(responseMessage);
+
+                case "ActivistPost":
+                    SocialActivistModel ActivistData = new SocialActivistModel();
+                    ActivistData = System.Text.Json.JsonSerializer.Deserialize<SocialActivistModel>(req.Body);
+                    MainManager.Instance.FormsManager.SendActivistToDB(ActivistData);
+                    break;
+
+
+
+
 
                 default:
                     break;

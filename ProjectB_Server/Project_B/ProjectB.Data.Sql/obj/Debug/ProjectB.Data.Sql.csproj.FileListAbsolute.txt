@@ -20,3 +20,5 @@ C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Data.Sql\obj\Debug\P
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Data.Sql\obj\Debug\ProjectB.Data.Sql.csproj.CopyComplete
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Data.Sql\obj\Debug\ProjectB.Data.Sql.dll
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Data.Sql\obj\Debug\ProjectB.Data.Sql.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Data.Sql\bin\Debug\Utilities.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Data.Sql\bin\Debug\Utilities.pdb

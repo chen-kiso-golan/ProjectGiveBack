@@ -10,7 +10,19 @@ namespace ProjectB.Entities
 {
     public class MainManager 
     {
+        //BuisnessCompanies
+        //Campaigns
+        //ContactUs
+        //NonProfitOrganization
+        //Orders
+        //Products
+        //RegisterApplications
+        //SocialActivist
+        //Tweets
 
+        public BuisnessCompaniesManager BuisnessCompaniesManager;
+        public CampaignsManager CampaignsManager;
+        public ContactUsManager ContactUsManager;
         public FormsManager FormsManager;
         public ReportsManager ReportsManager;
         public ChangesManager ChangesManager;
@@ -30,6 +42,9 @@ namespace ProjectB.Entities
             ReportsManager = new ReportsManager();
             ChangesManager = new ChangesManager();
             TwitterManager = new TwitterManager();
+            BuisnessCompaniesManager = new BuisnessCompaniesManager();
+            CampaignsManager = new CampaignsManager();
+            ContactUsManager = new ContactUsManager();
         }
     }
 }

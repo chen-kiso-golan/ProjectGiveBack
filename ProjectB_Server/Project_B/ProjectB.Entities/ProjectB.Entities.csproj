@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="BasePromotionSystem.cs" />
     <Compile Include="ChangesManager.cs" />
     <Compile Include="FormsManager.cs" />
     <Compile Include="MainManager.cs" />
