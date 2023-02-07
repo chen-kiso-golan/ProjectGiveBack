@@ -23,6 +23,9 @@ namespace ProjectB.Entities
         public BuisnessCompaniesManager BuisnessCompaniesManager;
         public CampaignsManager CampaignsManager;
         public ContactUsManager ContactUsManager;
+        public NonProfitOrganizationManager NonProfitOrganizationManager;
+
+
         public FormsManager FormsManager;
         public ReportsManager ReportsManager;
         public ChangesManager ChangesManager;
@@ -41,10 +44,13 @@ namespace ProjectB.Entities
             FormsManager = new FormsManager();
             ReportsManager = new ReportsManager();
             ChangesManager = new ChangesManager();
+
+
             TwitterManager = new TwitterManager();
             BuisnessCompaniesManager = new BuisnessCompaniesManager();
             CampaignsManager = new CampaignsManager();
             ContactUsManager = new ContactUsManager();
+            NonProfitOrganizationManager = new NonProfitOrganizationManager();
         }
     }
 }
