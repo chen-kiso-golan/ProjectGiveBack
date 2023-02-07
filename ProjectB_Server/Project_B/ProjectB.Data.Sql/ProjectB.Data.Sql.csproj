@@ -41,9 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DS_Changes.cs" />
-    <Compile Include="DS_Forms.cs" />
-    <Compile Include="DS_Reports.cs" />
+    <Compile Include="DS_BuisnessCompanies.cs" />
+    <Compile Include="DS_Campaigns.cs" />
+    <Compile Include="DS_ContactUs.cs" />
+    <Compile Include="DS_NonProfitOrganization.cs" />
+    <Compile Include="DS_Orders.cs" />
+    <Compile Include="DS_Products.cs" />
+    <Compile Include="DS_RegisterApplications.cs" />
+    <Compile Include="DS_SocialActivist.cs" />
     <Compile Include="DS_Twitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

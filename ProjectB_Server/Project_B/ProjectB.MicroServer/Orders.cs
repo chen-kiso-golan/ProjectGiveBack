@@ -16,7 +16,7 @@ namespace ProjectB.MicroServer
     {
         [FunctionName("Orders")]
         public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "delete", Route = "ContactUs/{action}/{Value?}/{Value2?}")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "delete", Route = "Orders/{action}/{Value?}/{Value2?}")] HttpRequest req,
         string action, string Value, string Value2, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");

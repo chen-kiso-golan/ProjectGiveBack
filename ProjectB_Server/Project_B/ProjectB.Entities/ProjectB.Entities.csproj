@@ -43,11 +43,16 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="BasePromotionSystem.cs" />
-    <Compile Include="ChangesManager.cs" />
-    <Compile Include="FormsManager.cs" />
+    <Compile Include="BuisnessCompaniesManager.cs" />
+    <Compile Include="CampaignsManager.cs" />
+    <Compile Include="ContactUsManager.cs" />
     <Compile Include="MainManager.cs" />
+    <Compile Include="NonProfitOrganizationManager.cs" />
+    <Compile Include="OrdersManager.cs" />
+    <Compile Include="ProductsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportsManager.cs" />
+    <Compile Include="RegisterApplicationsManager.cs" />
+    <Compile Include="SocialActivistManager.cs" />
     <Compile Include="TwitterManager.cs" />
   </ItemGroup>
   <ItemGroup>

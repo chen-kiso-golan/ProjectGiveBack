@@ -11,6 +11,15 @@ namespace ProjectB.Data.Sql
 {
     public class DS_Twitter
     {
+        //BuisnessCompanies
+        //Campaigns
+        //ContactUs
+        //NonProfitOrganization
+        //Orders
+        //Products
+        //RegisterApplications
+        //SocialActivist
+        //Tweets
         public void UpdateTweetAndSA_MoneyQuery(TweetsModel newTweet)
         {
             string updateQuery = "if not exists(select Code from Tweets where Tweet_id like '" + newTweet.Tweet_id + "')\r\n\tbegin\r\n\t\tinsert into Tweets values (" + newTweet.SA_code + ", " + newTweet.Campaign_code + ", '" + newTweet.Hashtag + "', '" + newTweet.Link_URL + "', '" + newTweet.Tweet_Content + "', getdate(), '" + newTweet.Tweet_id + "')\r\n\t\tupdate Social_Activist set Money = Money + 10 where Code = " + newTweet.SA_code + "\r\n\tend";

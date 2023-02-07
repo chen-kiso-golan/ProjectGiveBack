@@ -27,7 +27,7 @@ namespace ProjectB.Entities
         {
             CampaignNames.Clear();
             DS_Campaigns DS_Campaigns = new DS_Campaigns();
-            return CompaniesNames = DS_Campaigns.ReadCampaignNamesFromDB();
+            return CampaignNames = DS_Campaigns.ReadCampaignNamesFromDB();
         }
 
 
