@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "./contactUsStyle.css";
-import { addFormToContactUs } from "./../../services/services";
+import { addFormToContactUs } from "./../../services/ContactUsServices";
 
 export const ContactUs = () => {
   const [formData, setFormData] = useState({

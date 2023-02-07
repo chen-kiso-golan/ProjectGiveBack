@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAllProductsFromDB, getBcCodeByEmailFromDB } from "../../services/services";
-import { addOrderToDB } from "../../services/services";
+import { getAllProductsFromDB } from "../../services/ProductsServices";
+import { getBcCodeByEmailFromDB } from "../../services/BuisnessCompaniesServices";
+import { getCampaignNameAndHashtagByCodeFromDB } from "../../services/CampaignsServices";
+import { MakeA_TweetInTwitter } from "../../services/twitterServices";
+import { addOrderToDB } from "../../services/OrdersServices";
 import { RoleStatus } from "../../context/roleStatus";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getCampaignNameAndHashtagByCodeFromDB, MakeA_TweetInTwitter } from "../../services/twitterServices";
 import { UserDataContext } from "./../../context/UserData";
 
 export const ProductsReportRow = (props) => {

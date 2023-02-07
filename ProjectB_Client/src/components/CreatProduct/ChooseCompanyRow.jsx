@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllCompaniesNamesFromDB } from "../../services/services";
+import { getAllCompaniesNamesFromDB } from "../../services/BuisnessCompaniesServices";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export function ChooseCompanyRow({ chooseCompany }) {

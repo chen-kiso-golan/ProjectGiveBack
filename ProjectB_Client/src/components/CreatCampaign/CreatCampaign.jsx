@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatCampaignStyle.css";
-import { addCampaignToDB } from "../../services/services";
-import { addNpoCodeByEmailFromDB } from "../../services/services";
+import { addCampaignToDB } from "../../services/CampaignsServices";
+import { addNpoCodeByEmailFromDB } from "../../services/NonProfitOrganizationServices";
 import { ChooseEmailRow } from "./ChooseEmailRow";
 import { useAuth0 } from "@auth0/auth0-react";
 

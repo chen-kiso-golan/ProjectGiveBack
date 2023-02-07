@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "./nonprofitRegisterFormStyle.css";
-import { addNpoToDB } from "../../services/services";
+import { addNpoToDB } from "../../services/NonProfitOrganizationServices";
 
 export const NonprofitRegisterForm = () => {
   const [formData, setFormData] = useState({

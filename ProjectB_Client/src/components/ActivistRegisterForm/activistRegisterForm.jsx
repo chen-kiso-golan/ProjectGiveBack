@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "./activistRegisterFormStyle.css";
-import { addActivistToDB } from "../../services/services";
+import { addActivistToDB } from "../../services/SocialActivistServices";
 
 export const ActivistRegisterForm = () => {
   const [formData, setFormData] = useState({

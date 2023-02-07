@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllCampaignNamesFromDB } from "../../services/services";
+import { getAllCampaignNamesFromDB } from "../../services/CampaignsServices";
 
 export function ChooseCampaignRow({ chooseCampaign }) {
   const [AllCampaigns, setAllCampaigns] = useState([]);

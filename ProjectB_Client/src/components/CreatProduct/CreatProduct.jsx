@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "./CreatProductStyle.css";
-import { addProductToDB } from "../../services/services";
-import { getBcCodeByNameFromDB } from "../../services/services";
-import { getCampaignCodeByNameFromDB } from "../../services/services";
+import { addProductToDB } from "../../services/ProductsServices";
+import { getBcCodeByNameFromDB } from "../../services/BuisnessCompaniesServices";
+import { getCampaignCodeByNameFromDB } from "../../services/CampaignsServices";
 import { ChooseCompanyRow } from "./ChooseCompanyRow";
 import { ChooseCampaignRow } from "./ChooseCampaignRow";
 

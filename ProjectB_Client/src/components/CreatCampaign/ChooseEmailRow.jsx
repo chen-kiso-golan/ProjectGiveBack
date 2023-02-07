@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllNpoEmailsFromDB } from "../../services/services";
+import { getAllNpoEmailsFromDB } from "../../services/NonProfitOrganizationServices";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export function ChooseEmailRow({ chooseEmail }) {

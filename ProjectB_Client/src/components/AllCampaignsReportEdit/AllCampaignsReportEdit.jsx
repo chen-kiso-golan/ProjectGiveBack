@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { UpdateCampaign } from "../../services/services";
+import { UpdateCampaign } from "../../services/CampaignsServices";
 
 export const AllCampaignsReportEdit = () => {
   const navigate = useNavigate();

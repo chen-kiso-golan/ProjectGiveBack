@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAllOrdersFromDB, getBcCodeByEmailFromDB } from "../../services/services";
-import { UpdateOrderIsSentInDB } from "../../services/services";
+import { getAllOrdersFromDB, UpdateOrderIsSentInDB } from "../../services/OrdersServices";
+import { getBcCodeByEmailFromDB } from "../../services/BuisnessCompaniesServices";
 import { RoleStatus } from "../../context/roleStatus";
 import { useAuth0 } from "@auth0/auth0-react";
 

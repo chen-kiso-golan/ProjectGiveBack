@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "./companyRegisterFormStyle.css";
-import { addCompanyToDB } from "../../services/services";
+import { addCompanyToDB } from "../../services/BuisnessCompaniesServices";
 
 export const CompanyRegisterForm = () => {
   const [formData, setFormData] = useState({

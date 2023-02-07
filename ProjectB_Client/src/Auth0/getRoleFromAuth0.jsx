@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { RoleStatus } from "./../context/roleStatus";
-import { getRolesData, getUserInfoData } from "../../src/services/services";
+import { getRolesData, getUserInfoData } from "../../src/services/RegisterApplicationsServices";
 import { UserDataContext } from "./../context/UserData";
 import { getAllTweetsToUpdateDB } from "./../services/twitterServices";
 

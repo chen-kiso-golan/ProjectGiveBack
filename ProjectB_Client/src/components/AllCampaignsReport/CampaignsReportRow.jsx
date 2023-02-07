@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { deleteCampaign, getAllCampaignsFromDB } from "../../services/services";
+import { deleteCampaign, getAllCampaignsFromDB } from "../../services/CampaignsServices";
 import { useNavigate } from "react-router-dom";
 import { RoleStatus } from "../../context/roleStatus";
 import { useAuth0 } from "@auth0/auth0-react";

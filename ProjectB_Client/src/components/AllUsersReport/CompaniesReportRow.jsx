@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllCompaniesFromDB } from "../../services/services";
+import { getAllCompaniesFromDB } from "../../services/BuisnessCompaniesServices";
 
 export const CompaniesReportRow = (props) => {
   const [AllCompanies, setAllCompanies] = useState([]);

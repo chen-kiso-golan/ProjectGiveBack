@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllNpoFromDB } from "../../services/services";
+import { getAllNpoFromDB } from "../../services/NonProfitOrganizationServices";
 
 export const NpoReportRow = (props) => {
   const [AllNpo, setAllNpo] = useState([]);

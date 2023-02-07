@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllActivistsFromDB } from "../../services/services";
+import { getAllActivistsFromDB } from "../../services/SocialActivistServices";
 
 export const ActivistsReportRow = (props) => {
   const [AllActivists, setAllActivists] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./AllCampaignsCardsStyle.css";
 import { useState, useEffect } from "react";
-import { getAllCampaignsFromDB } from "../../services/services";
+import { getAllCampaignsFromDB } from "../../services/CampaignsServices";
 import { TwitterShareButton } from "react-twitter-embed";
 import { RoleStatus } from "./../../context/roleStatus";
 
