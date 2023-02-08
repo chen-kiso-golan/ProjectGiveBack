@@ -33,7 +33,7 @@ export const SingleCampaignCard = (props) => {
                     <p className="card-text">{Email}</p>
                     <p className="card-text">{Link_URL}</p>
 
-                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet">
+                    <a className="twitter-share-button" href="https://twitter.com/intent/tweet">
                       Tweet about us!
                     </a>
 

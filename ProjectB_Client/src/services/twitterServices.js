@@ -8,11 +8,6 @@ export const MakeA_TweetInTwitter = async (Tweet) => {
   } catch (error) {}
 };
 
-export const getCampaignNameAndHashtagByCodeFromDB = async (Code) => {
-  let endpoint = await axios.get(`${TwitterAddress}/getCampaignNameAndHashtagByCodeFromDB/${Code}`);
-  return endpoint.data;
-};
-
 export const getAllTweetsToUpdateDB = async () => {
   let endpoint = await axios.get(`${TwitterAddress}/getAllTweetsToUpdateDB`);
   if (endpoint.status === 200) {

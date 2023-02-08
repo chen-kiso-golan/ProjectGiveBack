@@ -18,6 +18,11 @@ export const getCampaignCodeByNameFromDB = async (Name) => {
   return endpoint.data;
 };
 
+export const getCampaignNameAndHashtagByCodeFromDB = async (Code) => {
+  let endpoint = await axios.get(`${TwitterAddress}/getCampaignNameAndHashtagByCodeFromDB/${Code}`);
+  return endpoint.data;
+};
+
 export const addCampaignToDB = async (frm) => {
   await axios.post(`${ServerAddress}/CampaignPost`, frm);
   console.log("Campaign form was sent to DB :)");
