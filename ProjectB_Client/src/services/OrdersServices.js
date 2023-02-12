@@ -3,16 +3,29 @@ import axios from "axios";
 const ServerAddress = "http://localhost:7205/api/Orders";
 
 export const getAllOrdersFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllOrdersFromDB`);
-  return endpoint;
+  try {
+    console.log("services - Orders - getAllOrdersFromDB ran Successfully");
+    let endpoint = await axios.get(`${ServerAddress}/getAllOrdersFromDB`);
+    return endpoint;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getAllOrdersFromDB Service : ${ex}`);
+  }
 };
 
 export const addOrderToDB = async (frm) => {
-  console.log(frm);
-  await axios.post(`${ServerAddress}/OrderPost`, frm);
-  console.log("Order form was sent to DB :)");
+  try {
+    console.log("services - Orders - addOrderToDB ran Successfully");
+    await axios.post(`${ServerAddress}/OrderPost`, frm);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the addOrderToDB Service : ${ex}`);
+  }
 };
 
 export const UpdateOrderIsSentInDB = async (Order) => {
-  await axios.post(`${ServerAddress}/UpdateOrderIsSent`, Order);
+  try {
+    console.log("services - Orders - UpdateOrderIsSentInDB ran Successfully");
+    await axios.post(`${ServerAddress}/UpdateOrderIsSent`, Order);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the UpdateOrderIsSentInDB Service : ${ex}`);
+  }
 };

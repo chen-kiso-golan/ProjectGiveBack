@@ -3,22 +3,39 @@ import axios from "axios";
 const ServerAddress = "http://localhost:7205/api/NonProfitOrganization";
 
 export const getAllNpoFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllNpoFromDB`);
-  return endpoint;
+  try {
+    console.log("services - NonProfitOrganization - getAllNpoFromDB ran Successfully");
+    let endpoint = await axios.get(`${ServerAddress}/getAllNpoFromDB`);
+    return endpoint;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getAllNpoFromDB Service : ${ex}`);
+  }
 };
 
 export const getAllNpoEmailsFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllNpoEmailsFromDB`);
-  return endpoint;
+  try {
+    console.log("services - NonProfitOrganization - getAllNpoEmailsFromDB ran Successfully");
+    let endpoint = await axios.get(`${ServerAddress}/getAllNpoEmailsFromDB`);
+    return endpoint;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getAllNpoEmailsFromDB Service : ${ex}`);
+  }
 };
 
 export const addNpoToDB = async (frm) => {
-  await axios.post(`${ServerAddress}/NpoPost`, frm);
-  console.log("NPO form was sent to DB :)");
+  try {
+    console.log("services - NonProfitOrganization - addNpoToDB ran Successfully");
+    await axios.post(`${ServerAddress}/NpoPost`, frm);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the addNpoToDB Service : ${ex}`);
+  }
 };
 
 export const addNpoCodeByEmailFromDB = async (frm) => {
-  console.log(frm);
-  await axios.post(`${ServerAddress}/NpoCodeByEmailPost/${frm}`);
-  console.log("NpoCode By Email form was sent to DB :)");
+  try {
+    console.log("services - NonProfitOrganization - addNpoCodeByEmailFromDB ran Successfully");
+    await axios.post(`${ServerAddress}/NpoCodeByEmailPost/${frm}`);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the addNpoCodeByEmailFromDB Service : ${ex}`);
+  }
 };
