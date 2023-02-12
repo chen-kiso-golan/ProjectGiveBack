@@ -3,36 +3,69 @@ import axios from "axios";
 const ServerAddress = "http://localhost:7205/api/Campaigns";
 
 export const getAllCampaignsFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllCampaignsFromDB`);
-  return endpoint;
+  try {
+    console.log("services - CampaignsServices - getAllCampaignsFromDB ran Successfully");
+    let endpoint = await axios.get(`${ServerAddress}/getAllCampaignsFromDB`);
+    return endpoint;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getAllCampaignsFromDB Service : ${ex}`);
+  }
 };
 
 export const getAllCampaignNamesFromDB = async () => {
-  let endpoint = await axios.get(`${ServerAddress}/getAllCampaignNamesFromDB`);
-  return endpoint;
+  try {
+    console.log("services - CampaignsServices - getAllCampaignNamesFromDB ran Successfully");
+    let endpoint = await axios.get(`${ServerAddress}/getAllCampaignNamesFromDB`);
+    return endpoint;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getAllCampaignNamesFromDB Service : ${ex}`);
+  }
 };
 
 export const getCampaignCodeByNameFromDB = async (Name) => {
-  let endpoint = await axios.get(`${ServerAddress}/getCampaignCodeByNameFromDB/${Name}`);
-  console.log(endpoint.data);
-  return endpoint.data;
+  try {
+    console.log("services - CampaignsServices - getCampaignCodeByNameFromDB ran Successfully");
+    let endpoint = await axios.get(`${ServerAddress}/getCampaignCodeByNameFromDB/${Name}`);
+
+    return endpoint.data;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getCampaignCodeByNameFromDB Service : ${ex}`);
+  }
 };
 
 export const getCampaignNameAndHashtagByCodeFromDB = async (Code) => {
-  let endpoint = await axios.get(`${TwitterAddress}/getCampaignNameAndHashtagByCodeFromDB/${Code}`);
-  return endpoint.data;
+  try {
+    console.log("services - CampaignsServices - getCampaignNameAndHashtagByCodeFromDB ran Successfully");
+    let endpoint = await axios.get(`${TwitterAddress}/getCampaignNameAndHashtagByCodeFromDB/${Code}`);
+    return endpoint.data;
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the getCampaignNameAndHashtagByCodeFromDB Service : ${ex}`);
+  }
 };
 
 export const addCampaignToDB = async (frm) => {
-  await axios.post(`${ServerAddress}/CampaignPost`, frm);
-  console.log("Campaign form was sent to DB :)");
+  try {
+    console.log("services - CampaignsServices - addCampaignToDB ran Successfully");
+    await axios.post(`${ServerAddress}/CampaignPost`, frm);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the addCampaignToDB Service : ${ex}`);
+  }
 };
 
 export const UpdateCampaign = async (CampaignToUpdate) => {
-  await axios.post(`${ServerAddress}/UpdateCampaign`, CampaignToUpdate);
+  try {
+    console.log("services - CampaignsServices - UpdateCampaign ran Successfully");
+    await axios.post(`${ServerAddress}/UpdateCampaign`, CampaignToUpdate);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the UpdateCampaign Service : ${ex}`);
+  }
 };
 
 export const deleteCampaign = async (Code) => {
-  await axios.delete(`${ServerAddress}/deleteCampaign/${Code}`);
-  console.log("the campaign was updated in DB :)");
+  try {
+    console.log("services - CampaignsServices - deleteCampaign ran Successfully");
+    await axios.delete(`${ServerAddress}/deleteCampaign/${Code}`);
+  } catch (ex) {
+    console.log(`An Exception occurred while initializing the deleteCampaign Service : ${ex}`);
+  }
 };
