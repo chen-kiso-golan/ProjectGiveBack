@@ -27,7 +27,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ RegisterApplicationsManager \ ShowUserInfoFromDB ran Successfully - ");
                 userinfo.Clear();
-                DS_RegisterApplications DS_RegisterApplications = new DS_RegisterApplications();
+                DS_RegisterApplications DS_RegisterApplications = new DS_RegisterApplications(Log);
                 return userinfo = DS_RegisterApplications.ReadUserInfoFromDB(email, role);
             }
             catch (Exception ex)

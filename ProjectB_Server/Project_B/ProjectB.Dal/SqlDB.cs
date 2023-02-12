@@ -5,52 +5,85 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace ProjectB.Dal
 {
-    public class SqlDB
+
+    public class SqlDB: BaseDAL
     {
+        public SqlDB(LogManager log) : base(log)
+        {
+
+        }
+
         public static string ConnectionString = @"Integrated Security=SSPI;   Persist Security Info=False;    Initial Catalog=ProjectGiveBack;  Data Source=localhost\sqlexpress";
 
         public static DataTable ReadFormDB(string Sql_Query)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(Sql_Query, ConnectionString);
-            //יצירת טבלה בזיכרון
-            DataTable table = new DataTable();
-            //מילוי הנתונים בתוך הטבלה הזמנית בזיכרון
-            adapter.Fill(table);
+            try
+            {
+                Log.LogEvent(@"Dal \ SqlDB \ ReadFormDB ran Successfully - ");
+                SqlDataAdapter adapter = new SqlDataAdapter(Sql_Query, ConnectionString);
+                //יצירת טבלה בזיכרון
+                DataTable table = new DataTable();
+                //מילוי הנתונים בתוך הטבלה הזמנית בזיכרון
+                adapter.Fill(table);
 
-            return table;
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new DataTable();
         }
 
         public static void WriteToDB(string Sql_Query)
         {
-            //הפעלת הצינור לפי ההגדרות שמופיעות בקונקטשן סטרינג
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(Sql_Query, connection))
+                Log.LogEvent(@"Dal \ SqlDB \ WriteToDB ran Successfully - ");
+                //הפעלת הצינור לפי ההגדרות שמופיעות בקונקטשן סטרינג
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(Sql_Query, connection))
+                    {
+                        connection.Open();
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
 
         public static object GetScalarFromDB(string Sql_Query)
         {
-            object result;
-            //הפעלת הצינור לפי ההגדרות שמופיעות בקונקטשן סטרינג
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(Sql_Query, connection))
+                Log.LogEvent(@"Dal \ SqlDB \ GetScalarFromDB ran Successfully - ");
+                object result;
+                //הפעלת הצינור לפי ההגדרות שמופיעות בקונקטשן סטרינג
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(Sql_Query, connection))
+                    {
+                        connection.Open();
 
-                    result = command.ExecuteScalar();
+                        result = command.ExecuteScalar();
+                    }
                 }
+                return result;
             }
-            return result;
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new DataTable();
         }
     }
 }

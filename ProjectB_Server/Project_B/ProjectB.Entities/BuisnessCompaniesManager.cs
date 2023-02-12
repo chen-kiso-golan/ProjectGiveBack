@@ -16,7 +16,7 @@ namespace ProjectB.Entities
         BaseDataSql BaseDataSql;
         public BuisnessCompaniesManager(LogManager log) : base(log) 
         {
-            BaseDataSql = new BaseDataSql();
+            BaseDataSql = new BaseDataSql(Log);
         }
 
 

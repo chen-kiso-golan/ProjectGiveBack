@@ -12,9 +12,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_Twitter: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_Twitter(LogManager log) : base(log)
         {
-
+            BaseDAL = new BaseDAL(Log);
         }
 
 

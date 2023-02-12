@@ -11,9 +11,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_ContactUs: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_ContactUs(LogManager log) : base(log)
         {
-
+            BaseDAL = new BaseDAL(Log);
         }
         public void EnterContactUsToDB(ContactUsModel form)
         {

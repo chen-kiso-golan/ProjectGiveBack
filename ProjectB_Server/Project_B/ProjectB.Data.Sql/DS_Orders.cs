@@ -12,9 +12,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_Orders: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_Orders(LogManager log) : base(log)
         {
-
+            BaseDAL = new BaseDAL(Log);
         }
 
         public DataTable ReadAllOrdersFromDB()

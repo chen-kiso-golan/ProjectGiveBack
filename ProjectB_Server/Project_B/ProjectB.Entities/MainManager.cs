@@ -1,4 +1,5 @@
-﻿using ProjectB.Model;
+﻿using ProjectB.Dal;
+using ProjectB.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -11,9 +11,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_RegisterApplications: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_RegisterApplications(LogManager log) : base(log)
         {
-
+            BaseDAL = new BaseDAL(Log);
         }
         public DataTable ReadUserInfoFromDB(string email, string role)
         {
