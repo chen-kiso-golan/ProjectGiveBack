@@ -12,8 +12,12 @@ namespace ProjectB.Entities
 {
     public class OrdersManager: BaseEntity
     {
+        BaseDataSql BaseDataSql;
 
-        public OrdersManager(LogManager log) : base(log) { }
+        public OrdersManager(LogManager log) : base(log) 
+        {
+            BaseDataSql = new BaseDataSql(Log);
+        }
 
 
 
@@ -24,7 +28,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ OrdersManager \ ShowAllOrdersFromDB ran Successfully - ");
                 Orders.Clear();
-                DS_Orders DS_Orders = new DS_Orders();
+                DS_Orders DS_Orders = new DS_Orders(Log);
                 return Orders = DS_Orders.ReadAllOrdersFromDB();
             }
             catch (Exception ex)
@@ -41,7 +45,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ OrdersManager \ SendOrderToDB ran Successfully - ");
-                DS_Orders DS_Orders = new DS_Orders();
+                DS_Orders DS_Orders = new DS_Orders(Log);
                 DS_Orders.EnterOrderToDB(data);
             }
             catch (Exception ex)
@@ -57,7 +61,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ OrdersManager \ UpdateOrderIsSent ran Successfully - ");
-                DS_Orders DS_Orders = new DS_Orders();
+                DS_Orders DS_Orders = new DS_Orders(Log);
                 DS_Orders.UpdateOrderIsSentInDB(Order);
             }
             catch (Exception ex)

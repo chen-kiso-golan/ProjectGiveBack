@@ -6,22 +6,46 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace ProjectB.Data.Sql
 {
-    public class DS_SocialActivist
+    public class DS_SocialActivist: BaseDataSql
     {
+        public DS_SocialActivist(LogManager log) : base(log)
+        {
+
+        }
+
+
         public DataTable ReadAllActivistsFromDB()
         {
-            string SQLquery = "select * from Social_Activist";
-            return SqlDB.ReadFormDB(SQLquery);
+            try
+            {
+                Log.LogEvent(@"Data.Sql \ DS_SocialActivist \ ReadAllActivistsFromDB ran Successfully - ");
+                string SQLquery = "select * from Social_Activist";
+                return SqlDB.ReadFormDB(SQLquery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new DataTable();
         }
 
 
         public void EnterActivistToDB(SocialActivistModel form)
         {
-            string SQLquery = "insert into Social_Activist values ('" + form.Name + "','" + form.Email + "','" + form.Address + "','" + form.PhoneNumber + "',0,'" + form.Image + "','" + form.Twitter_Name + "')";
-            SqlDB.WriteToDB(SQLquery);
+            try
+            {
+                Log.LogEvent(@"Data.Sql \ DS_SocialActivist \ EnterActivistToDB ran Successfully - ");
+                string SQLquery = "insert into Social_Activist values ('" + form.Name + "','" + form.Email + "','" + form.Address + "','" + form.PhoneNumber + "',0,'" + form.Image + "','" + form.Twitter_Name + "')";
+                SqlDB.WriteToDB(SQLquery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
     }
 }

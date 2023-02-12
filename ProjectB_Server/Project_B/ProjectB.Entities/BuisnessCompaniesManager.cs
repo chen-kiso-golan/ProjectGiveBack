@@ -13,7 +13,11 @@ namespace ProjectB.Entities
 {
     public class BuisnessCompaniesManager: BaseEntity
     {
-        public BuisnessCompaniesManager(LogManager log) : base(log) { }
+        BaseDataSql BaseDataSql;
+        public BuisnessCompaniesManager(LogManager log) : base(log) 
+        {
+            BaseDataSql = new BaseDataSql();
+        }
 
 
 
@@ -24,7 +28,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ BuisnessCompaniesManager \ ShowAllCompaniesFromDB ran Successfully - ");
                 CompaniesTable.Clear();
-                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies();
+                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies(Log);
                 return CompaniesTable = DS_BuisnessCompanies.ReadAllCompaniesFromDB();
             }
             catch (Exception ex)
@@ -43,7 +47,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ BuisnessCompaniesManager \ ShowAllCompaniesNamesFromDB ran Successfully - ");
                 CompaniesNames.Clear();
-                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies();
+                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies(Log);
                 return CompaniesNames = DS_BuisnessCompanies.ReadAllCompaniesNamesFromDB(email);
             }
             catch (Exception ex)
@@ -60,7 +64,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ BuisnessCompaniesManager \ ShowBcCodeByNameFromDB ran Successfully - ");
-                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies();
+                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies(Log);
                 return DS_BuisnessCompanies.ReadBcCodeByNameFromDB(Name);
             }
             catch (Exception ex)
@@ -77,7 +81,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ BuisnessCompaniesManager \ ShowBcCodeByEmailFromDB ran Successfully - ");
-                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies();
+                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies(Log);
                 return DS_BuisnessCompanies.ReadBcCodeByEmailFromDB(email);
             }
             catch (Exception ex)
@@ -94,7 +98,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ BuisnessCompaniesManager \ SendCompanyToDB ran Successfully - ");
-                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies();
+                DS_BuisnessCompanies DS_BuisnessCompanies = new DS_BuisnessCompanies(Log);
                 DS_BuisnessCompanies.EnterCompanyToDB(form);
             }
             catch (Exception ex)

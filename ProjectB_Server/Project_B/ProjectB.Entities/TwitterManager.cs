@@ -12,10 +12,10 @@ namespace ProjectB.Entities
 {
     public class TwitterManager: BaseEntity
     {
-
+        BaseDataSql BaseDataSql;
         public TwitterManager(LogManager log) : base(log) 
-        { 
-        
+        {
+            BaseDataSql = new BaseDataSql(Log);
         }
 
 
@@ -31,7 +31,7 @@ namespace ProjectB.Entities
 
                 getSocialActivist.Clear();
                 SocialActivistList.Clear();
-                DS_Twitter DS_Twitter = new DS_Twitter();
+                DS_Twitter DS_Twitter = new DS_Twitter(Log);
                 getSocialActivist = DS_Twitter.Send_getSocialActivistListQuery();
                 int NumOfRows_Activist = getSocialActivist.Rows.Count;
 
@@ -65,7 +65,7 @@ namespace ProjectB.Entities
 
                 getAllCampaigns.Clear();
                 CampaignList.Clear();
-                DS_Twitter DS_Twitter = new DS_Twitter();
+                DS_Twitter DS_Twitter = new DS_Twitter(Log);
                 getAllCampaigns = DS_Twitter.Send_getAllCampaignsListQuery();
                 int NumOfRows_Campaigns = getAllCampaigns.Rows.Count;
 
@@ -94,7 +94,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ TwitterManager \ UpdateTweetAndMoneyInDB ran Successfully - ");
-                DS_Twitter DS_Twitter = new DS_Twitter();
+                DS_Twitter DS_Twitter = new DS_Twitter(Log);
                 DS_Twitter.UpdateTweetAndSA_MoneyQuery(newTweet);
             }
             catch (Exception ex)
@@ -119,7 +119,7 @@ namespace ProjectB.Entities
 
                 getCampaignByCode.Clear();
                 CampaignByCodeList.Clear();
-                DS_Twitter DS_Twitter = new DS_Twitter();
+                DS_Twitter DS_Twitter = new DS_Twitter(Log);
                 getCampaignByCode = DS_Twitter.Send_getAllCampaignsListQuery();
                 int NumOfRows_Campaigns = getCampaignByCode.Rows.Count;
 
@@ -153,7 +153,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ TwitterManager \ ShowAllTwitsFromDB ran Successfully - ");
                 TwitsTable.Clear();
-                DS_Twitter DS_Twitter = new DS_Twitter();
+                DS_Twitter DS_Twitter = new DS_Twitter(Log);
                 return TwitsTable = DS_Twitter.ReadAllTwitsFromDB();
             }
             catch (Exception ex)

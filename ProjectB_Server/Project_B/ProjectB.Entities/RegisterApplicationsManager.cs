@@ -11,8 +11,11 @@ namespace ProjectB.Entities
 {
     public class RegisterApplicationsManager: BaseEntity
     {
-
-        public RegisterApplicationsManager(LogManager log) : base(log) { }
+        BaseDataSql BaseDataSql;
+        public RegisterApplicationsManager(LogManager log) : base(log) 
+        {
+            BaseDataSql = new BaseDataSql(Log);
+        }
 
 
 

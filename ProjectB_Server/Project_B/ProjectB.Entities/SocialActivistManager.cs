@@ -12,7 +12,11 @@ namespace ProjectB.Entities
 {
     public class SocialActivistManager: BaseEntity
     {
-        public SocialActivistManager(LogManager log) : base(log) { }
+        BaseDataSql BaseDataSql;
+        public SocialActivistManager(LogManager log) : base(log) 
+        {
+            BaseDataSql = new BaseDataSql(Log);
+        }
 
 
 
@@ -23,7 +27,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ SocialActivistManager \ ShowAllActivistsFromDB ran Successfully - ");
                 ActivistsTable.Clear();
-                DS_SocialActivist DS_SocialActivist = new DS_SocialActivist();
+                DS_SocialActivist DS_SocialActivist = new DS_SocialActivist(Log);
                 return ActivistsTable = DS_SocialActivist.ReadAllActivistsFromDB();
             }
             catch (Exception ex)
@@ -39,7 +43,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ SocialActivistManager \ SendActivistToDB ran Successfully - ");
-                DS_SocialActivist DS_SocialActivist = new DS_SocialActivist();
+                DS_SocialActivist DS_SocialActivist = new DS_SocialActivist(Log);
                 DS_SocialActivist.EnterActivistToDB(form);
             }
             catch (Exception ex)

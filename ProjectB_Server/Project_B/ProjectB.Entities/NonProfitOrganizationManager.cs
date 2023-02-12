@@ -12,7 +12,11 @@ namespace ProjectB.Entities
 {
     public class NonProfitOrganizationManager: BaseEntity
     {
-        public NonProfitOrganizationManager(LogManager log) : base(log) { }
+        BaseDataSql BaseDataSql;
+        public NonProfitOrganizationManager(LogManager log) : base(log) 
+        {
+            BaseDataSql = new BaseDataSql(Log);
+        }
 
 
 
@@ -23,7 +27,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ NonProfitOrganizationManager \ ShowAllNpoFromDB ran Successfully - ");
                 NpoTable.Clear();
-                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization();
+                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization(Log);
                 return NpoTable = DS_NonProfitOrganization.ReadAllNpoFromDB();
             }
             catch (Exception ex)
@@ -42,7 +46,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ NonProfitOrganizationManager \ ShowAllNpoEmailsFromDB ran Successfully - ");
                 NpoEmails.Clear();
-                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization();
+                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization(Log);
                 return NpoEmails = DS_NonProfitOrganization.ReadAllNpoEmailsFromDB();
             }
             catch (Exception ex)
@@ -59,7 +63,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ NonProfitOrganizationManager \ SendNpoToDB ran Successfully - ");
-                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization();
+                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization(Log);
                 DS_NonProfitOrganization.EnterNpoToDB(form);
             }
             catch (Exception ex)
@@ -74,7 +78,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ NonProfitOrganizationManager \ SendNpoCodeByEmailToDB ran Successfully - ");
-                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization();
+                DS_NonProfitOrganization DS_NonProfitOrganization = new DS_NonProfitOrganization(Log);
                 DS_NonProfitOrganization.EnterNpoCodeByEmailToDB(data);
             }
             catch (Exception ex)

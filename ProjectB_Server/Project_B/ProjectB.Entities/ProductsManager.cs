@@ -12,8 +12,11 @@ namespace ProjectB.Entities
 {
     public class ProductsManager: BaseEntity
     {
-
-        public ProductsManager(LogManager log) : base(log) { }
+        BaseDataSql BaseDataSql;
+        public ProductsManager(LogManager log) : base(log) 
+        {
+            BaseDataSql = new BaseDataSql(Log);
+        }
 
 
 
@@ -24,7 +27,7 @@ namespace ProjectB.Entities
             {
                 Log.LogEvent(@"Entities \ ProductsManager \ ShowAllProductsFromDB ran Successfully - ");
                 ProductsTable.Clear();
-                DS_Products DS_Products = new DS_Products();
+                DS_Products DS_Products = new DS_Products(Log);
                 return ProductsTable = DS_Products.ReadAllProductsFromDB();
             }
             catch (Exception ex)
@@ -40,7 +43,7 @@ namespace ProjectB.Entities
             try
             {
                 Log.LogEvent(@"Entities \ ProductsManager \ SendProductToDB ran Successfully - ");
-                DS_Products DS_Products = new DS_Products();
+                DS_Products DS_Products = new DS_Products(Log);
                 DS_Products.EnterProductToDB(form);
             }
             catch (Exception ex)
