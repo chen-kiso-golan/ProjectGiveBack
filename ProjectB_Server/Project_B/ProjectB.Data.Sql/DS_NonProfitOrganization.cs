@@ -12,9 +12,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_NonProfitOrganization: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_NonProfitOrganization(LogManager log) : base(log)
         {
-
+            BaseDAL = new BaseDAL(Log);
         }
 
         public DataTable ReadAllNpoFromDB()

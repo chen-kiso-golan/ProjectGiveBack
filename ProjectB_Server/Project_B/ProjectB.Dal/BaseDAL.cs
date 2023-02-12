@@ -9,7 +9,7 @@ namespace ProjectB.Dal
 {
     public class BaseDAL
     {
-            public LogManager Log;
+            public static LogManager Log;
             public BaseDAL(LogManager log) { Log = log; }
             public BaseDAL() { }
     }

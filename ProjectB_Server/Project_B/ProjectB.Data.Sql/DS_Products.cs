@@ -12,9 +12,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_Products: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_Products(LogManager log) : base(log)
         {
-
+            BaseDAL = new BaseDAL(Log);
         }
 
 

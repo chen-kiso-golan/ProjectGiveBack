@@ -13,9 +13,10 @@ namespace ProjectB.Data.Sql
 {
     public class DS_Campaigns: BaseDataSql
     {
+        BaseDAL BaseDAL;
         public DS_Campaigns(LogManager log) : base(log)
         {
-          
+            BaseDAL = new BaseDAL(Log);
         }
 
 
