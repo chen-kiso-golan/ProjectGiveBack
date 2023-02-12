@@ -6,16 +6,31 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace ProjectB.Data.Sql
 {
-    public class DS_Campaigns
+    public class DS_Campaigns: BaseDataSql
     {
+        public DS_Campaigns(LogManager log) : base(log)
+        {
+          
+        }
+
 
         public DataTable ReadAllCampaignsFromDB()
         {
-            string SQLquery = "select * from Campaigns";
-            return SqlDB.ReadFormDB(SQLquery);
+            try
+            {
+                Log.LogEvent(@"Data.Sql \ DS_Campaigns \ ReadAllCampaignsFromDB ran Successfully - ");
+                string SQLquery = "select * from Campaigns";
+                return SqlDB.ReadFormDB(SQLquery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new DataTable();
         }
 
 

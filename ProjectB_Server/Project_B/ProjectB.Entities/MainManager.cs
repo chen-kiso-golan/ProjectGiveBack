@@ -5,21 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilities;
+using static Utilities.LogManager;
 
 namespace ProjectB.Entities
 {
     public class MainManager 
     {
-        //BuisnessCompanies
-        //Campaigns
-        //ContactUs
-        //NonProfitOrganization
-        //Orders
-        //Products
-        //RegisterApplications
-        //SocialActivist
-        //Tweets
 
+        private static readonly MainManager instance = new MainManager();
+        public static MainManager Instance { get { return instance; } }
+
+
+        public LogManager log;
         public TwitterManager TwitterManager;
         public BuisnessCompaniesManager BuisnessCompaniesManager;
         public CampaignsManager CampaignsManager;
@@ -35,22 +32,28 @@ namespace ProjectB.Entities
             AppDomainInitializer();
         }
 
-        private static readonly MainManager instance = new MainManager();
-        public static MainManager Instance { get { return instance; } }
-
         private void AppDomainInitializer()
         {
-            //LogManager = new LogManager(providerType File);
-           
-            TwitterManager = new TwitterManager();
-            BuisnessCompaniesManager = new BuisnessCompaniesManager();
-            CampaignsManager = new CampaignsManager();
-            ContactUsManager = new ContactUsManager();
-            NonProfitOrganizationManager = new NonProfitOrganizationManager();
-            OrdersManager = new OrdersManager();
-            ProductsManager = new ProductsManager();
-            SocialActivistManager = new SocialActivistManager();
-            RegisterApplicationsManager = new RegisterApplicationsManager();
+            try
+            {
+                log = new LogManager(providerType.File);
+                TwitterManager = new TwitterManager(log);
+                BuisnessCompaniesManager = new BuisnessCompaniesManager(log);
+                CampaignsManager = new CampaignsManager(log);
+                ContactUsManager = new ContactUsManager(log);
+                NonProfitOrganizationManager = new NonProfitOrganizationManager(log);
+                OrdersManager = new OrdersManager(log);
+                ProductsManager = new ProductsManager(log);
+                SocialActivistManager = new SocialActivistManager(log);
+                RegisterApplicationsManager = new RegisterApplicationsManager(log);
+
+                log.LogEvent(@"Entities \ MainManager \ AppDomainInitializer ran Successfully - ");
+            }
+            catch (Exception ex)
+            {
+                log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
     }
 }

@@ -6,25 +6,47 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace ProjectB.Entities
 {
-    public class ProductsManager
+    public class ProductsManager: BaseEntity
     {
+
+        public ProductsManager(LogManager log) : base(log) { }
+
+
 
         public DataTable ProductsTable = new DataTable();
         public DataTable ShowAllProductsFromDB()
         {
-            ProductsTable.Clear();
-            DS_Products DS_Products = new DS_Products();
-            return ProductsTable = DS_Products.ReadAllProductsFromDB();
+            try
+            {
+                Log.LogEvent(@"Entities \ ProductsManager \ ShowAllProductsFromDB ran Successfully - ");
+                ProductsTable.Clear();
+                DS_Products DS_Products = new DS_Products();
+                return ProductsTable = DS_Products.ReadAllProductsFromDB();
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return ProductsTable;
         }
 
 
         public void SendProductToDB(ProductsModel form)
         {
-            DS_Products DS_Products = new DS_Products();
-            DS_Products.EnterProductToDB(form);
+            try
+            {
+                Log.LogEvent(@"Entities \ ProductsManager \ SendProductToDB ran Successfully - ");
+                DS_Products DS_Products = new DS_Products();
+                DS_Products.EnterProductToDB(form);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
     }
 }

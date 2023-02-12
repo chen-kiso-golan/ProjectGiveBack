@@ -108,7 +108,7 @@ namespace Utilities
             }
         }
 
-        public static void LogEvent(string msg)
+        public void LogEvent(string msg)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace Utilities
             }
         }
 
-        public static void LogError(string msg)
+        public void LogError(string msg)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace Utilities
             }
         }
 
-        public static void LogException(string msg, Exception exce)
+        public void LogException(string msg, Exception exce)
         {
             try
             {

@@ -6,31 +6,49 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace ProjectB.Entities
 {
-    public class TwitterManager
+    public class TwitterManager: BaseEntity
     {
+
+        public TwitterManager(LogManager log) : base(log) 
+        { 
+        
+        }
+
+
+
         private DataTable getSocialActivist = new DataTable();
 
         public List<SocialActivistModel> FillSocialActivistListFromDB()
         {
-            List<SocialActivistModel> SocialActivistList = new List<SocialActivistModel>();
-
-            getSocialActivist.Clear();
-            SocialActivistList.Clear();
-            DS_Twitter DS_Twitter = new DS_Twitter();
-            getSocialActivist = DS_Twitter.Send_getSocialActivistListQuery();
-            int NumOfRows_Activist = getSocialActivist.Rows.Count;
-
-            for (int i = 0; i < NumOfRows_Activist; i++)
+            try
             {
-                SocialActivistModel SA = new SocialActivistModel();
-                SA.Code = (int)getSocialActivist.Rows[i][0];
-                SA.Twitter_Name = (string)getSocialActivist.Rows[i][7];
-                SocialActivistList.Add(SA);
+                Log.LogEvent(@"Entities \ TwitterManager \ FillSocialActivistListFromDB ran Successfully - ");
+                List<SocialActivistModel> SocialActivistList = new List<SocialActivistModel>();
+
+                getSocialActivist.Clear();
+                SocialActivistList.Clear();
+                DS_Twitter DS_Twitter = new DS_Twitter();
+                getSocialActivist = DS_Twitter.Send_getSocialActivistListQuery();
+                int NumOfRows_Activist = getSocialActivist.Rows.Count;
+
+                for (int i = 0; i < NumOfRows_Activist; i++)
+                {
+                    SocialActivistModel SA = new SocialActivistModel();
+                    SA.Code = (int)getSocialActivist.Rows[i][0];
+                    SA.Twitter_Name = (string)getSocialActivist.Rows[i][7];
+                    SocialActivistList.Add(SA);
+                }
+                return SocialActivistList;
             }
-            return SocialActivistList;
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new List<SocialActivistModel>();
         }
 
 
@@ -40,23 +58,32 @@ namespace ProjectB.Entities
 
         public List<CampaignsModel> FillAllCampaignsListFromDB()
         {
-            List<CampaignsModel> CampaignList = new List<CampaignsModel>();
-
-            getAllCampaigns.Clear();
-            CampaignList.Clear();
-            DS_Twitter DS_Twitter = new DS_Twitter();
-            getAllCampaigns = DS_Twitter.Send_getAllCampaignsListQuery();
-            int NumOfRows_Campaigns = getAllCampaigns.Rows.Count;
-
-            for (int i = 0; i < NumOfRows_Campaigns; i++)
+            try
             {
-                CampaignsModel Campaign = new CampaignsModel();
-                Campaign.Code = (int)getAllCampaigns.Rows[i][0];
-                Campaign.Hashtag = (string)getAllCampaigns.Rows[i][4];
-                Campaign.Link_URL = (string)getAllCampaigns.Rows[i][3];
-                CampaignList.Add(Campaign);
+                Log.LogEvent(@"Entities \ TwitterManager \ FillAllCampaignsListFromDB ran Successfully - ");
+                List<CampaignsModel> CampaignList = new List<CampaignsModel>();
+
+                getAllCampaigns.Clear();
+                CampaignList.Clear();
+                DS_Twitter DS_Twitter = new DS_Twitter();
+                getAllCampaigns = DS_Twitter.Send_getAllCampaignsListQuery();
+                int NumOfRows_Campaigns = getAllCampaigns.Rows.Count;
+
+                for (int i = 0; i < NumOfRows_Campaigns; i++)
+                {
+                    CampaignsModel Campaign = new CampaignsModel();
+                    Campaign.Code = (int)getAllCampaigns.Rows[i][0];
+                    Campaign.Hashtag = (string)getAllCampaigns.Rows[i][4];
+                    Campaign.Link_URL = (string)getAllCampaigns.Rows[i][3];
+                    CampaignList.Add(Campaign);
+                }
+                return CampaignList;
             }
-            return CampaignList;
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new List<CampaignsModel>();
         }
 
 
@@ -64,8 +91,16 @@ namespace ProjectB.Entities
 
         public void UpdateTweetAndMoneyInDB(TweetsModel newTweet)
         {
-            DS_Twitter DS_Twitter = new DS_Twitter();
-            DS_Twitter.UpdateTweetAndSA_MoneyQuery(newTweet);
+            try
+            {
+                Log.LogEvent(@"Entities \ TwitterManager \ UpdateTweetAndMoneyInDB ran Successfully - ");
+                DS_Twitter DS_Twitter = new DS_Twitter();
+                DS_Twitter.UpdateTweetAndSA_MoneyQuery(newTweet);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
    
@@ -77,26 +112,35 @@ namespace ProjectB.Entities
 
         public List<CampaignsModel> ShowCampaignNameAndHashtagByCodeFromDB(string code)
         {
-            List<CampaignsModel> CampaignByCodeList = new List<CampaignsModel>();
-
-            getCampaignByCode.Clear();
-            CampaignByCodeList.Clear();
-            DS_Twitter DS_Twitter = new DS_Twitter();
-            getCampaignByCode = DS_Twitter.Send_getAllCampaignsListQuery();
-            int NumOfRows_Campaigns = getCampaignByCode.Rows.Count;
-
-            for (int i = 0; i < NumOfRows_Campaigns; i++)
+            try
             {
-                if ((int)getCampaignByCode.Rows[i][0] == Int32.Parse(code))
+                Log.LogEvent(@"Entities \ TwitterManager \ ShowCampaignNameAndHashtagByCodeFromDB ran Successfully - ");
+                List<CampaignsModel> CampaignByCodeList = new List<CampaignsModel>();
+
+                getCampaignByCode.Clear();
+                CampaignByCodeList.Clear();
+                DS_Twitter DS_Twitter = new DS_Twitter();
+                getCampaignByCode = DS_Twitter.Send_getAllCampaignsListQuery();
+                int NumOfRows_Campaigns = getCampaignByCode.Rows.Count;
+
+                for (int i = 0; i < NumOfRows_Campaigns; i++)
                 {
-                    CampaignsModel Campaign = new CampaignsModel();
-                    Campaign.Hashtag = (string)getCampaignByCode.Rows[i][4];
-                    Campaign.Name = (string)getCampaignByCode.Rows[i][1];
-                    CampaignByCodeList.Add(Campaign);
+                    if ((int)getCampaignByCode.Rows[i][0] == Int32.Parse(code))
+                    {
+                        CampaignsModel Campaign = new CampaignsModel();
+                        Campaign.Hashtag = (string)getCampaignByCode.Rows[i][4];
+                        Campaign.Name = (string)getCampaignByCode.Rows[i][1];
+                        CampaignByCodeList.Add(Campaign);
+                    }
+
                 }
-               
+                return CampaignByCodeList;
             }
-            return CampaignByCodeList;
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return new List<CampaignsModel>();
         }
 
 
@@ -105,9 +149,18 @@ namespace ProjectB.Entities
         public DataTable TwitsTable = new DataTable();
         public DataTable ShowAllTwitsFromDB()
         {
-            TwitsTable.Clear();
-            DS_Twitter DS_Twitter = new DS_Twitter();
-            return TwitsTable = DS_Twitter.ReadAllTwitsFromDB();
+            try
+            {
+                Log.LogEvent(@"Entities \ TwitterManager \ ShowAllTwitsFromDB ran Successfully - ");
+                TwitsTable.Clear();
+                DS_Twitter DS_Twitter = new DS_Twitter();
+                return TwitsTable = DS_Twitter.ReadAllTwitsFromDB();
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return TwitsTable;
         }
     }
 }
