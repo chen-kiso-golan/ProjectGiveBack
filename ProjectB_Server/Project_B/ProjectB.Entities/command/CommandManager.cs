@@ -37,7 +37,13 @@ namespace ProjectB.Entities.command
                 _commandList = new Dictionary<string, ICommand>
             {
                 //Campaigns
-                { "getAllCampaignsFromDB", new getAllCampaignsFromDB(Log)}
+                { "getAllCampaignsFromDB", new getAllCampaignsFromDB(Log)},
+                { "getAllCampaignNamesFromDB", new getAllCampaignNamesFromDB(Log)},
+                { "getCampaignCodeByNameFromDB", new getCampaignCodeByNameFromDB(Log)},
+                { "CampaignPost", new CampaignPost(Log)},
+                { "UpdateCampaign", new UpdateCampaign(Log)},
+                { "deleteCampaign", new deleteCampaign(Log)},
+
             };
 
 
