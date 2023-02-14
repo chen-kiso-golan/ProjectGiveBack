@@ -21,7 +21,7 @@ namespace ProjectB.Entities.command.commandClasses.CampaignsCommand
             {
                 Log.LogEvent(@"Entities \ command \ CampaignsCommand \ getCampaignCodeByNameFromDB ran Successfully - ");
 
-                return System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.CampaignsManager.ShowCampaignCodeByNameFromDB((string)param[0]));
+                return System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.CampaignsManager.ShowCampaignCodeByNameFromDB((string)param[1]));
 
             }
             catch (Exception ex)

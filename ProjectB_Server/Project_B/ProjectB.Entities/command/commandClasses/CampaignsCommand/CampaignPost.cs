@@ -22,7 +22,7 @@ namespace ProjectB.Entities.command.commandClasses.CampaignsCommand
                 Log.LogEvent(@"Entities \ command \ CampaignsCommand \ CampaignPost ran Successfully - ");
 
                 CampaignsModel CampaignsData = new CampaignsModel();
-                CampaignsData = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>((string)param[1]);
+                CampaignsData = System.Text.Json.JsonSerializer.Deserialize<CampaignsModel>((string)param[0]);
                 MainManager.Instance.CampaignsManager.SendCampaignToDB(CampaignsData);
 
                 return System.Text.Json.JsonSerializer.Serialize("Task Completed");

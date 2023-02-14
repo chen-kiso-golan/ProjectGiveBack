@@ -9,6 +9,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ProjectB.Entities;
 using ProjectB.Model;
+using Newtonsoft.Json.Linq;
+using static System.Collections.Specialized.BitVector32;
+using ProjectB.Entities.command;
 
 namespace ProjectB.MicroServer
 {
@@ -21,35 +24,24 @@ namespace ProjectB.MicroServer
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-
+            string dictionaryKey = action;
             string requestBody;
             string responseMessage;
-            switch (action)
+
+            ICommand commmand = MainManager.Instance.CommandManager.CommandList[dictionaryKey];
+
+            try
             {
-                case "getAllNpoFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.NonProfitOrganizationManager.ShowAllNpoFromDB());
-                    return new OkObjectResult(responseMessage);
-
-                case "getAllNpoEmailsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.NonProfitOrganizationManager.ShowAllNpoEmailsFromDB());
-                    return new OkObjectResult(responseMessage);
-
-                case "NpoPost":
-                    NonProfitOrganizationModel NpoData = new NonProfitOrganizationModel();
-                    NpoData = System.Text.Json.JsonSerializer.Deserialize<NonProfitOrganizationModel>(req.Body);
-                    MainManager.Instance.NonProfitOrganizationManager.SendNpoToDB(NpoData);
-                    break;
-
-                case "NpoCodeByEmailPost":
-                    //string NpoCodeByEmailData = System.Text.Json.JsonSerializer.Deserialize<string>(req.Body);
-                    MainManager.Instance.NonProfitOrganizationManager.SendNpoCodeByEmailToDB(Value);
-                    break;
-
-                default:
-                    break;
+                MainManager.Instance.log.LogEvent(@"MicroServer \ NonProfitOrganization ran Successfully - ");
+                requestBody = await req.ReadAsStringAsync();
+                return new OkObjectResult(commmand.Execute(requestBody, Value));
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return null; //new BadRequestObjectResult("Problam Was Found");
 
-            return null;
         }
     }
 }

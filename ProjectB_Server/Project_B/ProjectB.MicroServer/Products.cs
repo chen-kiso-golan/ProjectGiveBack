@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ProjectB.Entities;
 using ProjectB.Model;
+using static System.Collections.Specialized.BitVector32;
+using ProjectB.Entities.command;
 
 namespace ProjectB.MicroServer
 {
@@ -21,27 +23,27 @@ namespace ProjectB.MicroServer
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-
+            string dictionaryKey = action;
             string requestBody;
             string responseMessage;
-            switch (action)
+
+            ICommand commmand = MainManager.Instance.CommandManager.CommandList[dictionaryKey];
+
+            try
             {
-                case "getAllProductsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.ProductsManager.ShowAllProductsFromDB());
-                    return new OkObjectResult(responseMessage);
-
-                case "ProductPost":
-                    ProductsModel ProductsData = new ProductsModel();
-                    ProductsData = System.Text.Json.JsonSerializer.Deserialize<ProductsModel>(req.Body);
-                    MainManager.Instance.ProductsManager.SendProductToDB(ProductsData);
-                    break;
-
-
-                default:
-                    break;
+                MainManager.Instance.log.LogEvent(@"MicroServer \ Products ran Successfully - ");
+                requestBody = await req.ReadAsStringAsync();
+                return new OkObjectResult(commmand.Execute(requestBody, Value));
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return null; //new BadRequestObjectResult("Problam Was Found");
 
-            return null;
+
         }
     }
 }
+
+

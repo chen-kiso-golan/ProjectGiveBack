@@ -11,6 +11,8 @@ using Newtonsoft.Json.Linq;
 using ProjectB.Entities;
 using RestSharp;
 using ProjectB.Model;
+using static System.Collections.Specialized.BitVector32;
+using ProjectB.Entities.command;
 
 namespace ProjectB.MicroServer
 {
@@ -23,38 +25,29 @@ namespace ProjectB.MicroServer
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-
+            string dictionaryKey = action;
             string requestBody;
             string responseMessage;
-            switch (action)
+
+            ICommand commmand = MainManager.Instance.CommandManager.CommandList[dictionaryKey];
+
+            try
             {
-                case "getAllCompaniesFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.BuisnessCompaniesManager.ShowAllCompaniesFromDB());
-                    return new OkObjectResult(responseMessage);
-
-                case "getAllCompaniesNamesFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.BuisnessCompaniesManager.ShowAllCompaniesNamesFromDB(Value));
-                    return new OkObjectResult(responseMessage);
-
-                case "getBcCodeByNameFromDB":
-                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.BuisnessCompaniesManager.ShowBcCodeByNameFromDB(Value));
-                    return new OkObjectResult(responseMessage);
-
-                case "getBcCodeByEmailFromDB":
-                    responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.BuisnessCompaniesManager.ShowBcCodeByEmailFromDB(Value));
-                    return new OkObjectResult(responseMessage);
-
-                case "CompanyPost":
-                    BuisnessCompaniesModel CompanyData = new BuisnessCompaniesModel();
-                    CompanyData = System.Text.Json.JsonSerializer.Deserialize<BuisnessCompaniesModel>(req.Body);
-                    MainManager.Instance.BuisnessCompaniesManager.SendCompanyToDB(CompanyData);
-                    break;
-
-                default:
-                    break;
+                MainManager.Instance.log.LogEvent(@"MicroServer \ BuisnessCompanies ran Successfully - ");
+                requestBody = await req.ReadAsStringAsync();
+                return new OkObjectResult(commmand.Execute(requestBody, Value));
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return null; //new BadRequestObjectResult("Problam Was Found");
 
-            return null;
+
+            
         }
     }
 }
+
+
+

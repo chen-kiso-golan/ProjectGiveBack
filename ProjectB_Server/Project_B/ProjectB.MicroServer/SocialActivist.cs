@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ProjectB.Entities;
 using ProjectB.Model;
+using static System.Collections.Specialized.BitVector32;
+using ProjectB.Entities.command;
 
 namespace ProjectB.MicroServer
 {
@@ -21,26 +23,26 @@ namespace ProjectB.MicroServer
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-
+            string dictionaryKey = action;
             string requestBody;
             string responseMessage;
-            switch (action)
+
+            ICommand commmand = MainManager.Instance.CommandManager.CommandList[dictionaryKey];
+
+            try
             {
-                case "getAllActivistsFromDB":
-                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.SocialActivistManager.ShowAllActivistsFromDB());
-                    return new OkObjectResult(responseMessage);
-
-                case "ActivistPost":
-                    SocialActivistModel ActivistData = new SocialActivistModel();
-                    ActivistData = System.Text.Json.JsonSerializer.Deserialize<SocialActivistModel>(req.Body);
-                    MainManager.Instance.SocialActivistManager.SendActivistToDB(ActivistData);
-                    break;
-
-                default:
-                    break;
+                MainManager.Instance.log.LogEvent(@"MicroServer \ SocialActivist ran Successfully - ");
+                requestBody = await req.ReadAsStringAsync();
+                return new OkObjectResult(commmand.Execute(requestBody, Value));
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+            return null; //new BadRequestObjectResult("Problam Was Found");
 
-            return null;
+
         }
     }
 }
+

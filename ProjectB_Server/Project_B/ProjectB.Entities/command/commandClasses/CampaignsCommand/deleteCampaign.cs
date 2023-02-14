@@ -22,7 +22,7 @@ namespace ProjectB.Entities.command.commandClasses.CampaignsCommand
             {
                 Log.LogEvent(@"Entities \ command \ CampaignsCommand \ deleteCampaign ran Successfully - ");
 
-                MainManager.Instance.CampaignsManager.DeleteCampaign((string)param[0]);
+                MainManager.Instance.CampaignsManager.DeleteCampaign((string)param[1]);
 
                 return System.Text.Json.JsonSerializer.Serialize("Task Completed");
 
