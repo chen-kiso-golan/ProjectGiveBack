@@ -1,4 +1,5 @@
 ﻿using ProjectB.Dal;
+using ProjectB.Data.Sql;
 using ProjectB.Entities.command;
 using ProjectB.Model;
 using System;
@@ -29,7 +30,8 @@ namespace ProjectB.Entities
         public SocialActivistManager SocialActivistManager;
         public RegisterApplicationsManager RegisterApplicationsManager;
         public CommandManager CommandManager;
-
+        public Config Config;
+        public Config_DS Config_DS;
         private MainManager()
         {
             AppDomainInitializer();
@@ -50,6 +52,10 @@ namespace ProjectB.Entities
                 SocialActivistManager = new SocialActivistManager(log);
                 RegisterApplicationsManager = new RegisterApplicationsManager(log);
                 CommandManager = new CommandManager(log);
+                Config= new Config();
+                Config_DS = new Config_DS(log, Config);
+
+                Config_DS.InitConfig();
 
                 log.LogEvent(@"Entities \ MainManager \ AppDomainInitializer ran Successfully - ");
             }

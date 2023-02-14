@@ -45,6 +45,11 @@ create table Contact_Us(Code int primary key identity,
 Name nvarchar(max), Message nvarchar(max), Phone nvarchar(max), 
 Email nvarchar(max),  date datetime)
 
+----Creating a table of Configuration
+create table Configuration(Code int primary key identity, 
+Name nvarchar(max), value nvarchar(max))
+
+
 ----------------------------------------------------------------------------------------------------------
 ALTER TABLE Social_Activist
 ADD Twitter_Name NVARCHAR(MAX) NULL;

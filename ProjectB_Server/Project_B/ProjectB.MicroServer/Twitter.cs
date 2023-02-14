@@ -27,7 +27,13 @@ namespace ProjectB.MicroServer
             string requestBody;
             string responseMessage;
 
-            var userClient = new TwitterClient("GVJCrGcAszLmp8UhxU9zDxbdp", "Ru9lrw53v3GMd1YsNYZ9EYFAQHoFWAUditYpODGG6UPtnRbutZ", "1614624082481319936-0CYgQCagpgk7yVDPtqgxepESGy0iYM", "4xt1SZP0gRvSPyIlhVLjbWmT5n9GZvnWvcsijdqZlXtVM");
+            string ConsumerKey = MainManager.Instance.Config.TwitterConsumerKey;
+            string ConsumerKeySecret = MainManager.Instance.Config.TwitterConsumerKeySecret;
+            string AccessKey = MainManager.Instance.Config.TwitterAccessKey;
+            string AccessKeySecret = MainManager.Instance.Config.TwitterAccessKeySecret;
+            string TwitterBearerCode = $"Bearer {MainManager.Instance.Config.TwitterBearerCode}";
+
+            var userClient = new TwitterClient(ConsumerKey, ConsumerKeySecret, AccessKey, AccessKeySecret);
 
             var user = await userClient.Users.GetAuthenticatedUserAsync();
             Console.WriteLine(user);
@@ -56,7 +62,7 @@ namespace ProjectB.MicroServer
                             var tweetsURL = $"https://api.twitter.com/2/tweets/search/recent?query=from:{SA.Twitter_Name}%20%23ProjectGiveBack%20%23{Campaign.Hashtag}";
                             var client = new RestClient(tweetsURL);
                             var request = new RestRequest("", Method.Get);
-                            request.AddHeader("authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAJ3ylAEAAAAAFbDmCEfjTCygLp0Z9ZamO2QScfk%3DURTsiJZ2SKqZhjdYUYBns23NXt1iuA7AJ60HOBfDrMtYouhquo");
+                            request.AddHeader("authorization", TwitterBearerCode);
                             var response = client.Execute(request);
                             Console.WriteLine(response.Content);
                             if (response.IsSuccessful && !response.Content.Contains("\"result_count\":0"))
