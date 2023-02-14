@@ -25,7 +25,7 @@ namespace ProjectB.Data.Sql
         {
             try
             {
-                Log.LogEvent(@"DataSql \ DS_configuration \ InitConfig ran Successfully - ");
+                Log.LogEvent(@"DataSql \ Config_DS \ InitConfig ran Successfully - ");
                 config.Auth0BearerCode = (string)SqlQuery.ReadScalarFromDB("select Value from Configuration where Name like 'Auth0BearerCode'");
                 config.TwitterBearerCode = (string)SqlQuery.ReadScalarFromDB("select Value from Configuration where Name like 'TwitterBearerCode'");
                 config.TwitterConsumerKey = (string)SqlQuery.ReadScalarFromDB("select Value from Configuration where Name like 'TwitterConsumerKey'");
