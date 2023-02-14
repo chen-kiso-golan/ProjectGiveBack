@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,10 @@
     <Compile Include="BasePromotionSystem.cs" />
     <Compile Include="BuisnessCompaniesManager.cs" />
     <Compile Include="CampaignsManager.cs" />
+    <Compile Include="command\commandClasses\BaseCommand.cs" />
+    <Compile Include="command\commandClasses\CampaignsCommand\getAllCampaignsFromDB.cs" />
+    <Compile Include="command\CommandManager.cs" />
+    <Compile Include="command\ICommand.cs" />
     <Compile Include="ContactUsManager.cs" />
     <Compile Include="MainManager.cs" />
     <Compile Include="NonProfitOrganizationManager.cs" />
@@ -72,6 +79,19 @@
       <Project>{0a524da6-b874-4646-91bd-069f35bb358c}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="command\commandClasses\BuisnessCompaniesCommand\" />
+    <Folder Include="command\commandClasses\ContactUsCommand\" />
+    <Folder Include="command\commandClasses\NonProfitOrganizationCommand\" />
+    <Folder Include="command\commandClasses\OrdersCommand\" />
+    <Folder Include="command\commandClasses\ProductsCommand\" />
+    <Folder Include="command\commandClasses\RegisterApplicationsCommand\" />
+    <Folder Include="command\commandClasses\SocialActivistCommand\" />
+    <Folder Include="command\commandClasses\TwitterCommand\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

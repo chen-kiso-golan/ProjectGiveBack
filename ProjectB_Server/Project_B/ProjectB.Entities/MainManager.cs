@@ -1,4 +1,5 @@
 ﻿using ProjectB.Dal;
+using ProjectB.Entities.command;
 using ProjectB.Model;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace ProjectB.Entities
         public ProductsManager ProductsManager;
         public SocialActivistManager SocialActivistManager;
         public RegisterApplicationsManager RegisterApplicationsManager;
+        public CommandManager CommandManager;
 
         private MainManager()
         {
@@ -47,6 +49,7 @@ namespace ProjectB.Entities
                 ProductsManager = new ProductsManager(log);
                 SocialActivistManager = new SocialActivistManager(log);
                 RegisterApplicationsManager = new RegisterApplicationsManager(log);
+                CommandManager = new CommandManager(log);
 
                 log.LogEvent(@"Entities \ MainManager \ AppDomainInitializer ran Successfully - ");
             }

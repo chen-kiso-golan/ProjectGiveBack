@@ -26,3 +26,5 @@ C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\P
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\obj\Debug\ProjectB.Entities.csproj.CopyComplete
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\Utilities.dll
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\Utilities.pdb
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\Newtonsoft.Json.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\Newtonsoft.Json.xml
