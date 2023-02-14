@@ -47,3 +47,5 @@ C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\S
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\System.Text.Json.xml
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\System.ValueTuple.xml
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\RestSharp.dll
+C:\Users\behap\Desktop\a\ProjectB_Server\Project_B\ProjectB.Entities\bin\Debug\RestSharp.xml

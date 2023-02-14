@@ -102,6 +102,7 @@
     <Compile Include="command\commandClasses\ProductsCommand\getAllProductsFromDB.cs" />
     <Compile Include="command\commandClasses\ProductsCommand\ProductPost.cs" />
     <Compile Include="command\commandClasses\RegisterApplicationsCommand\get_role.cs" />
+    <Compile Include="command\commandClasses\RegisterApplicationsCommand\get_UserInfoData.cs" />
     <Compile Include="command\commandClasses\SocialActivistCommand\ActivistPost.cs" />
     <Compile Include="command\commandClasses\SocialActivistCommand\getAllActivistsFromDB.cs" />
     <Compile Include="command\CommandManager.cs" />
